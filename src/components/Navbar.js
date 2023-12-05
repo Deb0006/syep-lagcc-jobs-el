@@ -22,7 +22,7 @@ const darkTheme = createTheme({
     palette: {
       mode: 'dark',
       primary: {
-        main: '#1976d2',
+        main: '#1976d2'
       },
     },
     components: {
@@ -37,7 +37,7 @@ const darkTheme = createTheme({
   });
   function appBarLabel(label) {
     return (
-      <Toolbar>
+      <Toolbar >
         <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
           <MenuIcon />
         </IconButton>
@@ -70,10 +70,10 @@ function ResponsiveAppBar() {
   return (
     <Stack spacing={2} sx={{ flexGrow: 1 }}>
     <ThemeProvider theme={darkTheme}>
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none', borderBottom: '1px solid lightgrey', color: 'black' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <WorkTwoToneIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <WorkTwoToneIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> 
           <Typography
             variant="h6"
             noWrap
@@ -153,7 +153,7 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 {page}
               </Button>
