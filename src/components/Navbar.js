@@ -11,7 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import WorkTwoToneIcon from '@mui/icons-material/WorkTwoTone';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import Link from 'next/link';
@@ -73,7 +72,6 @@ function ResponsiveAppBar() {
     <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none', borderBottom: '1px solid lightgrey', color: 'black' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <WorkTwoToneIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> 
           <Typography
             variant="h6"
             noWrap
@@ -128,7 +126,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <WorkTwoToneIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -153,7 +150,10 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                sx={{ my: 2, color: 'black', display: 'block',
+                '&.underline': {
+                  textDecoration: 'none', // Remove underline for the Button component
+                }, }}
               >
                 {page}
               </Button>
