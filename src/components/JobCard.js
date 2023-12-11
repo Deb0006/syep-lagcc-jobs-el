@@ -63,52 +63,46 @@ export default function JobCard(props) {
         title={props.title}
         subheader={props.company}
       />
-      {/* <CardMedia
-        component="img"
-        height="194"
-        image={props.link}
-        alt="Paella dish"
-      /> */}
       <CardActions disableSpacing>
-        <CardContent>
+        <CardContent sx={{ padding: "0 15px 15px 15px" }}>
           <Typography variant="body2" color="text.secondary">
-          <LocationOnOutlinedIcon
-            color="secondary"
-            sx={{
-              fontSize: 16,
-              strokeWidth: 2,
-              marginBottom: -0.3,
-            }}
-          />
-          {props.zipcode}
+            <LocationOnOutlinedIcon
+              color="secondary"
+              sx={{
+                fontSize: 16,
+                strokeWidth: 2,
+                marginBottom: -0.3,
+              }}
+            />
+            {props.zipcode}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
-          <CategoryOutlinedIcon
-            color="secondary"
-            sx={{
-              fontSize: 16,
-              strokeWidth: 2,
-              marginBottom: -0.3,
-            }}
-          />
-          {props.jobCategory}
+            <CategoryOutlinedIcon
+              color="secondary"
+              sx={{
+                fontSize: 16,
+                strokeWidth: 2,
+                marginBottom: -0.3,
+              }}
+            />
+            {props.jobCategory}
           </Typography>
-          
+
           <Typography variant="body2" color="text.secondary">
-          {props.backgroundCheck === true && (
-            <>
-              <PersonSearchOutlinedIcon
-                color="secondary"
-                sx={{
-                  fontSize: 16, // Adjust the size as needed
-                  strokeWidth: 2, // Adjust the thickness of the lines
-                  marginBottom: -0.4, // Add space between the job category and icon
-                }}
-              />
-              {"Background Check Required"}
-            </>
-          )}
+            {props.backgroundCheck === true && (
+              <>
+                <PersonSearchOutlinedIcon
+                  color="secondary"
+                  sx={{
+                    fontSize: 16, // Adjust the size as needed
+                    strokeWidth: 2, // Adjust the thickness of the lines
+                    marginBottom: -0.4, // Add space between the job category and icon
+                  }}
+                />
+                {"Background Check Required"}
+              </>
+            )}
           </Typography>
         </CardContent>
 
