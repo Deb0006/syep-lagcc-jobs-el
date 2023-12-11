@@ -80,49 +80,65 @@ import Typography from '@mui/material/Typography';
       <Head>
         <title>Jobs Page</title>
       </Head>
-      <Box display="flex" flexDirection="column" rowGap={2} style={{margin:'0 auto' }}>
+      <Box
+        display="flex"
+        flexDirection="column"
+        rowGap={2}
+        style={{ margin: "0 auto", padding: "20px 0" }}
+      >
         <Typography variant="h4" gutterBottom>
           Jobs and Internships
         </Typography>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="p" gutterBottom>
           Start by looking for jobs that match your interests or your location:
         </Typography>
-        <Grid container  style={{ columnGap: '16px' }}>
+        <Grid container style={{ columnGap: "16px" }}>
           <TextField
             select
             label="Job Category"
             value={filters.jobCategory}
-            onChange={(e) => handleFilterChange('jobCategory', e.target.value)}
-            style={{  width: '200px' }}
+            onChange={(e) => handleFilterChange("jobCategory", e.target.value)}
+            style={{ width: "200px" }}
           >
             <MenuItem value="">All</MenuItem>
-              {jobData.map(job => (
-                <MenuItem key ={job.id}   value={job.jobCategory}>{job.jobCategory}</MenuItem>
-              ))}
+            {jobData.map((job) => (
+              <MenuItem key={job.id} value={job.jobCategory}>
+                {job.jobCategory}
+              </MenuItem>
+            ))}
           </TextField>
 
           <TextField
-          select
+            select
             label="Location"
             value={filters.location}
-            onChange={(e) => handleFilterChange('location', e.target.value)}
-            style={{ width: '200px' }}
+            onChange={(e) => handleFilterChange("location", e.target.value)}
+            style={{ width: "200px" }}
           >
-          <MenuItem value="">All</MenuItem>
-          <MenuItem value="Queens">Queens</MenuItem>
-          <MenuItem value="Manhattan">Manhattan</MenuItem>
-          <MenuItem value="Bronx">Bronx</MenuItem>
+            <MenuItem value="">All</MenuItem>
+            <MenuItem value="Queens">Queens</MenuItem>
+            <MenuItem value="Manhattan">Manhattan</MenuItem>
+            <MenuItem value="Brooklyn">Bronx</MenuItem>
+            <MenuItem value="Bronx">Bronx</MenuItem>
             {/* Add more categories as needed */}
           </TextField>
 
           <TextField
             label="Zipcode"
             value={filters.zipcode}
-            onChange={(e) => handleFilterChange('zipcode', e.target.value)}
-            style={{ width: '100px' }}
+            onChange={(e) => handleFilterChange("zipcode", e.target.value)}
+            style={{ width: "100px" }}
           />
         </Grid>
-        <Grid container spacing={2} style={{margin:'0 auto' }}>
+        <Grid
+          container
+          spacing={{ xs: 0, sm: 1 }}
+          rowGap={1}
+          paddingRight={{ xs: 0, sm: 1 }}
+          style={{
+            margin: "0 auto",
+          }}
+        >
           {dataForCard}
         </Grid>
       </Box>
