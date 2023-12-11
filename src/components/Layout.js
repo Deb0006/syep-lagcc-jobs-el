@@ -8,8 +8,7 @@ export default function Layout({ children }) {
       <div>
         <Navbar />
         <Container 
-          sx={{paddingTop: 2,
-          paddingBottom: 3, 
+          sx={{
           maxWidth: 'lg',
           margin: '0 auto', // Centers the container horizontally
           }}>
