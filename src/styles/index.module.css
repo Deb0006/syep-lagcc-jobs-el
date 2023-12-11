@@ -1,0 +1,16 @@
+.responsiveImage {
+    width: 150px;
+    height: 150px;
+  }
+  @media (max-width: 961px) {
+    .responsiveImage {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  @media (max-width: 599px) {
+    .responsiveImage {
+      width: 80px;
+      height: 80px;
+    }
+  }
