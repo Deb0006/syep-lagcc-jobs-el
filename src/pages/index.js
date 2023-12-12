@@ -28,7 +28,6 @@ export default function Home() {
         <Grid
           container
           sx={{
-            // border: "1px solid red",
             height: { xs: "85vh", sm: "75vh", md: "75vh" },
           }}
         >
@@ -37,9 +36,11 @@ export default function Home() {
             item
             xs={12}
             sm={6}
-            // sx={{
-            //   border: "2px solid pink",
-            // }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
           >
             <Typography
               variant="h2"
@@ -62,13 +63,18 @@ export default function Home() {
               </Typography>
             </Box>
 
-            <Button
-              variant="outlined"
-              color="secondary"
-              style={{ padding: "10px 20px" }}
-            >
-              Search Jobs
-            </Button>
+            <Box sx={{ padding: "20px 0", width: { xs: "100%", sm: "50%" } }}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                style={{
+                  padding: "10px 30px",
+                  width: "100%",
+                }}
+              >
+                Search Jobs
+              </Button>
+            </Box>
           </Grid>
           {/* //section 2 right*/}
           <Grid
@@ -170,29 +176,84 @@ export default function Home() {
           <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
             Explore Your Potential: Diverse Job Opportunities Await
           </Typography>
+
           <Slideshow />
         </Box>
         {/* Section 3 */}
-                <Typography variant="p">Step 1</Typography>
-                hello its me, I was wondering if after all this year you would like to meet
+        <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
+          Here's what you need to do to start
+        </Typography>
+        <Box>
+          <Grid
+            container
+            // spacing={2}
+            style={{
+              marginTop: "10px",
+              padding: "10px",
+              border: "1px solid green",
+              gap: "20px",
+              display:"flex",
+              justifyContent:"center"
+            }}
+          >
+            <Grid item xs={3}>
+              <Paper
+                elevation={1}
+                style={{
+                  padding: "20px",
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Box width={"80%"}>
+                  <Typography variant="h5">Step 1</Typography>
+                  <Typography variant="p">
+                    Click on the "Search Job" button and browse the available
+                    jobs. Pick 3 that you like and save them
+                  </Typography>
+                </Box>
               </Paper>
             </Grid>
+
             <Grid item xs={3}>
-              <Paper elevation={1} style={{ padding: '20px', textAlign: 'center' }}>
-                <Typography variant="p">Step 2</Typography>
-                {/* Additional content for Step 2 if needed */}
+              <Paper
+                elevation={1}
+                style={{
+                  padding: "20px",
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Box width={"75%"}>
+                  <Typography variant="h5">Step 2</Typography>
+                  <Typography variant="p">
+                    Fill out the form with your information and your top 3 job
+                    preferences. Make sure you submit it before the deadline
+                  </Typography>
+                </Box>
               </Paper>
             </Grid>
+
             <Grid item xs={3}>
-              <Paper elevation={1} style={{ padding: '20px', textAlign: 'center' }}>
-                <Typography variant="p">Step 3</Typography>
-                {/* Additional content for Step 3 if needed */}
-              </Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper elevation={1} style={{ padding: '20px', textAlign: 'center' }}>
-                <Typography variant="p">Step 4</Typography>
-                {/* Additional content for Step 4 if needed */}
+              <Paper
+                elevation={1}
+                style={{
+                  padding: "20px",
+                  textAlign: "center",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Box width={"80%"}>
+                  <Typography variant="h5">Step 3</Typography>
+                  <Typography variant="p">
+                    Wait for a confirmation email from the DYCD and check the
+                    participant website regularly to see where you were
+                    assaigned
+                  </Typography>
+                </Box>
               </Paper>
             </Grid>
           </Grid>
