@@ -86,6 +86,7 @@ return (
     <Head>
       <title>Jobs Page</title>
     </Head>
+    <Container sx={{ maxWidth: "lg", margin: "0 auto" }}>
       <Box
         display="flex"
         flexDirection="column"
@@ -163,6 +164,7 @@ return (
           {dataForCard}
         </Grid>
       </Box>
+    </Container>
   </Layout>
 );
 };

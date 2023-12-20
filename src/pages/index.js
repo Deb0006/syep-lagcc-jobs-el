@@ -9,6 +9,8 @@ import Grid from "@mui/material/Grid";
 import Image from "next/image";
 import Paper from "@mui/material/Paper";
 import styles from "../styles/index.module.css";
+import FullScreenContent from "../components/FullScreenContent";
+import { Container } from "@mui/material";
 
 export default function Home() {
   return (
@@ -16,19 +18,14 @@ export default function Home() {
       <Head>
         <title>Home Page</title>
       </Head>
-      {/* Main container */}
-      <Box
-        sx={{
-          // border: "1px solid grey",
-          padding: { xs: "10px 0", sm: "50px 0" },
-          margin: "0 auto",
-        }}
-      >
+      {/* Main container 1 */}
+      <Container sx={{ maxWidth: "lg", margin: "0 auto" }}>
         {/* Hero Section */}
         <Grid
           container
           sx={{
             height: { xs: "85vh", sm: "75vh", md: "75vh" },
+            padding: "30px 0"
           }}
         >
           {/* //section 1 left */}
@@ -91,7 +88,7 @@ export default function Home() {
               gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "auto" },
               gridTemplateRows: { xs: "auto", sm: "auto" },
               gridRowGap: 0,
-              height: { xs: "45%", sm: "auto" },
+              height: { xs: "45%", sm: "45" },
               width: { xs: "auto", sm: "45%" },
             }}
           >
@@ -160,105 +157,156 @@ export default function Home() {
             />
           </Grid>
         </Grid>
-
-        {/* Slideshow Section */}
-
+      </Container>
+      {/* Slideshow Section */}
+      <Container sx={{ maxWidth: "lg", margin: "0 auto", textAlign: "center", padding:"50px 0 20px 0" }}>
+        <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
+          Explore Your Potential: Diverse Job Opportunities Await
+        </Typography>
+      </Container>
+      <FullScreenContent />
+      {/* Main container 2 */}
+      <Container sx={{ maxWidth: "lg", margin: "0 auto" }}>
+        {/* Section 3 */}
         <Box
           sx={{
-            margin: "0 auto",
-            width: "100%",
-            height: "300px",
-            overflowX: "auto",
-            minWidth: "240px",
-            textAlign: "center",
+            padding: "30px 0",
+            textAlign: "center"
           }}
         >
           <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-            Explore Your Potential: Diverse Job Opportunities Await
+            Here's what you need to do to start
           </Typography>
-
-          <Slideshow />
-        </Box>
-        {/* Section 3 */}
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-          Here's what you need to do to start
-        </Typography>
-        <Box>
-          <Grid
-            container
-            // spacing={2}
-            style={{
-              marginTop: "10px",
-              padding: "10px",
-              border: "1px solid green",
-              gap: "20px",
-              display:"flex",
-              justifyContent:"center"
+          <Box
+            sx={{
+              padding: "40px 0",
             }}
           >
-            <Grid item xs={3}>
-              <Paper
-                elevation={1}
-                style={{
-                  padding: "20px",
-                  textAlign: "center",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <Box width={"80%"}>
-                  <Typography variant="h5">Step 1</Typography>
-                  <Typography variant="p">
-                    Click on the "Search Job" button and browse the available
-                    jobs. Pick 3 that you like and save them
-                  </Typography>
-                </Box>
-              </Paper>
-            </Grid>
+            <Grid
+              container
+              style={{
+                marginTop: "10px",
+                // border: "1px solid green",
+                gap: "50px",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Grid item xs={12} sm={3}>
+                <Paper
+                  elevation={0}
+                  style={{
+                    maxWidth: "300px",
+                    padding: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                    background: "#E2FDFF",
+                    minWidth: "250px",
+                  }}
+                >
+                  <Box
+                    width={"80%"}
+                    marginTop={-10}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Image
+                      src="/Zoom2.png"
+                      // className={styles.responsiveImage}
+                      alt="Law image"
+                      width={150}
+                      height={200}
+                    />
+                    <Typography variant="h5">Step 1</Typography>
+                    <Typography variant="p">
+                      Click on the "Search Job" button and browse the available
+                      jobs. Pick 3 that you like and save them
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
 
-            <Grid item xs={3}>
-              <Paper
-                elevation={1}
-                style={{
-                  padding: "20px",
-                  textAlign: "center",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <Box width={"75%"}>
-                  <Typography variant="h5">Step 2</Typography>
-                  <Typography variant="p">
-                    Fill out the form with your information and your top 3 job
-                    preferences. Make sure you submit it before the deadline
-                  </Typography>
-                </Box>
-              </Paper>
-            </Grid>
+              <Grid item xs={12} sm={3}>
+                <Paper
+                  elevation={0}
+                  style={{
+                    maxWidth: "300px",
+                    padding: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                    background: "#E2FDFF",
+                    minWidth: "250px",
+                  }}
+                >
+                  <Box
+                    width={"80%"}
+                    marginTop={-10}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Image
+                      src="/List2.png"
+                      // className={styles.responsiveImage}
+                      alt="Law image"
+                      width={150}
+                      height={200}
+                    />
+                    <Typography variant="h5">Step 2</Typography>
+                    <Typography variant="p">
+                      Fill out the form with your information and your top 3 job
+                      preferences. Make sure you submit it before the deadline
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
 
-            <Grid item xs={3}>
-              <Paper
-                elevation={1}
-                style={{
-                  padding: "20px",
-                  textAlign: "center",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <Box width={"80%"}>
-                  <Typography variant="h5">Step 3</Typography>
-                  <Typography variant="p">
-                    Wait for a confirmation email from the DYCD and check the
-                    participant website regularly to see where you were
-                    assaigned
-                  </Typography>
-                </Box>
-              </Paper>
+              <Grid item xs={12} sm={3}>
+                <Paper
+                  elevation={0}
+                  style={{
+                    maxWidth: "300px",
+                    padding: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                    background: "#E2FDFF",
+                    minWidth: "250px",
+                  }}
+                >
+                  <Box
+                    width={"80%"}
+                    marginTop={-10}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Image
+                      src="/Laptop2.png"
+                      // className={styles.responsiveImage}
+                      alt="Law image"
+                      width={150}
+                      height={200}
+                    />
+                    <Typography variant="h5">Step 3</Typography>
+                    <Typography variant="p">
+                      Wait for a confirmation email from the DYCD and check the
+                      participant website regularly to see where you were
+                      assaigned
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
             </Grid>
-          </Grid>
+          </Box>
         </Box>
-      </Box>
+      </Container>
     </Layout>
   );
 }

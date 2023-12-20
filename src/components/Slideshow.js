@@ -16,10 +16,10 @@ export default function Slideshow() {
       ];
 
     return (
-      <Box sx={{ width: "100%", border: '1px solid red' }}>
+      <Box sx={{ width: "100%", paddingLeft: "10px" }}>
         <List component={Stack} direction="row">
           {images.map((image, index) => (
-            <ListItem key={index} sx={{ paddingLeft: "0", paddingRight: "30px" }}>
+            <ListItem key={index} sx={{  }}>
               <Paper
                 elevation={0}
                 style={{
@@ -30,7 +30,7 @@ export default function Slideshow() {
                   alignItems: "center",
                   justifyContent: "center",
                   background:
-                    "linear-gradient(131deg, #75C4D9 0%, #EDB2D0 96.8%)",
+                    "linear-gradient(131deg, #95B4F5 0%, #E5A2D2 96.8%)",
                   backdropFilter: "blur(5px)",
                 }}
               >

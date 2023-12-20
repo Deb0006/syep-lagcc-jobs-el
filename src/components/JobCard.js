@@ -9,7 +9,6 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyTwoTone";
@@ -18,6 +17,8 @@ import StorefrontTwoToneIcon from "@mui/icons-material/StorefrontTwoTone";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined";
+import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
+import "../styles/globals.css";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -38,21 +39,34 @@ const icons = {
 };
 export default function JobCard(props) {
   const [expanded, setExpanded] = React.useState(false);
-
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  
   const Icon = icons[props.iconName] || null;
+
+  //  const [savedJobs, setSavedJobs] = useState([]);
+
+  //  const handleSaveJob = (jobId) => {
+  //    const isSaved = savedJobs.includes(jobId);
+  //    if (isSaved) {
+  //      // Remove job from saved jobs
+  //      setSavedJobs(savedJobs.filter((id) => id !== jobId));
+  //    } else {
+  //      // Add job to saved jobs
+  //      setSavedJobs([...savedJobs, jobId]);
+  //    }
+  //  };
 
   return (
     <Card
-      sx={{ maxWidth: 345, border: "1px solid lightgrey", boxShadow: "none" }}
+      sx={{ maxWidth: 700, border: "1px solid lightgrey", boxShadow: "none" }}
     >
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: "#8A9EFF" }} aria-label="avatar">
-            {Icon && <Icon />}
+          <Avatar className="primary" aria-label="avatar">
+            {Icon ? <Icon /> : <BusinessCenterOutlinedIcon />}
           </Avatar>
         }
         action={
@@ -74,7 +88,7 @@ export default function JobCard(props) {
                 marginBottom: -0.3,
               }}
             />
-            {props.zipcode}
+            {props.zipcode}, {props.location}, {props.address}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
