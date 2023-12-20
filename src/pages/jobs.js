@@ -7,79 +7,85 @@ import Box from "@mui/material/Box";
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import { Container } from "@mui/material";
 
 
-  const Jobs = () => {
-    
-    const jobData = [
-      { id: 1, title: 'Software Engineer', company: 'Company D', location:'Manhattan', zipcode: 10001, jobCategory: 'Technology', visible:true,backgroundCheck:false, iconName: 'CodeOutlinedIcon', description:'Seeking a talented Software Engineer to join our team in developing cutting-edge software solutions.'},
-      { id: 2, title: 'Sales Associate', company: 'Company E', location:'Brooklyn', zipcode: 11201, jobCategory: 'Retail', visible:true,backgroundCheck:true, iconName: 'ShoppingBasketOutlinedIcon', description:'Looking for a friendly and customer-oriented Sales Associate to join our team at a busy retail store.'},
-      { id: 3, title: 'Registered Nurse', company: 'Company F', location:'Queens', zipcode: 11101, jobCategory: 'Healthcare', visible:true,backgroundCheck:true, iconName: 'LocalHospitalOutlinedIcon', description:'We are currently hiring Registered Nurses to provide compassionate care to our patients in a fast-paced environment.' },
-      { id: 4, title: 'Graphic Designer', company: 'Company G', location:'Queens', zipcode: 11368, jobCategory: 'Design', visible:true, backgroundCheck:false, iconName: 'PaletteOutlinedIcon', description:'Join our creative team as a Graphic Designer and contribute to the development of visually stunning designs.'},
-      { id: 5, title: 'Financial Analyst', company: 'Company H', location:'Manhattan', zipcode: 10022, jobCategory: 'Finance', visible:true, backgroundCheck:true, iconName: 'AccountBalanceOutlinedIcon', description:'We are hiring a detail-oriented Financial Analyst to provide in-depth analysis and financial reports.'},
-      { id: 6, title: 'Marketing Manager', company: 'Company I', location:'Brooklyn', zipcode: 11215, jobCategory: 'Marketing', visible:true, backgroundCheck:true, iconName: 'MarketingOutlinedIcon', description:'Looking for an experienced Marketing Manager to develop and implement effective marketing strategies.'},
-      { id: 7, title: 'Customer Service Representative', company: 'Company J', location:'Bronx', zipcode: 10456, jobCategory: 'Customer Service', visible:true, backgroundCheck:false, iconName: 'PeopleAltOutlinedIcon', description:'Join our team as a Customer Service Representative and assist customers with their inquiries and concerns.'},
-      { id: 8, title: 'Data Scientist', company: 'Company K', location:'Manhattan', zipcode: 10016, jobCategory: 'Technology', visible:true, backgroundCheck:true, iconName: 'AssessmentOutlinedIcon', description:'We are seeking a skilled Data Scientist to analyze large datasets and extract valuable insights for our organization.'},
-      { id: 9, title: 'Human Resources Manager', company: 'Company L', location:'Brooklyn', zipcode: 11221, jobCategory: 'Human Resources', visible:true, backgroundCheck:true, iconName: 'SupervisorAccountOutlinedIcon', description:'Looking for a confident and experienced Human Resources Manager to oversee all HR operations.'},
-      { id: 10, title: 'Registered Dietitian', company: 'Company M', location:'Queens', zipcode: 11373, jobCategory: 'Healthcare', visible:true, backgroundCheck:true, iconName: 'RestaurantMenuOutlinedIcon', description:'Join our team of healthcare professionals as a Registered Dietitian and provide nutritional guidance to patients.'},
-     ];
- 
-    //api call
-  // const [jobData, setJobData] = useState([]);
-  // useEffect(() => {
-  //   async function getJobData() {
-  //     const response = await fetch("/api/firebase-config");
-  //     const data = await response.json();
-  //     setJobData(data);
-  //   }
-  //   getJobData();
-  // }, []);
+const Jobs = () => {
   
-  const [filters, setFilters] = useState({
-    jobCategory: '',
-    location: '',
-    zipcode: '',
-  });
+  const jobData = [
+    { id: 1, contract:{CB:0, QB:0, MB:0},title: 'Software Engineer', company: 'Company D', address:'2581 Atlantic Avenue',location:'Manhattan', state:'NY',zipcode: 10001, jobCategory: 'Technology', visible:true,backgroundCheck:false, iconName: 'CodeOutlinedIcon', description:'Seeking a talented Software Engineer to join our team in developing cutting-edge software solutions.'},
+    { id: 2, contract:{CB:0, QB:0, MB:0},title: 'Sales Associate', company: 'Company E', address:'2581 Atlantic Avenue',location:'Brooklyn', state:'NY',zipcode: 11201, jobCategory: 'Retail', visible:true,backgroundCheck:true, iconName: 'ShoppingBasketOutlinedIcon', description:'Looking for a friendly and customer-oriented Sales Associate to join our team at a busy retail store.'},
+    { id: 3, contract:{CB:0, QB:0, MB:0},title: 'Registered Nurse', company: 'Company F', address:'2581 Atlantic Avenue',location:'Queens', state:'NY',zipcode: 11101, jobCategory: 'Healthcare', visible:true,backgroundCheck:true, iconName: 'LocalHospitalOutlinedIcon', description:'We are currently hiring Registered Nurses to provide compassionate care to our patients in a fast-paced environment.' },
+    { id: 4, contract:{CB:0, QB:0, MB:0},title: 'Graphic Designer', company: 'Company G', address:'2581 Atlantic Avenue',location:'Queens', state:'NY',zipcode: 11368, jobCategory: 'Design', visible:true, backgroundCheck:false, iconName: 'PaletteOutlinedIcon', description:'Join our creative team as a Graphic Designer and contribute to the development of visually stunning designs.'},
+    { id: 5, contract:{CB:0, QB:0, MB:0},title: 'Financial Analyst', company: 'Company H', address:'2581 Atlantic Avenue',location:'Manhattan', state:'NY',zipcode: 10022, jobCategory: 'Finance', visible:true, backgroundCheck:true, iconName: 'AccountBalanceOutlinedIcon', description:'We are hiring a detail-oriented Financial Analyst to provide in-depth analysis and financial reports.'},
+    { id: 6, contract:{CB:0, QB:0, MB:0},title: 'Marketing Manager', company: 'Company I', address:'2581 Atlantic Avenue',location:'Brooklyn', state:'NY',zipcode: 11215, jobCategory: 'Marketing', visible:true, backgroundCheck:true, iconName: 'MarketingOutlinedIcon', description:'Looking for an experienced Marketing Manager to develop and implement effective marketing strategies.'},
+    { id: 7, contract:{CB:0, QB:0, MB:0},title: 'Customer Service Representative', company: 'Company J', address:'2581 Atlantic Avenue',location:'Bronx', state:'NY',zipcode: 10456, jobCategory: 'Customer Service', visible:true, backgroundCheck:false, iconName: 'PeopleAltOutlinedIcon', description:'Join our team as a Customer Service Representative and assist customers with their inquiries and concerns.'},
+    { id: 8, contract:{CB:0, QB:0, MB:0},title: 'Data Scientist', company: 'Company K', address:'2581 Atlantic Avenue',location:'Manhattan', state:'NY',zipcode: 10016, jobCategory: 'Technology', visible:true, backgroundCheck:true, iconName: 'AssessmentOutlinedIcon', description:'We are seeking a skilled Data Scientist to analyze large datasets and extract valuable insights for our organization.'},
+    { id: 9, contract:{CB:0, QB:0, MB:0},title: 'Human Resources Manager', company: 'Company L', address:'2581 Atlantic Avenue',location:'Brooklyn', state:'NY',zipcode: 11221, jobCategory: 'Human Resources', visible:true, backgroundCheck:true, iconName: 'SupervisorAccountOutlinedIcon', description:'Looking for a confident and experienced Human Resources Manager to oversee all HR operations.'},
+    { id: 10, contract:{CB:0, QB:0, MB:0},title: 'Registered Dietitian', company: 'Company M', address:'2581 Atlantic Avenue',location:'Queens', state:'NY',zipcode: 11373, jobCategory: 'Healthcare', visible:true, backgroundCheck:true, iconName: 'RestaurantMenuOutlinedIcon', description:'Join our team of healthcare professionals as a Registered Dietitian and provide nutritional guidance to patients.'},
+    ];
 
-  const handleFilterChange = (field, value) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [field]: value,
-    }));
-  };
-  
+//api call
+// const [jobData, setJobData] = useState([]);
+// useEffect(() => {
+//   async function getJobData() {
+//     const response = await fetch("/api/firebase-config");
+//     const data = await response.json();
+//     setJobData(data);
+//   }
+//   getJobData();
+// }, []);
 
-  const filteredJobs = jobData.filter((item) => {
-    const categoryMatch = !filters.jobCategory || item.jobCategory === filters.jobCategory;
-    const locationMatch = !filters.location || item.location === filters.location;
-    const zipcodeMatch = !filters.zipcode || item.zipcode.toString() === filters.zipcode.toString();
+const [filters, setFilters] = useState({
+  jobCategory: '',
+  location: '',
+  zipcode: '',
+  backgroundCheck:null,
+});
 
-    return categoryMatch && locationMatch && zipcodeMatch;
-  });
+const handleFilterChange = (field, value) => {
+  setFilters((prevFilters) => ({
+    ...prevFilters,
+    [field]: value,
+  }));
+};
+
+const filteredJobs = jobData.filter((item) => {
+  const categoryMatch = !filters.jobCategory || item.jobCategory === filters.jobCategory;
+  const locationMatch = !filters.location || item.location === filters.location;
+  const zipcodeMatch = !filters.zipcode || item.zipcode.toString() === filters.zipcode.toString();
+  const backgroundCheckMatch =
+    filters.backgroundCheck === null ||
+    item.backgroundCheck === filters.backgroundCheck;
+
+  return categoryMatch && locationMatch && zipcodeMatch && backgroundCheckMatch;
+});
 
 
+const dataForCard = filteredJobs.map((item) => (
+  <Grid item xs={12} sm={12} md={6} key={item.id}>
+    <JobCard
+      key={item.id}
+      title={item.title}
+      company={item.company}
+      address={item.address}
+      zipcode={item.zipcode}
+      location={item.location}
+      jobCategory={item.jobCategory}
+      description={item.description}
+      iconName={item.iconName}
+      backgroundCheck={item.backgroundCheck}
+    />
+  </Grid>
+));
 
-  const dataForCard = filteredJobs.map((item) => (
-    <Grid item xs={12} sm={6} md={4} key={item.id}>
-      <JobCard
-        key={item.id}
-        title={item.title}
-        company={item.company}
-        zipcode={item.zipcode}
-        location={item.location}
-        jobCategory={item.jobCategory}
-        description={item.description}
-        iconName={item.iconName}
-        backgroundCheck={item.backgroundCheck}
-      />
-    </Grid>
-  ));
-
-  return (
-    <Layout>
-      <Head>
-        <title>Jobs Page</title>
-      </Head>
+return (
+  <Layout>
+    <Head>
+      <title>Jobs Page</title>
+    </Head>
       <Box
         display="flex"
         flexDirection="column"
@@ -118,7 +124,7 @@ import Typography from '@mui/material/Typography';
             <MenuItem value="">All</MenuItem>
             <MenuItem value="Queens">Queens</MenuItem>
             <MenuItem value="Manhattan">Manhattan</MenuItem>
-            <MenuItem value="Brooklyn">Bronx</MenuItem>
+            <MenuItem value="Brooklyn">Brooklyn</MenuItem>
             <MenuItem value="Bronx">Bronx</MenuItem>
             {/* Add more categories as needed */}
           </TextField>
@@ -129,12 +135,27 @@ import Typography from '@mui/material/Typography';
             onChange={(e) => handleFilterChange("zipcode", e.target.value)}
             style={{ width: "100px" }}
           />
+          <FormControlLabel
+            control={
+              <Switch
+                color="secondary"
+                checked={filters.backgroundCheck === false}
+                onChange={(e) =>
+                  handleFilterChange(
+                    "backgroundCheck",
+                    e.target.checked ? false : null
+                  )
+                }
+              />
+            }
+            label="No Background Check Required"
+          />
         </Grid>
         <Grid
           container
-          spacing={{ xs: 0, sm: 1 }}
+          spacing={{ xs: 0, sm: 0, md: 1 }}
           rowGap={1}
-          paddingRight={{ xs: 0, sm: 1 }}
+          paddingRight={{ xs: 0, sm: 0, md: 1 }}
           style={{
             margin: "0 auto",
           }}
@@ -142,8 +163,8 @@ import Typography from '@mui/material/Typography';
           {dataForCard}
         </Grid>
       </Box>
-    </Layout>
-  );
+  </Layout>
+);
 };
 
 export default Jobs;
