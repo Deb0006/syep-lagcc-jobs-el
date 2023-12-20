@@ -166,12 +166,10 @@ export default function Home() {
       </Container>
       <FullScreenContent />
       {/* Main container 2 */}
-      <Container sx={{ maxWidth: "lg", margin: "0 auto" }}>
         {/* Section 3 */}
         <Box
           sx={{
             padding: "30px 0",
-            textAlign: "center"
           }}
         >
           <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
@@ -179,132 +177,145 @@ export default function Home() {
           </Typography>
           <Box
             sx={{
+              padding: "30px 0",
+              textAlign: "center",
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              alignItems: "center",
+              justifyContent: "center",
+              gap: { xs: 2, sm: 4 }, // spacing between items
+            }}
+          ></Box>
+          <Grid
+            container
+            style={{
+              marginTop: "10px",
+              gap: "20px",
               padding: "40px 0",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <Grid
-              container
+            <Paper
+              elevation={0}
               style={{
-                marginTop: "10px",
-                // border: "1px solid green",
-                gap: "50px",
+                minWidth: "300px",
+                width: "370px",
+                height: "330px",
+                padding: "20px",
                 display: "flex",
                 justifyContent: "center",
+                background: "#E2FDFF",
+                minWidth: "250px",
               }}
             >
-              <Grid item xs={12} sm={3}>
-                <Paper
-                  elevation={0}
-                  style={{
-                    maxWidth: "300px",
-                    padding: "20px",
+              <Box
+                width={"80%"}
+                marginTop={-12}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  src="/Zoom2.png"
+                  // className={styles.responsiveImage}
+                  alt="Law image"
+                  width={150}
+                  height={200}
+                />
+                <Typography variant="h5" paddingTop={2}>
+                  Step 1
+                </Typography>
+                <Typography variant="p">
+                  Click on the "Search Job" button and browse the available
+                  jobs. Pick 3 that you like and save them
+                </Typography>
+              </Box>
+            </Paper>
+            <Box>
+              <Paper
+                elevation={0}
+                style={{
+                  minWidth: "300px",
+                  width: "370px",
+                  height: "330px",
+                  padding: "20px",
+                  display: "flex",
+                  justifyContent: "center",
+                  background: "#E2FDFF",
+                  minWidth: "250px",
+                }}
+              >
+                <Box
+                  width={"80%"}
+                  marginTop={-12}
+                  sx={{
                     display: "flex",
-                    justifyContent: "center",
-                    background: "#E2FDFF",
-                    minWidth: "250px",
+                    flexDirection: "column",
+                    alignItems: "center",
                   }}
                 >
-                  <Box
-                    width={"80%"}
-                    marginTop={-10}
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Image
-                      src="/Zoom2.png"
-                      // className={styles.responsiveImage}
-                      alt="Law image"
-                      width={150}
-                      height={200}
-                    />
-                    <Typography variant="h5">Step 1</Typography>
-                    <Typography variant="p">
-                      Click on the "Search Job" button and browse the available
-                      jobs. Pick 3 that you like and save them
-                    </Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-
-              <Grid item xs={12} sm={3}>
-                <Paper
-                  elevation={0}
-                  style={{
-                    maxWidth: "300px",
-                    padding: "20px",
+                  <Image
+                    src="/List2.png"
+                    // className={styles.responsiveImage}
+                    alt="Law image"
+                    width={150}
+                    height={200}
+                  />
+                  <Typography variant="h5" paddingTop={2}>
+                    Step 2
+                  </Typography>
+                  <Typography variant="p">
+                    Fill out the form with your information and your top 3 job
+                    preferences. Make sure you submit it before the deadline
+                  </Typography>
+                </Box>
+              </Paper>
+            </Box>
+            <Box>
+              <Paper
+                elevation={0}
+                style={{
+                  minWidth: "300px",
+                  width: "370px",
+                  height: "330px",
+                  padding: "20px",
+                  display: "flex",
+                  justifyContent: "center",
+                  background: "#E2FDFF",
+                  minWidth: "250px",
+                }}
+              >
+                <Box
+                  width={"80%"}
+                  marginTop={-12}
+                  sx={{
                     display: "flex",
-                    justifyContent: "center",
-                    background: "#E2FDFF",
-                    minWidth: "250px",
+                    flexDirection: "column",
+                    alignItems: "center",
                   }}
                 >
-                  <Box
-                    width={"80%"}
-                    marginTop={-10}
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Image
-                      src="/List2.png"
-                      // className={styles.responsiveImage}
-                      alt="Law image"
-                      width={150}
-                      height={200}
-                    />
-                    <Typography variant="h5">Step 2</Typography>
-                    <Typography variant="p">
-                      Fill out the form with your information and your top 3 job
-                      preferences. Make sure you submit it before the deadline
-                    </Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-
-              <Grid item xs={12} sm={3}>
-                <Paper
-                  elevation={0}
-                  style={{
-                    maxWidth: "300px",
-                    padding: "20px",
-                    display: "flex",
-                    justifyContent: "center",
-                    background: "#E2FDFF",
-                    minWidth: "250px",
-                  }}
-                >
-                  <Box
-                    width={"80%"}
-                    marginTop={-10}
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Image
-                      src="/Laptop2.png"
-                      // className={styles.responsiveImage}
-                      alt="Law image"
-                      width={150}
-                      height={200}
-                    />
-                    <Typography variant="h5">Step 3</Typography>
-                    <Typography variant="p">
-                      Wait for a confirmation email from the DYCD and check the
-                      participant website regularly to see where you were
-                      assaigned
-                    </Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-            </Grid>
-          </Box>
+                  <Image
+                    src="/Laptop2.png"
+                    // className={styles.responsiveImage}
+                    alt="Law image"
+                    width={150}
+                    height={200}
+                  />
+                  <Typography variant="h5" paddingTop={2}>
+                    Step 3
+                  </Typography>
+                  <Typography variant="p">
+                    Wait for a confirmation email from the DYCD and check the
+                    participant website regularly to see where you were
+                    assaigned
+                  </Typography>
+                </Box>
+              </Paper>
+            </Box>
+          </Grid>
         </Box>
       </Container>
     </Layout>
