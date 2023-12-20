@@ -10,6 +10,7 @@ function FullScreenContent() {
         height: "250px",
         overflowX: "auto",
         minWidth: "240px",
+        maxWidth:"1500px",
         textAlign: "center",
       }}
     >
