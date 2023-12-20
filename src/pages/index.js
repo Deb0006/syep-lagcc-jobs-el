@@ -19,13 +19,20 @@ export default function Home() {
         <title>Home Page</title>
       </Head>
       {/* Main container 1 */}
-      <Container sx={{ maxWidth: "lg", margin: "0 auto" }}>
+      <Container
+        sx={{
+          maxWidth: "xl",
+          height: "auto",
+          margin: "0 auto",
+          padding: "10px 0",
+        }}
+      >
         {/* Hero Section */}
         <Grid
           container
           sx={{
-            height: { xs: "85vh", sm: "75vh", md: "75vh" },
-            padding: "30px 0"
+            height: { xs: "auto", sm: "75vh", md: "75vh" },
+            padding: "30px 0",
           }}
         >
           {/* //section 1 left */}
@@ -159,17 +166,29 @@ export default function Home() {
         </Grid>
       </Container>
       {/* Slideshow Section */}
-      <Container sx={{ maxWidth: "lg", margin: "0 auto", textAlign: "center", padding:"50px 0 20px 0" }}>
+      <Container
+        sx={{
+          margin: "0 auto",
+          textAlign: "center",
+          padding: "20px 0 20px 0",
+        }}
+      >
         <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
           Explore Your Potential: Diverse Job Opportunities Await
         </Typography>
       </Container>
       <FullScreenContent />
       {/* Main container 2 */}
+      <Container sx={{ maxWidth: "xl", margin: "0 auto" }}>
         {/* Section 3 */}
         <Box
           sx={{
             padding: "30px 0",
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
