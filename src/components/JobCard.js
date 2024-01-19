@@ -2,7 +2,6 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
@@ -131,8 +130,8 @@ export default function JobCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Description:</Typography>
-          <Typography paragraph>{props.description}</Typography>
+          <Typography paragraph>Requirements:</Typography>
+          <Typography paragraph>{props.requirements}</Typography>
         </CardContent>
       </Collapse>
     </Card>
