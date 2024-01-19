@@ -4,13 +4,17 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+  height: 100vh;
+  background-color: "#ffffff";
+ 
+  
 }
 * {
   box-sizing: border-box;
 }
 .primary {
-  background-color: #90a8c3;
+  background-color: #196096;
 }
 .secondary {
-  background-color: #896BBC;
+  background-color: #D5C7E8;
 }
