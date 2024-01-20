@@ -161,30 +161,67 @@ const Jobs = ({ parsedData }) => {
 
   console.log(parsedData);
 
+  // const [filters, setFilters] = useState({
+  //   jobCategory: '',
+  //   location: '',
+  //   zipcode: '',
+  //   backgroundCheck:null,
+  // });
+
+  // const handleFilterChange = (field, value) => {
+  //   setFilters((prevFilters) => ({
+  //     ...prevFilters,
+  //     [field]: value,
+  //   }));
+  // };
   const [filters, setFilters] = useState({
-    jobCategory: '',
-    location: '',
-    zipcode: '',
-    backgroundCheck:null,
+    industry: "",
+    city: "",
+    zipcode: "",
   });
 
   const handleFilterChange = (field, value) => {
+    console.log(`Field: ${field}, Value: ${value}`); // Check if this logs correctly
     setFilters((prevFilters) => ({
       ...prevFilters,
       [field]: value,
     }));
   };
 
-  const filteredJobs = jobData.filter((item) => {
-    const categoryMatch = !filters.jobCategory || item.jobCategory === filters.jobCategory;
-    const locationMatch = !filters.location || item.location === filters.location;
-    const zipcodeMatch = !filters.zipcode || item.zipcode.toString() === filters.zipcode.toString();
-    const backgroundCheckMatch =
-      filters.backgroundCheck === null ||
-      item.backgroundCheck === filters.backgroundCheck;
 
-    return categoryMatch && locationMatch && zipcodeMatch && backgroundCheckMatch;
-  });
+  // const filteredJobs = jobData.filter((item) => {
+  //   const categoryMatch = !filters.jobCategory || item.jobCategory === filters.jobCategory;
+  //   const locationMatch = !filters.location || item.location === filters.location;
+  //   const zipcodeMatch = !filters.zipcode || item.zipcode.toString() === filters.zipcode.toString();
+  //   const backgroundCheckMatch =
+  //     filters.backgroundCheck === null ||
+  //     item.backgroundCheck === filters.backgroundCheck;
+
+  //   return categoryMatch && locationMatch && zipcodeMatch && backgroundCheckMatch;
+  // });
+  const filteredJobs = parsedData
+    // Filter worksites
+    .filter((company) => {
+      const industryMatch =
+        !filters.industry || company.Industry === filters.industry;
+      const cityMatch = !filters.city || company.City === filters.city;
+      const zipcodeMatch =
+        !filters.zipcode ||
+        company.ZipCode.toString() === filters.zipcode.toString();
+      return industryMatch && cityMatch && zipcodeMatch;
+    })
+    // Map over the filtered worksites' jobs
+    .map((company) =>
+      company.jobs.map((job) => ({
+        ...job,
+        ...company, 
+        jobs: undefined, // we don't want company.jobs property to repeat
+      }))
+    )
+    // Flatten the jobs array
+    .reduce((acc, jobs) => acc.concat(jobs), []);
+    console.log(parsedData)
+    console.log(filteredJobs)
 
   const dataForCard = filteredJobs.map((item) => (
     <Grid item xs={12} sm={12} md={6} key={item.id}>
@@ -203,41 +240,26 @@ const Jobs = ({ parsedData }) => {
     </Grid>
   ));
 
-  // const jobsDataComponent = jobData
-  //   .slice(1)
-  //   .map((job, index) => (
-  //     <JobCard
-  //       key={index}
-  //       jobCategory={job[0]}
-  //       company={job[1]}
-  //       address={job[2]}
-  //       location={job[3]}
-  //       zipcode={job[4]}
-  //       description={job[5]}
-  //     />
-  //   ));
-
+  
   // NEW COMPONENT
-  const worksiteCardComponent = parsedData.map((company) => {
-  // The company object contains all the information about a company and jobs at that company
-  return company.jobs.map((job, jIndex) => {
-    // For each job at a company, create a JobCard component
+  const worksiteCardComponent = filteredJobs.map((job, jIndex) => {
+    // For each job, create a JobCard component
     return (
       <Grid item xs={12} sm={12} md={6} key={jIndex}>
         <JobCard
-          key={company.WorksiteID + '_' + jIndex}  // Unique key
+          key={job.WorksiteID + "_" + jIndex} // Unique key
           title={job.JobTitle}
-          name={company.WorksiteName}
-          address={company.Street}
-          zipcode={company.ZipCode}
-          location={company.City}
-          jobCategory={company.Industry}
+          name={job.WorksiteName} 
+          address={job.Street} 
+          city={job.City} 
+          state={job.State} 
+          zipcode={job.ZipCode}
+          industry={job.Industry}
           requirements={job.Requirements}
-          />
+        />
       </Grid>
     );
   });
-})
 
 
   return (
@@ -260,7 +282,7 @@ const Jobs = ({ parsedData }) => {
             location:
           </Typography>
           <Grid container style={{ columnGap: "16px" }}>
-            <TextField
+            {/* <TextField
               select
               label="Job Category"
               value={filters.jobCategory}
@@ -275,13 +297,19 @@ const Jobs = ({ parsedData }) => {
                   {job.jobCategory}
                 </MenuItem>
               ))}
-            </TextField>
+            </TextField> */}
 
+            {/* <TextField
+              label="Zipcode"
+              value={filters.zipcode}
+              onChange={(e) => handleFilterChange("zipcode", e.target.value)}
+              style={{ width: "100px" }}
+            /> */}
             <TextField
               select
-              label="Location"
-              value={filters.location}
-              onChange={(e) => handleFilterChange("location", e.target.value)}
+              label="City"
+              value={filters.city}
+              onChange={(e) => handleFilterChange("city", e.target.value)}
               style={{ width: "200px" }}
             >
               <MenuItem value="">All</MenuItem>
@@ -289,15 +317,14 @@ const Jobs = ({ parsedData }) => {
               <MenuItem value="Manhattan">Manhattan</MenuItem>
               <MenuItem value="Brooklyn">Brooklyn</MenuItem>
               <MenuItem value="Bronx">Bronx</MenuItem>
-              {/* Add more categories as needed */}
             </TextField>
-
             <TextField
-              label="Zipcode"
+              label="ZipCode"
               value={filters.zipcode}
               onChange={(e) => handleFilterChange("zipcode", e.target.value)}
               style={{ width: "100px" }}
             />
+
             <FormControlLabel
               control={
                 <Switch
@@ -325,7 +352,7 @@ const Jobs = ({ parsedData }) => {
             }}
           >
             {worksiteCardComponent}
-            {dataForCard}
+            {/* {dataForCard} */}
           </Grid>
         </Box>
       </Container>

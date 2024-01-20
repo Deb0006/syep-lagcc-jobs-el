@@ -44,7 +44,7 @@ export default function JobCard(props) {
   };
   
   const Icon = icons[props.iconName] || null;
-
+  
   //  const [savedJobs, setSavedJobs] = useState([]);
 
   //  const handleSaveJob = (jobId) => {
@@ -74,7 +74,7 @@ export default function JobCard(props) {
           </IconButton>
         }
         title={props.title}
-        subheader={props.company}
+        subheader={props.name}
       />
       <CardActions disableSpacing>
         <CardContent sx={{ padding: "0 15px 15px 15px" }}>
@@ -87,7 +87,8 @@ export default function JobCard(props) {
                 marginBottom: -0.3,
               }}
             />
-            {props.zipcode}, {props.location}, {props.address}
+            {props.zipcode}, {props.address},
+            {props.city}, {props.state}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
@@ -99,7 +100,7 @@ export default function JobCard(props) {
                 marginBottom: -0.3,
               }}
             />
-            {props.jobCategory}
+            {props.industry}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">

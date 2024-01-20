@@ -1,6 +1,5 @@
 "use client";
 import Layout from "../components/Layout";
-import Slideshow from "../components/Slideshow";
 import Head from "next/head";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,6 +7,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Image from "next/image";
 import Paper from "@mui/material/Paper";
+import "../styles/globals.css";
 import styles from "../styles/index.module.css";
 import FullScreenContent from "../components/FullScreenContent";
 import { Container } from "@mui/material";
@@ -24,7 +24,7 @@ export default function Home() {
           maxWidth: "xl",
           height: "auto",
           margin: "0 auto",
-          padding: "10px 0",
+          padding: "10px auto",
         }}
       >
         {/* Hero Section */}
@@ -166,18 +166,27 @@ export default function Home() {
         </Grid>
       </Container>
       {/* Slideshow Section */}
-      <Container
+      <Box
         sx={{
           margin: "0 auto",
           textAlign: "center",
-          padding: "20px 0 20px 0",
+          padding: "40px 0 20px 0",
+          background: "#D5C7E8",
+          backgroundColor: "#D5C7E8",
+          backgroundImage: "radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px)",
+          backgroundSize: "20px 20px",
+          // background-color: #e5e5f7;
+          // opacity: 0.8;
+          // background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+          // background-size: 10px 10px;
         }}
       >
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
           Explore Your Potential: Diverse Job Opportunities Await
         </Typography>
-      </Container>
-      <FullScreenContent />
+        <FullScreenContent />
+      </Box>
+
       {/* Main container 2 */}
       <Container sx={{ maxWidth: "xl", margin: "0 auto" }}>
         {/* Section 3 */}
@@ -191,7 +200,7 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
+          <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
             Here's what you need to do to start
           </Typography>
           <Box
@@ -217,15 +226,30 @@ export default function Home() {
           >
             <Paper
               elevation={0}
+              className="secondary"
               style={{
-                minWidth: "300px",
+                minWidth: "250px",
                 width: "370px",
                 height: "330px",
                 padding: "20px",
                 display: "flex",
                 justifyContent: "center",
-                background: "#E2FDFF",
-                minWidth: "250px",
+                color: "white",
+                // background: "#0D506C",
+                borderRadius: "10px",
+                // boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
+                // backdropFilter: "blur(1px)",
+                // border: "1px solid rgba(209, 239, 255, 0.07)",
+                // background: 'radial-gradient(61.98% 61.98% at 100% 0%, rgba(32, 30, 147, 0.65) 0%, rgba(32, 30, 147, 0.2405) 49.77%, rgba(2, 209, 255, 0) 100%), radial-gradient(50% 68.23% at 98.21% 96.61%, rgba(65, 209, 201, 0.73) 0%, rgba(65, 209, 183, 0.3358) 57.82%, rgba(65, 209, 183, 0) 100%), radial-gradient(72.32% 89.58% at 1.34% 3.39%, #F74E76 0%, rgba(242, 87, 87, 0) 100%), linear-gradient(180deg, #58CCDC 0%, rgba(88, 204, 220, 0) 100%), linear-gradient(62.9deg, #8532C7 14.56%, rgba(133, 50, 199, 0) 92.07%, #F2F5FA)',
+                // backgroundBlendMode: 'normal,normal,normal,normal,normal,normal',
+                background: 'radial-gradient(110.88% 79.69% at 47.77% 151.82%, #FFEC45 0%, rgba(255, 236, 69, 0.3) 54.92%, rgba(255, 236, 69, 0) 96.11%), radial-gradient(50% 68.23% at 98.21% 96.61%, #41D1B7 0%, rgba(65, 209, 183, 0.35) 49.27%, rgba(65, 209, 183, 0) 100%), radial-gradient(83.71% 75.52% at -10.04% 2.86%, #8263DB 0%, rgba(129, 114, 218, 0.26) 56.87%, rgba(129, 114, 218, 0) 100%), linear-gradient(180deg, #58CCDC 0%, rgba(88, 204, 220, 0) 100%), linear-gradient(81.23deg, #FF557E 21.4%, rgba(255, 85, 85, 0) 84.87%, #F2F5FA)',
+                backgroundBlendMode: 'normal,normal,darken,normal,normal,normal',
+                
+                background: 'linear-gradient(197.37deg, #7450DB -0.38%, rgba(138, 234, 240, 0) 101.89%), linear-gradient(115.93deg, #3E88F6 4.86%, rgba(62, 180, 246, 0.33) 38.05%, rgba(62, 235, 246, 0) 74.14%), radial-gradient(56.47% 76.87% at 6.92% 7.55%, rgba(62, 136, 246, 0.7) 0%, rgba(62, 158, 246, 0.182) 52.16%, rgba(62, 246, 246, 0) 100%), linear-gradient(306.53deg, #2EE4E3 19.83%, rgba(46, 228, 227, 0) 97.33%)',
+                backgroundBlendMode: 'normal,normal,normal,normal,normal,normal',
+
+
+                
               }}
             >
               <Box
@@ -239,12 +263,11 @@ export default function Home() {
               >
                 <Image
                   src="/Zoom2.png"
-                  // className={styles.responsiveImage}
                   alt="Law image"
                   width={150}
                   height={200}
                 />
-                <Typography variant="h5" paddingTop={2}>
+                <Typography variant="h4" paddingTop={2}>
                   Step 1
                 </Typography>
                 <Typography variant="p">
@@ -252,88 +275,93 @@ export default function Home() {
                   jobs. Pick 3 that you like and save them
                 </Typography>
               </Box>
+            </Paper>    
+            <Paper
+              elevation={0}
+              className="secondary"
+              style={{
+                minWidth: "250px",
+                width: "370px",
+                height: "330px",
+                padding: "20px",
+                display: "flex",
+                justifyContent: "center",
+                color: "white",
+                // background: "#0D506C",
+                borderRadius: "10px",
+                // boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
+                // backdropFilter: "blur(1px)",
+                // border: "1px solid rgba(209, 239, 255, 0.07)",
+              }}
+            >
+              <Box
+                width={"80%"}
+                marginTop={-12}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  src="/List2.png"
+                  alt="Law image"
+                  width={150}
+                  height={200}
+                />
+                <Typography variant="h4" paddingTop={2}>
+                  Step 2
+                </Typography>
+                <Typography variant="p">
+                  Fill out the form with your information and your top 3 job
+                  preferences. Make sure you submit it before the deadline
+                </Typography>
+              </Box>
             </Paper>
-            <Box>
-              <Paper
-                elevation={0}
-                style={{
-                  minWidth: "300px",
-                  width: "370px",
-                  height: "330px",
-                  padding: "20px",
+            <Paper
+              elevation={0}
+              className="secondary"
+              style={{
+                minWidth: "250px",
+                width: "370px",
+                height: "330px",
+                padding: "20px",
+                display: "flex",
+                justifyContent: "center",
+                color: "white",
+                // background: "#0D506C",
+                borderRadius: "10px",
+                // boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
+                // backdropFilter: "blur(1px)",
+                // border: "1px solid rgba(209, 239, 255, 0.07)",
+              }}
+            >
+              <Box
+                width={"80%"}
+                marginTop={-12}
+                sx={{
                   display: "flex",
-                  justifyContent: "center",
-                  background: "#E2FDFF",
-                  minWidth: "250px",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
-                <Box
-                  width={"80%"}
-                  marginTop={-12}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  <Image
-                    src="/List2.png"
-                    // className={styles.responsiveImage}
-                    alt="Law image"
-                    width={150}
-                    height={200}
-                  />
-                  <Typography variant="h5" paddingTop={2}>
-                    Step 2
-                  </Typography>
-                  <Typography variant="p">
-                    Fill out the form with your information and your top 3 job
-                    preferences. Make sure you submit it before the deadline
-                  </Typography>
-                </Box>
-              </Paper>
-            </Box>
-            <Box>
-              <Paper
-                elevation={0}
-                style={{
-                  minWidth: "300px",
-                  width: "370px",
-                  height: "330px",
-                  padding: "20px",
-                  display: "flex",
-                  justifyContent: "center",
-                  background: "#E2FDFF",
-                  minWidth: "250px",
-                }}
-              >
-                <Box
-                  width={"80%"}
-                  marginTop={-12}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  <Image
-                    src="/Laptop2.png"
-                    // className={styles.responsiveImage}
-                    alt="Law image"
-                    width={150}
-                    height={200}
-                  />
-                  <Typography variant="h5" paddingTop={2}>
-                    Step 3
-                  </Typography>
-                  <Typography variant="p">
-                    Wait for a confirmation email from the DYCD and check the
-                    participant website regularly to see where you were
-                    assaigned
-                  </Typography>
-                </Box>
-              </Paper>
-            </Box>
+                <Image
+                  src="/Laptop2.png"
+                  alt="Law image"
+                  width={150}
+                  height={200}
+                />
+                <Typography variant="h4" paddingTop={2}>
+                  Step 3
+                </Typography>
+                <Typography variant="p">
+                  Wait for a confirmation email from the DYCD and check the
+                  participant website regularly to see where you were
+                  assaigned
+                </Typography>
+              </Box>
+            </Paper>
+            
           </Grid>
         </Box>
       </Container>
