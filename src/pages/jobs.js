@@ -325,6 +325,7 @@ const Jobs = ({ parsedData }) => {
       <Grid item xs={12} sm={12} md={6} key={jIndex}>
         <JobCard
           key={job.WorksiteID + "_" + jIndex} // Unique key
+          id={job.WorksiteID + "_" + jIndex} // Unique job ID
           title={job.JobTitle}
           name={job.WorksiteName}
           address={job.Street}

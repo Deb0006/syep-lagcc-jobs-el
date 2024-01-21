@@ -9,6 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyTwoTone";
 import CampaignTwoToneIcon from "@mui/icons-material/CampaignTwoTone";
@@ -19,6 +20,13 @@ import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import "../styles/globals.css";
+import { useState } from "react";
+import {
+  addToFavorite,
+  removeFromFavorite,
+  isJobSaved,
+  getSavedJobs,
+} from "../utils/FavoriteJobs";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -46,18 +54,21 @@ export default function JobCard(props) {
   
   const Icon = icons[props.iconName] || null;
   
-  //  const [savedJobs, setSavedJobs] = useState([]);
+  
+  const [isSaved, setIsSaved] = useState(isJobSaved(props.id));
 
-  //  const handleSaveJob = (jobId) => {
-  //    const isSaved = savedJobs.includes(jobId);
-  //    if (isSaved) {
-  //      // Remove job from saved jobs
-  //      setSavedJobs(savedJobs.filter((id) => id !== jobId));
-  //    } else {
-  //      // Add job to saved jobs
-  //      setSavedJobs([...savedJobs, jobId]);
-  //    }
-  //  };
+ 
+  const handleFavoriteClick = () => {
+    if (isSaved) {
+      removeFromFavorite(props.id);
+    } else {
+      addToFavorite(props.id);
+    }
+    setIsSaved(!isSaved);
+  };
+
+  
+ 
 
   return (
     <Card
@@ -70,8 +81,12 @@ export default function JobCard(props) {
           </Avatar>
         }
         action={
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+          <IconButton
+            aria-label="add to favorites"
+            onClick={handleFavoriteClick}
+            style={{ color: isSaved ? "red" : "gray" }}
+          >
+            {isSaved ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
         }
         title={props.title}
@@ -114,22 +129,6 @@ export default function JobCard(props) {
             />
             {" " + props.siteImplementation}
           </Typography>
-
-          {/* <Typography variant="body2" color="text.secondary">
-            {props.backgroundCheck === true && (
-              <>
-                <PersonSearchOutlinedIcon
-                  color="secondary"
-                  sx={{
-                    fontSize: 16, // Adjust the size as needed
-                    strokeWidth: 2, // Adjust the thickness of the lines
-                    marginBottom: -0.4, // Add space between the job category and icon
-                  }}
-                />
-                {"Background Check Required"}
-              </>
-            )}
-          </Typography> */}
         </CardContent>
 
         <ExpandMore
