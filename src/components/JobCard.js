@@ -87,8 +87,7 @@ export default function JobCard(props) {
                 marginBottom: -0.3,
               }}
             />
-            {props.zipcode}, {props.address},
-            {props.city}, {props.state}
+            {props.zipcode}, {props.address},{props.city}, {props.state}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
@@ -131,7 +130,13 @@ export default function JobCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Requirements:</Typography>
+          <Typography paragraph style={{ fontWeight: "bold" }}>
+            Duties:
+          </Typography>
+          <Typography paragraph>{props.duties}</Typography>
+          <Typography paragraph style={{ fontWeight: "bold" }}>
+            Requirements:
+          </Typography>
           <Typography paragraph>{props.requirements}</Typography>
         </CardContent>
       </Collapse>

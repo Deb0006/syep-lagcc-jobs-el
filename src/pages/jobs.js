@@ -117,18 +117,23 @@ for (let i = 1; i < data2.length; i++) {
 
 
 const Jobs = ({ parsedData }) => {
-  const jobData = [
-    { id: 1, contract:{CB:0, QB:0, MB:0},title: 'Software Engineer', company: 'Company D', address:'2581 Atlantic Avenue',location:'Manhattan', state:'NY',zipcode: 10001, jobCategory: 'Technology', visible:true,backgroundCheck:false, iconName: 'CodeOutlinedIcon', description:'Seeking a talented Software Engineer to join our team in developing cutting-edge software solutions.'},
-    { id: 2, contract:{CB:0, QB:0, MB:0},title: 'Sales Associate', company: 'Company E', address:'2581 Atlantic Avenue',location:'Brooklyn', state:'NY',zipcode: 11201, jobCategory: 'Retail', visible:true,backgroundCheck:true, iconName: 'ShoppingBasketOutlinedIcon', description:'Looking for a friendly and customer-oriented Sales Associate to join our team at a busy retail store.'},
-    { id: 3, contract:{CB:0, QB:0, MB:0},title: 'Registered Nurse', company: 'Company F', address:'2581 Atlantic Avenue',location:'Queens', state:'NY',zipcode: 11101, jobCategory: 'Healthcare', visible:true,backgroundCheck:true, iconName: 'LocalHospitalOutlinedIcon', description:'We are currently hiring Registered Nurses to provide compassionate care to our patients in a fast-paced environment.' },
-    { id: 4, contract:{CB:0, QB:0, MB:0},title: 'Graphic Designer', company: 'Company G', address:'2581 Atlantic Avenue',location:'Queens', state:'NY',zipcode: 11368, jobCategory: 'Design', visible:true, backgroundCheck:false, iconName: 'PaletteOutlinedIcon', description:'Join our creative team as a Graphic Designer and contribute to the development of visually stunning designs.'},
-    { id: 5, contract:{CB:0, QB:0, MB:0},title: 'Financial Analyst', company: 'Company H', address:'2581 Atlantic Avenue',location:'Manhattan', state:'NY',zipcode: 10022, jobCategory: 'Finance', visible:true, backgroundCheck:true, iconName: 'AccountBalanceOutlinedIcon', description:'We are hiring a detail-oriented Financial Analyst to provide in-depth analysis and financial reports.'},
-    { id: 6, contract:{CB:0, QB:0, MB:0},title: 'Marketing Manager', company: 'Company I', address:'2581 Atlantic Avenue',location:'Brooklyn', state:'NY',zipcode: 11215, jobCategory: 'Marketing', visible:true, backgroundCheck:true, iconName: 'MarketingOutlinedIcon', description:'Looking for an experienced Marketing Manager to develop and implement effective marketing strategies.'},
-    { id: 7, contract:{CB:0, QB:0, MB:0},title: 'Customer Service Representative', company: 'Company J', address:'2581 Atlantic Avenue',location:'Bronx', state:'NY',zipcode: 10456, jobCategory: 'Customer Service', visible:true, backgroundCheck:false, iconName: 'PeopleAltOutlinedIcon', description:'Join our team as a Customer Service Representative and assist customers with their inquiries and concerns.'},
-    { id: 8, contract:{CB:0, QB:0, MB:0},title: 'Data Scientist', company: 'Company K', address:'2581 Atlantic Avenue',location:'Manhattan', state:'NY',zipcode: 10016, jobCategory: 'Technology', visible:true, backgroundCheck:true, iconName: 'AssessmentOutlinedIcon', description:'We are seeking a skilled Data Scientist to analyze large datasets and extract valuable insights for our organization.'},
-    { id: 9, contract:{CB:0, QB:0, MB:0},title: 'Human Resources Manager', company: 'Company L', address:'2581 Atlantic Avenue',location:'Brooklyn', state:'NY',zipcode: 11221, jobCategory: 'Human Resources', visible:true, backgroundCheck:true, iconName: 'SupervisorAccountOutlinedIcon', description:'Looking for a confident and experienced Human Resources Manager to oversee all HR operations.'},
-    { id: 10, contract:{CB:0, QB:0, MB:0},title: 'Registered Dietitian', company: 'Company M', address:'2581 Atlantic Avenue',location:'Queens', state:'NY',zipcode: 11373, jobCategory: 'Healthcare', visible:true, backgroundCheck:true, iconName: 'RestaurantMenuOutlinedIcon', description:'Join our team of healthcare professionals as a Registered Dietitian and provide nutritional guidance to patients.'},
-    ];
+  // const jobData = [
+  //   {
+  //     id: 1,
+  //     contract: { CB: 0, QB: 0, MB: 0 },
+  //     title: "Software Engineer",
+  //     company: "Company D",
+  //     address: "2581 Atlantic Avenue",
+  //     location: "Manhattan",
+  //     state: "NY",
+  //     zipcode: 10001,
+  //     jobCategory: "Technology",
+  //     visible: true,
+  //     backgroundCheck: false,
+  //     iconName: "CodeOutlinedIcon",
+  //     description:
+  //       "Seeking a talented Software Engineer to join our team in developing cutting-edge software solutions.",
+  //   },..]
 
   //api call
   // const [jobData, setJobData] = useState([]);
@@ -160,6 +165,30 @@ const Jobs = ({ parsedData }) => {
   // }
 
   console.log(parsedData);
+  const industries = [
+    "Animal Care/Veterinarian Services",
+    "Arts and Culture",
+    "Business and Finance",
+    "Community/Social Services",
+    "Day Care",
+    "Educational Services",
+    "Engineering and Construction",
+    "Government Agency",
+    "Healthcare/Medical",
+    "Hospitality/Tourism",
+    "Legal Services",
+    "Manufacturing",
+    "Marketing/Public Relations",
+    "Media/Entertainment",
+    "Other",
+    "Professional/Technical Development",
+    "Real Estate/Property",
+    "Retail",
+    "Sports and Recreation",
+    "Summer Camp",
+    "Technology",
+    "Transportation",
+  ];
 
   // const [filters, setFilters] = useState({
   //   jobCategory: '',
@@ -214,7 +243,7 @@ const Jobs = ({ parsedData }) => {
     .map((company) =>
       company.jobs.map((job) => ({
         ...job,
-        ...company, 
+        ...company,
         jobs: undefined, // we don't want company.jobs property to repeat
       }))
     )
@@ -239,8 +268,9 @@ const Jobs = ({ parsedData }) => {
       />
     </Grid>
   ));
+  console.log(parsedData);
+  console.log(filteredJobs);
 
-  
   // NEW COMPONENT
   const worksiteCardComponent = filteredJobs.map((job, jIndex) => {
     // For each job, create a JobCard component
@@ -249,18 +279,18 @@ const Jobs = ({ parsedData }) => {
         <JobCard
           key={job.WorksiteID + "_" + jIndex} // Unique key
           title={job.JobTitle}
-          name={job.WorksiteName} 
-          address={job.Street} 
-          city={job.City} 
-          state={job.State} 
+          name={job.WorksiteName}
+          address={job.Street}
+          city={job.City}
+          state={job.State}
           zipcode={job.ZipCode}
           industry={job.Industry}
+          duties={job.Duties}
           requirements={job.Requirements}
         />
       </Grid>
     );
   });
-
 
   return (
     <Layout>
@@ -305,6 +335,20 @@ const Jobs = ({ parsedData }) => {
               onChange={(e) => handleFilterChange("zipcode", e.target.value)}
               style={{ width: "100px" }}
             /> */}
+            <TextField
+              select
+              label="Industry"
+              value={filters.industry}
+              onChange={(e) => handleFilterChange("industry", e.target.value)}
+              style={{ width: "200px" }}
+            >
+              <MenuItem value="">All</MenuItem>
+              {industries.map((industry) => (
+                <MenuItem key={industry} value={industry}>
+                  {industry}
+                </MenuItem>
+              ))}
+            </TextField>
             <TextField
               select
               label="City"
