@@ -17,6 +17,7 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
+import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import "../styles/globals.css";
 
 const ExpandMore = styled((props) => {
@@ -99,11 +100,11 @@ export default function JobCard(props) {
                 marginBottom: -0.3,
               }}
             />
-            {props.industry}
+            {" " + props.industry}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
-            <CategoryOutlinedIcon
+            <BusinessOutlinedIcon
               color="secondary"
               sx={{
                 fontSize: 16,
@@ -111,10 +112,10 @@ export default function JobCard(props) {
                 marginBottom: -0.3,
               }}
             />
-            {props.siteImplementation}
+            {" " + props.siteImplementation}
           </Typography>
 
-          <Typography variant="body2" color="text.secondary">
+          {/* <Typography variant="body2" color="text.secondary">
             {props.backgroundCheck === true && (
               <>
                 <PersonSearchOutlinedIcon
@@ -128,7 +129,7 @@ export default function JobCard(props) {
                 {"Background Check Required"}
               </>
             )}
-          </Typography>
+          </Typography> */}
         </CardContent>
 
         <ExpandMore

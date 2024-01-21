@@ -11,6 +11,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { Container } from "@mui/material";
 import { google } from "googleapis";
+import Pagination from "@mui/material/Pagination";
 
 export async function getStaticProps() {
   const credentials = {
@@ -265,7 +266,6 @@ const Jobs = ({ parsedData }) => {
     "Technology",
     "Transportation",
   ];
-  const siteImplementations = ["In-Person", "Virtually", "Hybrid"]
 
   const [filters, setFilters] = useState({
     industry: "",
@@ -273,6 +273,9 @@ const Jobs = ({ parsedData }) => {
     zipcode: "",
     siteImplementation: "",
   });
+
+  const [page, setPage] = useState(1);
+  const rowsPerPage = 15; // number of job cards per page
 
   const handleFilterChange = (field, value) => {
     console.log(`Field: ${field}, Value: ${value}`); // Check if this logs correctly
@@ -290,7 +293,7 @@ const Jobs = ({ parsedData }) => {
       const cityMatch = !filters.city || company.City === filters.city;
       const zipcodeMatch =
         !filters.zipcode ||
-        company.ZipCode.toString() === filters.zipcode.toString();
+        (company.ZipCode && company.ZipCode.toString() === filters.zipcode.toString());
       const implementationMatch =
         !filters.siteImplementation ||
         company.SiteImplementation === filters.siteImplementation;
@@ -307,11 +310,16 @@ const Jobs = ({ parsedData }) => {
     )
     // Flatten the jobs array
     .reduce((acc, jobs) => acc.concat(jobs), []);
+
   console.log(parsedData);
   console.log(filteredJobs);
 
+  // paginate filtered jobs
+  const offset = (page - 1) * rowsPerPage;
+  const currentPageData = filteredJobs.slice(offset, offset + rowsPerPage);
+
   // NEW COMPONENT
-  const worksiteCardComponent = filteredJobs.map((job, jIndex) => {
+  const worksiteCardComponent = currentPageData.map((job, jIndex) => {
     // For each job, create a JobCard component
     return (
       <Grid item xs={12} sm={12} md={6} key={jIndex}>
@@ -331,6 +339,11 @@ const Jobs = ({ parsedData }) => {
       </Grid>
     );
   });
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+
   // const dataForCard = filteredJobs.map((item) => (
   //   <Grid item xs={12} sm={12} md={6} key={item.id}>
   //     <JobCard
@@ -367,30 +380,7 @@ const Jobs = ({ parsedData }) => {
             Start by looking for jobs that match your interests or your
             location:
           </Typography>
-          <Grid container style={{ columnGap: "16px" }}>
-            {/* <TextField
-              select
-              label="Job Category"
-              value={filters.jobCategory}
-              onChange={(e) =>
-                handleFilterChange("jobCategory", e.target.value)
-              }
-              style={{ width: "200px" }}
-            >
-              <MenuItem value="">All</MenuItem>
-              {jobData.map((job) => (
-                <MenuItem key={job.id} value={job.jobCategory}>
-                  {job.jobCategory}
-                </MenuItem>
-              ))}
-            </TextField> */}
-
-            {/* <TextField
-              label="Zipcode"
-              value={filters.zipcode}
-              onChange={(e) => handleFilterChange("zipcode", e.target.value)}
-              style={{ width: "100px" }}
-            /> */}
+          <Grid container style={{ gap: "8px" }}>
             <TextField
               select
               label="Industry"
@@ -442,7 +432,7 @@ const Jobs = ({ parsedData }) => {
               {/* Add more items as needed */}
             </TextField>
 
-            <FormControlLabel
+            {/* <FormControlLabel
               control={
                 <Switch
                   color="secondary"
@@ -456,7 +446,7 @@ const Jobs = ({ parsedData }) => {
                 />
               }
               label="No Background Check Required"
-            />
+            /> */}
           </Grid>
 
           <Grid
@@ -469,8 +459,14 @@ const Jobs = ({ parsedData }) => {
             }}
           >
             {worksiteCardComponent}
-            {/* {dataForCard} */}
           </Grid>
+          <Pagination
+            variant="outlined"
+            color="primary"
+            count={Math.ceil(filteredJobs.length / rowsPerPage)}
+            page={page}
+            onChange={handlePageChange}
+          />
         </Box>
       </Container>
     </Layout>
