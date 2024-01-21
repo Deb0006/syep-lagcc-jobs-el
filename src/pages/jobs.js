@@ -164,7 +164,83 @@ const Jobs = ({ parsedData }) => {
   //   setData(json);
   // }
 
-  console.log(parsedData);
+  // console.log(parsedData)
+  const jobTitlesList = [
+    "Cleaning Assistant",
+    " Clerical Aide/Office Assistant",
+    " Dev. & Outreach/Media & Social Media Marketing",
+    " Media Aide/Studio Aide",
+    " Data Entry Clerk/Technical Aide",
+    " Teacher's Aide",
+    " Counselor/ Camp Counselor",
+    " Retail Store Associate",
+    " Clerk Cashier",
+    " Kitchen assistant",
+    " Maintenance Aide",
+    " Senior Center Assistant",
+    " Front Desk Assistant",
+    " Office Aide",
+    " Recreation Aide",
+    " Pantry Assistant",
+    " Office Tech/Administration Technician",
+    " Social Media Marketing Intern",
+    " Marketing & Branding Intern",
+    " Nail Tech Assistant",
+    " Community Leader",
+    " In service training Office Aide",
+    " Sales",
+    " Marketing & Research Intern",
+    " Web Design and Development",
+    " Markting Coordinator",
+    " Business Development Analyst",
+    " Administrative Assistant",
+    " Marketing Assistant",
+    " Grounds Keeper",
+    " Janitor Assistant/Custodian",
+    " Line Cook",
+    " Retail operations and sales",
+    " Culinary and Hospitality Interns",
+    " Groomer",
+    " Child Care Assistant",
+    " Server",
+    " Customer Service/ Call Center",
+    " Visa, Passport, & Legal Department Assistant",
+    " Salon Assistant",
+    " Filing Clerk",
+    " Group Leader",
+    " Social Media and Content Creator Intern",
+    " Mentor",
+    " Member",
+    " District Intern",
+    " Community Aide",
+    " Media Aide/Studio Aide",
+    " Community Outreach Aide",
+    " Interactive Endearment Assistant",
+    " Publishing Aide",
+    " Tutor",
+    " Group Leader Assistant",
+    " Kitchen Assistant",
+    " Screen Production Assistant",
+    " Movie Exhibition Associate",
+    " Warehouse Product Donation Sorter",
+    " Food Pantry Assistant",
+    " Customer Service Representative",
+    " Warehouse Product Donation Sorter",
+    " Maintenance Intern",
+    " Interactive Endearment Assistant",
+    " Publishing Aide",
+    " Data Entry Clerk/Technical Aide",
+    " Group Leader Assistant",
+    " Social Media and Content Creator Intern",
+    " Clerk Cashier",
+    " Retail Store Associate",
+    " Maintenance Intern",
+    " Interactive Endearment Assistant",
+    " Publishing Aide",
+    " Data Entry Clerk/Technical Aide",
+    " Clerk Cashier",
+    " Retail Store Associate",
+  ];
   const industries = [
     "Animal Care/Veterinarian Services",
     "Arts and Culture",
@@ -190,19 +266,7 @@ const Jobs = ({ parsedData }) => {
     "Transportation",
   ];
 
-  // const [filters, setFilters] = useState({
-  //   jobCategory: '',
-  //   location: '',
-  //   zipcode: '',
-  //   backgroundCheck:null,
-  // });
 
-  // const handleFilterChange = (field, value) => {
-  //   setFilters((prevFilters) => ({
-  //     ...prevFilters,
-  //     [field]: value,
-  //   }));
-  // };
   const [filters, setFilters] = useState({
     industry: "",
     city: "",
@@ -217,17 +281,6 @@ const Jobs = ({ parsedData }) => {
     }));
   };
 
-
-  // const filteredJobs = jobData.filter((item) => {
-  //   const categoryMatch = !filters.jobCategory || item.jobCategory === filters.jobCategory;
-  //   const locationMatch = !filters.location || item.location === filters.location;
-  //   const zipcodeMatch = !filters.zipcode || item.zipcode.toString() === filters.zipcode.toString();
-  //   const backgroundCheckMatch =
-  //     filters.backgroundCheck === null ||
-  //     item.backgroundCheck === filters.backgroundCheck;
-
-  //   return categoryMatch && locationMatch && zipcodeMatch && backgroundCheckMatch;
-  // });
   const filteredJobs = parsedData
     // Filter worksites
     .filter((company) => {
@@ -249,25 +302,6 @@ const Jobs = ({ parsedData }) => {
     )
     // Flatten the jobs array
     .reduce((acc, jobs) => acc.concat(jobs), []);
-    console.log(parsedData)
-    console.log(filteredJobs)
-
-  const dataForCard = filteredJobs.map((item) => (
-    <Grid item xs={12} sm={12} md={6} key={item.id}>
-      <JobCard
-        key={item.id}
-        title={item.title}
-        company={item.company}
-        address={item.address}
-        zipcode={item.zipcode}
-        location={item.location}
-        jobCategory={item.jobCategory}
-        description={item.description}
-        iconName={item.iconName}
-        backgroundCheck={item.backgroundCheck}
-      />
-    </Grid>
-  ));
   console.log(parsedData);
   console.log(filteredJobs);
 
@@ -291,6 +325,22 @@ const Jobs = ({ parsedData }) => {
       </Grid>
     );
   });
+  // const dataForCard = filteredJobs.map((item) => (
+  //   <Grid item xs={12} sm={12} md={6} key={item.id}>
+  //     <JobCard
+  //       key={item.id}
+  //       title={item.title}
+  //       company={item.company}
+  //       address={item.address}
+  //       zipcode={item.zipcode}
+  //       location={item.location}
+  //       jobCategory={item.jobCategory}
+  //       description={item.description}
+  //       iconName={item.iconName}
+  //       backgroundCheck={item.backgroundCheck}
+  //     />
+  //   </Grid>
+  // ));
 
   return (
     <Layout>
