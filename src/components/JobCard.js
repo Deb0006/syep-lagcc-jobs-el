@@ -103,6 +103,18 @@ export default function JobCard(props) {
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
+            <CategoryOutlinedIcon
+              color="secondary"
+              sx={{
+                fontSize: 16,
+                strokeWidth: 2,
+                marginBottom: -0.3,
+              }}
+            />
+            {props.siteImplementation}
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary">
             {props.backgroundCheck === true && (
               <>
                 <PersonSearchOutlinedIcon

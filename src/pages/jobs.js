@@ -265,12 +265,13 @@ const Jobs = ({ parsedData }) => {
     "Technology",
     "Transportation",
   ];
-
+  const siteImplementations = ["In-Person", "Virtually", "Hybrid"]
 
   const [filters, setFilters] = useState({
     industry: "",
     city: "",
     zipcode: "",
+    siteImplementation: "",
   });
 
   const handleFilterChange = (field, value) => {
@@ -290,7 +291,11 @@ const Jobs = ({ parsedData }) => {
       const zipcodeMatch =
         !filters.zipcode ||
         company.ZipCode.toString() === filters.zipcode.toString();
-      return industryMatch && cityMatch && zipcodeMatch;
+      const implementationMatch =
+        !filters.siteImplementation ||
+        company.SiteImplementation === filters.siteImplementation;
+
+      return industryMatch && cityMatch && zipcodeMatch && implementationMatch;
     })
     // Map over the filtered worksites' jobs
     .map((company) =>
@@ -321,6 +326,7 @@ const Jobs = ({ parsedData }) => {
           industry={job.Industry}
           duties={job.Duties}
           requirements={job.Requirements}
+          siteImplementation={job.SiteImplementation}
         />
       </Grid>
     );
@@ -399,6 +405,7 @@ const Jobs = ({ parsedData }) => {
                 </MenuItem>
               ))}
             </TextField>
+
             <TextField
               select
               label="City"
@@ -412,12 +419,28 @@ const Jobs = ({ parsedData }) => {
               <MenuItem value="Brooklyn">Brooklyn</MenuItem>
               <MenuItem value="Bronx">Bronx</MenuItem>
             </TextField>
+
             <TextField
               label="ZipCode"
               value={filters.zipcode}
               onChange={(e) => handleFilterChange("zipcode", e.target.value)}
               style={{ width: "100px" }}
             />
+            <TextField
+              select
+              label="Site Implementation"
+              value={filters.siteImplementation}
+              onChange={(e) =>
+                handleFilterChange("siteImplementation", e.target.value)
+              }
+              style={{ width: "200px" }}
+            >
+              <MenuItem value="">All</MenuItem>
+              <MenuItem value="In-Person">In-Person</MenuItem>
+              <MenuItem value="Hybrid">Hybrid</MenuItem>
+              <MenuItem value="Virtually">Virtually</MenuItem>
+              {/* Add more items as needed */}
+            </TextField>
 
             <FormControlLabel
               control={
