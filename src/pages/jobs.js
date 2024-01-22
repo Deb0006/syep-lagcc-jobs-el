@@ -1,4 +1,5 @@
 import JobCard from "../components/JobCard";
+import FullScreenDialog from "../components/FullScreenDialog";
 import { useState, useEffect } from "react";
 import Layout from '../components/Layout';
 import Head from 'next/head';
@@ -467,6 +468,7 @@ const Jobs = ({ parsedData }) => {
             onChange={handlePageChange}
           />
         </Box>
+        <FullScreenDialog />
       </Container>
     </Layout>
   );
