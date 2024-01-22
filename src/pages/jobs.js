@@ -165,7 +165,6 @@ const Jobs = ({ parsedData }) => {
   //   setData(json);
   // }
 
-  // console.log(parsedData)
   const jobTitlesList = [
     "Cleaning Assistant",
     " Clerical Aide/Office Assistant",
@@ -278,7 +277,7 @@ const Jobs = ({ parsedData }) => {
   const rowsPerPage = 15; // number of job cards per page
 
   const handleFilterChange = (field, value) => {
-    console.log(`Field: ${field}, Value: ${value}`); // Check if this logs correctly
+    // console.log(`Field: ${field}, Value: ${value}`); // Check if this logs correctly
     setFilters((prevFilters) => ({
       ...prevFilters,
       [field]: value,
@@ -311,8 +310,8 @@ const Jobs = ({ parsedData }) => {
     // Flatten the jobs array
     .reduce((acc, jobs) => acc.concat(jobs), []);
 
-  console.log(parsedData);
-  console.log(filteredJobs);
+  // console.log(parsedData);
+  // console.log(filteredJobs);
 
   // paginate filtered jobs
   const offset = (page - 1) * rowsPerPage;
@@ -430,7 +429,6 @@ const Jobs = ({ parsedData }) => {
               <MenuItem value="In-Person">In-Person</MenuItem>
               <MenuItem value="Hybrid">Hybrid</MenuItem>
               <MenuItem value="Virtually">Virtually</MenuItem>
-              {/* Add more items as needed */}
             </TextField>
 
             {/* <FormControlLabel

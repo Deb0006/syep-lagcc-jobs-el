@@ -29,14 +29,15 @@ export function isJobSaved(jobID) {
  return false;
 }
 
-export function getSavedJobs() {
-  let jobs = []; // initialize array
+export function getSavedJobs(parsedData) {
+  let savedJobs = [];
   if (typeof window !== "undefined") {
     let savedJobsIds =
       JSON.parse(window.localStorage.getItem("savedJobs")) || [];
-    let parsedData = getDataFromYourSource(); // place your function to get jobs data here
     // Filter your jobs array
-    jobs = parsedData.filter((job) => savedJobsIds.includes(job.id));
+    savedJobs = parsedData
+      .flatMap((company) => company.jobs)
+      .filter((job) => savedJobsIds.includes(job.id));
   }
-  return jobs;
+  return savedJobs;
 }

@@ -20,7 +20,7 @@ import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import "../styles/globals.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   addToFavorite,
   removeFromFavorite,
@@ -55,8 +55,20 @@ export default function JobCard(props) {
   const Icon = icons[props.iconName] || null;
   
   
-  const [isSaved, setIsSaved] = useState(isJobSaved(props.id));
+  const [isSaved, setIsSaved] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // check if window is defined
+      setIsSaved(isJobSaved(props.id));
+    }
+    setHasMounted(true); // after the first render
+  }, [props.id]);
+
+  if (!hasMounted) {
+    return null;  
+  }
  
   const handleFavoriteClick = () => {
     if (isSaved) {
