@@ -320,12 +320,12 @@ const Jobs = ({ parsedData }) => {
 
   // NEW COMPONENT
   const worksiteCardComponent = currentPageData.map((job, jIndex) => {
-    // For each job, create a JobCard component
     return (
+      // For each job, create a JobCard component
       <Grid item xs={12} sm={12} md={6} key={jIndex}>
         <JobCard
           key={job.WorksiteID + "_" + jIndex} // Unique key
-          id={job.WorksiteID + "_" + jIndex} // Unique job ID
+          id={job.WorksiteID} // Unique job ID
           title={job.JobTitle}
           name={job.WorksiteName}
           address={job.Street}
@@ -345,22 +345,6 @@ const Jobs = ({ parsedData }) => {
     setPage(value);
   };
 
-  // const dataForCard = filteredJobs.map((item) => (
-  //   <Grid item xs={12} sm={12} md={6} key={item.id}>
-  //     <JobCard
-  //       key={item.id}
-  //       title={item.title}
-  //       company={item.company}
-  //       address={item.address}
-  //       zipcode={item.zipcode}
-  //       location={item.location}
-  //       jobCategory={item.jobCategory}
-  //       description={item.description}
-  //       iconName={item.iconName}
-  //       backgroundCheck={item.backgroundCheck}
-  //     />
-  //   </Grid>
-  // ));
 
   return (
     <Layout>
@@ -468,7 +452,7 @@ const Jobs = ({ parsedData }) => {
             onChange={handlePageChange}
           />
         </Box>
-        <FullScreenDialog />
+        <FullScreenDialog allJobs = {filteredJobs}/>
       </Container>
     </Layout>
   );
