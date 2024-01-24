@@ -17,7 +17,7 @@ import Link from 'next/link';
 import { useContext } from "react";
 import { DialogContext } from "../pages/_app"; 
 
-const pages = ['Home', 'Jobs', 'SavedJobs'];
+const pages = ['Home', 'Jobs', 'SBJobs'];
 const darkTheme = createTheme({
     palette: {
       mode: 'dark',
@@ -120,7 +120,19 @@ function ResponsiveAppBar() {
                 >
                   {pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
+                      <Link
+                        key={page}
+                        style={{ textDecoration: "none" }}
+                        href={
+                          page.toLowerCase() === "home"
+                            ? "/"
+                            : `/${page.toLowerCase()}`
+                        }
+                      >
+                        <Typography textAlign="center" sx={{ color: "white" }}>
+                          {page}
+                        </Typography>
+                      </Link>
                     </MenuItem>
                   ))}
                 </Menu>
@@ -147,6 +159,7 @@ function ResponsiveAppBar() {
                 {pages.map((page) => (
                   <Link
                     key={page}
+                    style={{ textDecoration: "none" }}
                     href={
                       page.toLowerCase() === "home"
                         ? "/"
@@ -175,33 +188,6 @@ function ResponsiveAppBar() {
                 <Button variant="outlined" onClick={handleOpen}>
                   Open Saved Jobs
                 </Button>
-                {/* <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="P" src="" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
               </Box>
             </Toolbar>
           </Container>

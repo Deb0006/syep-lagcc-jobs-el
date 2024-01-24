@@ -54,7 +54,6 @@ export default function JobCard(props) {
   
   const Icon = icons[props.iconName] || null;
   
-  
   const [isSaved, setIsSaved] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
