@@ -39,7 +39,7 @@ export default function Footer() {
               Contact Information
             </Typography>
             <Typography variant="body1">
-              <ul style={{ listStyle: 'none' }}>
+              <ul >
                 <li>
                   <PhoneIcon
                     fontSize="small"
