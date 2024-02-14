@@ -1,13 +1,13 @@
 import JobCard from "../components/JobCard";
 import FullScreenDialog from "../components/FullScreenDialog";
 import { useState, useEffect } from "react";
-import Layout from '../components/Layout';
-import Head from 'next/head';
+import Layout from "../components/Layout";
+import Head from "next/head";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-import Typography from '@mui/material/Typography';
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import Typography from "@mui/material/Typography";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { Container } from "@mui/material";
@@ -34,7 +34,6 @@ export async function getStaticProps() {
     scopes: "https://www.googleapis.com/auth/spreadsheets",
   });
 
- 
   const client = await auth.getClient();
 
   const googleSheets = google.sheets({ version: "v4", auth: client });
@@ -52,54 +51,56 @@ export async function getStaticProps() {
   const data1 = getRows1.data.values;
   const data2 = getRows2.data.values;
 
-let parsedData = [];
+  let parsedData = [];
 
-// Loop through Sheet 1
-for (let i = 1; i < data1.length; i++) {
-  let job = {
-    JobTitle: data1[i][1],
-    Duties: data1[i][2],
-    Restrictions: data1[i][3],
-    Requirements: data1[i][4],
-    ParticipantsRequested: data1[i][5],
-  };
+  // Loop through Sheet 1
+  for (let i = 1; i < data1.length; i++) {
+    let job = {
+      JobTitle: data1[i][1],
+      Duties: data1[i][2],
+      Restrictions: data1[i][3],
+      Requirements: data1[i][4],
+      ParticipantsRequested: data1[i][5],
+    };
 
-  let existingCompanyIndex = parsedData.findIndex(company => company.WorksiteName === data1[i][0]);
-  
-  if (existingCompanyIndex !== -1) {
-    parsedData[existingCompanyIndex].jobs.push(job);
-  } else {
-    parsedData.push({ WorksiteName: data1[i][0], jobs: [job] }); //Initialize new company with first job
+    let existingCompanyIndex = parsedData.findIndex(
+      (company) => company.WorksiteName === data1[i][0]
+    );
+
+    if (existingCompanyIndex !== -1) {
+      parsedData[existingCompanyIndex].jobs.push(job);
+    } else {
+      parsedData.push({ WorksiteName: data1[i][0], jobs: [job] }); //Initialize new company with first job
+    }
   }
-}
 
-// Loop through Sheet 2
-for (let i = 1; i < data2.length; i++) {
-  let worksiteData = {
-    WorksiteName: data2[i][1],
-    WorksiteID: data2[i][0],
-    Industry: data2[i][2],
-    IndustryOther: data2[i][3],
-    Street: data2[i][4],
-    Floor: data2[i][5],
-    City: data2[i][6],
-    State: data2[i][7],
-    ZipCode: data2[i][8],
-    SiteImplementation: data2[i][23],
-    jobs: [], // Add an empty jobs array
-  };
+  // Loop through Sheet 2
+  for (let i = 1; i < data2.length; i++) {
+    let worksiteData = {
+      WorksiteName: data2[i][1],
+      WorksiteID: data2[i][0],
+      Industry: data2[i][2],
+      IndustryOther: data2[i][3],
+      Street: data2[i][4],
+      Floor: data2[i][5],
+      City: data2[i][6],
+      State: data2[i][7],
+      ZipCode: data2[i][8],
+      SiteImplementation: data2[i][23],
+      jobs: [], // Add an empty jobs array
+    };
 
-  let existingCompanyIndex = parsedData.findIndex(
-    (company) => company.WorksiteName === data2[i][1]
-  );
+    let existingCompanyIndex = parsedData.findIndex(
+      (company) => company.WorksiteName === data2[i][1]
+    );
 
-  if (existingCompanyIndex !== -1) {
-    worksiteData.jobs = parsedData[existingCompanyIndex].jobs; // Bring jobs from existing data
-    parsedData[existingCompanyIndex] = worksiteData; // Replace the existing data with new
-  } else {
-    parsedData.push(worksiteData);
+    if (existingCompanyIndex !== -1) {
+      worksiteData.jobs = parsedData[existingCompanyIndex].jobs; // Bring jobs from existing data
+      parsedData[existingCompanyIndex] = worksiteData; // Replace the existing data with new
+    } else {
+      parsedData.push(worksiteData);
+    }
   }
-}
   function replaceUndefinedOrNull(obj) {
     for (let propName in obj) {
       if (obj[propName] === null || obj[propName] === undefined) {
@@ -115,8 +116,7 @@ for (let i = 1; i < data2.length; i++) {
     props: { parsedData }, // parsedData will be directly provided as a prop to your component
     revalidate: 1800,
   };
-} 
-
+}
 
 const Jobs = ({ parsedData }) => {
   // const jobData = [
@@ -293,7 +293,8 @@ const Jobs = ({ parsedData }) => {
       const cityMatch = !filters.city || company.City === filters.city;
       const zipcodeMatch =
         !filters.zipcode ||
-        (company.ZipCode && company.ZipCode.toString() === filters.zipcode.toString());
+        (company.ZipCode &&
+          company.ZipCode.toString() === filters.zipcode.toString());
       const implementationMatch =
         !filters.siteImplementation ||
         company.SiteImplementation === filters.siteImplementation;
@@ -345,7 +346,6 @@ const Jobs = ({ parsedData }) => {
     setPage(value);
   };
 
-
   return (
     <Layout>
       <Head>
@@ -367,6 +367,7 @@ const Jobs = ({ parsedData }) => {
           </Typography>
           <Grid container style={{ gap: "8px" }}>
             <TextField
+              id="industry-field"
               select
               label="Industry"
               value={filters.industry}
@@ -382,6 +383,7 @@ const Jobs = ({ parsedData }) => {
             </TextField>
 
             <TextField
+              id="city-field"
               select
               label="City"
               value={filters.city}
@@ -397,11 +399,13 @@ const Jobs = ({ parsedData }) => {
 
             <TextField
               label="ZipCode"
+              id="ZipCode-field"
               value={filters.zipcode}
               onChange={(e) => handleFilterChange("zipcode", e.target.value)}
               style={{ width: "100px" }}
             />
             <TextField
+              id="site-field"
               select
               label="Site Implementation"
               value={filters.siteImplementation}
@@ -452,7 +456,7 @@ const Jobs = ({ parsedData }) => {
             onChange={handlePageChange}
           />
         </Box>
-        <FullScreenDialog allJobs = {filteredJobs}/>
+        <FullScreenDialog allJobs={filteredJobs} />
       </Container>
     </Layout>
   );
