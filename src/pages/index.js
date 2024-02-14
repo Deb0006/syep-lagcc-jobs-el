@@ -62,7 +62,7 @@ export default function Home() {
                 interests and skills.
               </Typography>
               <Typography variant="h6" gutterBottom>
-                Make money, gain experience, and help your community. Don't
+                Make money, gain experience, and help your community. Don&apost
                 wait, start your job search now!
               </Typography>
             </Box>
@@ -201,7 +201,7 @@ export default function Home() {
           }}
         >
           <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
-            Here's what you need to do to start
+            Here&aposs what you need to do to start
           </Typography>
           <Box
             sx={{
@@ -270,8 +270,8 @@ export default function Home() {
                   Step 1
                 </Typography>
                 <Typography variant="p">
-                  Click on the "Search Job" button and browse the available
-                  jobs. Pick 3 that you like and save them
+                  Click on the &quotSearch Job&quot button and browse the
+                  available jobs. Pick 3 that you like and save them
                 </Typography>
               </Box>
             </Paper>
