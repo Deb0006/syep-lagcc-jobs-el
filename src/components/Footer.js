@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 
 export default function Footer() {
   return (
-    <Box bgcolor="#9AA2C9" height={100} sx={{padding:'5'}}>
+    <Box bgcolor="#9AA2C9" height={100} sx={{ padding: "5" }}>
       <Typography
         style={{
           fontWeight: "bold",
