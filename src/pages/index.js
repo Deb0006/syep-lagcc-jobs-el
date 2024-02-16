@@ -57,13 +57,13 @@ export default function Home() {
               Summer Youth Employment Program - LaGCC
             </Typography>
             <Box>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h1" gutterBottom>
                 Find jobs in different fields and industries that match your
                 interests and skills.
               </Typography>
-              <Typography variant="h6" gutterBottom>
-                Make money, gain experience, and help your community. Dont
-                wait, start your job search now!
+              <Typography variant="h1" gutterBottom>
+                Make money, gain experience, and help your community. Dont wait,
+                start your job search now!
               </Typography>
             </Box>
 
@@ -185,6 +185,17 @@ export default function Home() {
           Explore Your Potential: Diverse Job Opportunities Await
         </Typography>
         <FullScreenContent />
+        <Container sx={{ padding: "40px 20px 20px 20px" }}>
+          <Typography variant="p">
+            Recognizing the diverse interests of the young people, SYEP offers
+            an extensive range of jobs across various industries. From the
+            medical, media, tech sectors to public service, arts and fashion,
+            and so much more - there is certainly something for everyone. This
+            wide-ranging selection ensures that young individuals find work that
+            matches their passion and interests, thereby expanding their skills
+            and preparing them for their future careers
+          </Typography>
+        </Container>
       </Box>
 
       {/* Main container 2 */}
@@ -270,8 +281,8 @@ export default function Home() {
                   Step 1
                 </Typography>
                 <Typography variant="p">
-                  Click on the Search Job button and browse the
-                  available jobs. Pick 3 that you like and save them
+                  Click on the Search Job button and browse the available jobs.
+                  Pick 3 that you like and save them
                 </Typography>
               </Box>
             </Paper>

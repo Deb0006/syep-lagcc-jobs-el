@@ -29,11 +29,11 @@ theme.typography.h2 = {
     marginBottom: "0.5em", // Adjust margin-bottom for md and above
   },
 };
-theme.typography.h6 = {
+theme.typography.h1 = {
   fontSize: "1.2rem",
   fontWeight: 400,
   "@media (min-width:600px)": {
-    fontSize: "1rem",
+    fontSize: "1.2rem",
     lineHeight: "1.5",
     letterSpacing: "-0.005em",
     marginBottom: "0.25em",
@@ -45,5 +45,46 @@ theme.typography.h6 = {
     marginBottom: "0.3em",
   },
 };
+theme.typography.body2 = {
+  fontSize: "1rem"
+}
+// theme.typography.h1 = {
+//     // Increase h1 size and customize as needed
+//     fontSize: '3.2rem', // Increased base size
+//     lineHeight: 1.2,
+//     marginBottom: '0.4em',
+//     letterSpacing: '-0.01em', // Adjusted letter-spacing for more balanced scaling
+//     fontWeight: 500, // Added fontWeight for stronger heading presence
+
+//     // Optional media queries for responsive adjustments
+//     '@media (min-width: 600px)': {
+//       fontSize: '4.0rem',
+//       lineHeight: 1.2,
+//       marginBottom: '0.5em',
+//     },
+//     [theme.breakpoints.up('md')]: {
+//       fontSize: '4.5rem',
+//       lineHeight: 1.2,
+//       marginBottom: '0.6em',
+//     }
+//   };
+//   theme.typography.p = {
+//     // Increase p size and customize as needed
+//     fontSize: '1.0rem', // Increased base size for better readability
+//     lineHeight: 1.6, // Adjusted line-height for readability and breathing room
+//     marginBottom: '1.0em', // Slightly more spacing between paragraphs
+
+//     // Optional media queries for responsive adjustments
+//     '@media (min-width: 600px)': {
+//       fontSize: '1.1rem',
+//       lineHeight: 1.8,
+//       marginBottom: '1.2em',
+//     },
+//     [theme.breakpoints.up('md')]: {
+//       fontSize: '1.2rem',
+//       lineHeight: 2.0,
+//       marginBottom: '1.4em',
+//     },
+//   };
 
 export default theme;
