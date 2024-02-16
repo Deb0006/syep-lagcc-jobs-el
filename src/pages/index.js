@@ -76,6 +76,8 @@ export default function Home() {
                   style={{
                     padding: "10px 30px",
                     width: "100%",
+                    borderWidth: "2px", // Make the border thicker
+                    borderRadius: "40px", // Make the border radius more round
                   }}
                 >
                   Search Jobs
