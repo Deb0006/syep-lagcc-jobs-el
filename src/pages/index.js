@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import "../styles/globals.css";
 import styles from "../styles/index.module.css";
 import FullScreenContent from "../components/FullScreenContent";
+import Link from "next/link";
 import { Container } from "@mui/material";
 
 export default function Home() {
@@ -68,16 +69,18 @@ export default function Home() {
             </Box>
 
             <Box sx={{ padding: "20px 0", width: { xs: "100%", sm: "50%" } }}>
-              <Button
-                variant="outlined"
-                color="secondary"
-                style={{
-                  padding: "10px 30px",
-                  width: "100%",
-                }}
-              >
-                Search Jobs
-              </Button>
+              <Link href="/jobs">
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  style={{
+                    padding: "10px 30px",
+                    width: "100%",
+                  }}
+                >
+                  Search Jobs
+                </Button>
+              </Link>
             </Box>
           </Grid>
           {/* //section 2 right*/}
