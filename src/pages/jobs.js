@@ -372,22 +372,6 @@ const Jobs = ({ parsedData }) => {
               <MenuItem value="Hybrid">Hybrid</MenuItem>
               <MenuItem value="Virtually">Virtually</MenuItem>
             </TextField>
-
-            {/* <FormControlLabel
-              control={
-                <Switch
-                  color="secondary"
-                  checked={filters.backgroundCheck === false}
-                  onChange={(e) =>
-                    handleFilterChange(
-                      "backgroundCheck",
-                      e.target.checked ? false : null
-                    )
-                  }
-                />
-              }
-              label="No Background Check Required"
-            /> */}
           </Grid>
 
           <Grid
