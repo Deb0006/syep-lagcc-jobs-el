@@ -141,7 +141,7 @@ export default function JobCard(props) {
             {" " + props.siteImplementation}
           </Typography>
         </CardContent>
-
+        
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

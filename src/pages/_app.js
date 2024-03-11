@@ -9,6 +9,7 @@ export const DialogContext = createContext();
 
 function App({ Component, pageProps }) {
   const [open, setOpen] = useState(false);
+  const [countSavedJobs, setCountSavedJobs] = React.useState(0);
 
   const handleOpen = () => {
     setOpen(true);
@@ -17,6 +18,7 @@ function App({ Component, pageProps }) {
   const handleClose = () => {
     setOpen(false);
   };
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -27,7 +29,7 @@ function App({ Component, pageProps }) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
       </Head>
-      <DialogContext.Provider value={{ open, handleOpen, handleClose }}>
+      <DialogContext.Provider value={{ open, handleOpen, handleClose, countSavedJobs }}>
         <Component {...pageProps} />
       </DialogContext.Provider>
     </ThemeProvider>

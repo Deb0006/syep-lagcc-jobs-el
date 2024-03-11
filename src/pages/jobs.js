@@ -119,129 +119,82 @@ export async function getStaticProps() {
 }
 
 const Jobs = ({ parsedData }) => {
-  // const jobData = [
-  //   {
-  //     id: 1,
-  //     contract: { CB: 0, QB: 0, MB: 0 },
-  //     title: "Software Engineer",
-  //     company: "Company D",
-  //     address: "2581 Atlantic Avenue",
-  //     location: "Manhattan",
-  //     state: "NY",
-  //     zipcode: 10001,
-  //     jobCategory: "Technology",
-  //     visible: true,
-  //     backgroundCheck: false,
-  //     iconName: "CodeOutlinedIcon",
-  //     description:
-  //       "Seeking a talented Software Engineer to join our team in developing cutting-edge software solutions.",
-  //   },..]
-
-  //api call
-  // const [jobData, setJobData] = useState([]);
-  // useEffect(() => {
-  //   async function getJobData() {
-  //     const response = await fetch("/api/firebase-config");
-  //     const data = await response.json();
-  //     setJobData(data);
-  //   }
-  //   getJobData();
-  // }, []);
-
-  // fetch from Data from Sheet1 and Sheet2 already parsed (not necessary anymore)
-  // const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // async function fetchData() {
-  //   const res = await fetch("/api/worksites");
-  //   const json = await res.json();
-
-  //   if (res.status !== 200) {
-  //     console.error(json);
-  //     throw new Error("Failed to fetch API");
-  //   }
-  //   setData(json);
-  // }
-
-  const jobTitlesList = [
-    "Cleaning Assistant",
-    " Clerical Aide/Office Assistant",
-    " Dev. & Outreach/Media & Social Media Marketing",
-    " Media Aide/Studio Aide",
-    " Data Entry Clerk/Technical Aide",
-    " Teacher's Aide",
-    " Counselor/ Camp Counselor",
-    " Retail Store Associate",
-    " Clerk Cashier",
-    " Kitchen assistant",
-    " Maintenance Aide",
-    " Senior Center Assistant",
-    " Front Desk Assistant",
-    " Office Aide",
-    " Recreation Aide",
-    " Pantry Assistant",
-    " Office Tech/Administration Technician",
-    " Social Media Marketing Intern",
-    " Marketing & Branding Intern",
-    " Nail Tech Assistant",
-    " Community Leader",
-    " In service training Office Aide",
-    " Sales",
-    " Marketing & Research Intern",
-    " Web Design and Development",
-    " Markting Coordinator",
-    " Business Development Analyst",
-    " Administrative Assistant",
-    " Marketing Assistant",
-    " Grounds Keeper",
-    " Janitor Assistant/Custodian",
-    " Line Cook",
-    " Retail operations and sales",
-    " Culinary and Hospitality Interns",
-    " Groomer",
-    " Child Care Assistant",
-    " Server",
-    " Customer Service/ Call Center",
-    " Visa, Passport, & Legal Department Assistant",
-    " Salon Assistant",
-    " Filing Clerk",
-    " Group Leader",
-    " Social Media and Content Creator Intern",
-    " Mentor",
-    " Member",
-    " District Intern",
-    " Community Aide",
-    " Media Aide/Studio Aide",
-    " Community Outreach Aide",
-    " Interactive Endearment Assistant",
-    " Publishing Aide",
-    " Tutor",
-    " Group Leader Assistant",
-    " Kitchen Assistant",
-    " Screen Production Assistant",
-    " Movie Exhibition Associate",
-    " Warehouse Product Donation Sorter",
-    " Food Pantry Assistant",
-    " Customer Service Representative",
-    " Warehouse Product Donation Sorter",
-    " Maintenance Intern",
-    " Interactive Endearment Assistant",
-    " Publishing Aide",
-    " Data Entry Clerk/Technical Aide",
-    " Group Leader Assistant",
-    " Social Media and Content Creator Intern",
-    " Clerk Cashier",
-    " Retail Store Associate",
-    " Maintenance Intern",
-    " Interactive Endearment Assistant",
-    " Publishing Aide",
-    " Data Entry Clerk/Technical Aide",
-    " Clerk Cashier",
-    " Retail Store Associate",
-  ];
+  // const jobTitlesList = [
+  //   "Cleaning Assistant",
+  //   " Clerical Aide/Office Assistant",
+  //   " Dev. & Outreach/Media & Social Media Marketing",
+  //   " Media Aide/Studio Aide",
+  //   " Data Entry Clerk/Technical Aide",
+  //   " Teacher's Aide",
+  //   " Counselor/ Camp Counselor",
+  //   " Retail Store Associate",
+  //   " Clerk Cashier",
+  //   " Kitchen assistant",
+  //   " Maintenance Aide",
+  //   " Senior Center Assistant",
+  //   " Front Desk Assistant",
+  //   " Office Aide",
+  //   " Recreation Aide",
+  //   " Pantry Assistant",
+  //   " Office Tech/Administration Technician",
+  //   " Social Media Marketing Intern",
+  //   " Marketing & Branding Intern",
+  //   " Nail Tech Assistant",
+  //   " Community Leader",
+  //   " In service training Office Aide",
+  //   " Sales",
+  //   " Marketing & Research Intern",
+  //   " Web Design and Development",
+  //   " Markting Coordinator",
+  //   " Business Development Analyst",
+  //   " Administrative Assistant",
+  //   " Marketing Assistant",
+  //   " Grounds Keeper",
+  //   " Janitor Assistant/Custodian",
+  //   " Line Cook",
+  //   " Retail operations and sales",
+  //   " Culinary and Hospitality Interns",
+  //   " Groomer",
+  //   " Child Care Assistant",
+  //   " Server",
+  //   " Customer Service/ Call Center",
+  //   " Visa, Passport, & Legal Department Assistant",
+  //   " Salon Assistant",
+  //   " Filing Clerk",
+  //   " Group Leader",
+  //   " Social Media and Content Creator Intern",
+  //   " Mentor",
+  //   " Member",
+  //   " District Intern",
+  //   " Community Aide",
+  //   " Media Aide/Studio Aide",
+  //   " Community Outreach Aide",
+  //   " Interactive Endearment Assistant",
+  //   " Publishing Aide",
+  //   " Tutor",
+  //   " Group Leader Assistant",
+  //   " Kitchen Assistant",
+  //   " Screen Production Assistant",
+  //   " Movie Exhibition Associate",
+  //   " Warehouse Product Donation Sorter",
+  //   " Food Pantry Assistant",
+  //   " Customer Service Representative",
+  //   " Warehouse Product Donation Sorter",
+  //   " Maintenance Intern",
+  //   " Interactive Endearment Assistant",
+  //   " Publishing Aide",
+  //   " Data Entry Clerk/Technical Aide",
+  //   " Group Leader Assistant",
+  //   " Social Media and Content Creator Intern",
+  //   " Clerk Cashier",
+  //   " Retail Store Associate",
+  //   " Maintenance Intern",
+  //   " Interactive Endearment Assistant",
+  //   " Publishing Aide",
+  //   " Data Entry Clerk/Technical Aide",
+  //   " Clerk Cashier",
+  //   " Retail Store Associate",
+  // ];
   const industries = [
     "Animal Care/Veterinarian Services",
     "Arts and Culture",
