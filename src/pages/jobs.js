@@ -56,6 +56,7 @@ export async function getStaticProps() {
   // Loop through Sheet 1
   for (let i = 1; i < data1.length; i++) {
     let job = {
+      jobID: "JOB_"+i,
       JobTitle: data1[i][1],
       Duties: data1[i][2],
       Restrictions: data1[i][3],
@@ -237,10 +238,9 @@ const Jobs = ({ parsedData }) => {
       [field]: value,
     }));
   };
-
   const filteredJobs = parsedData
-    // Filter worksites
-    .filter((company) => {
+  // Filter worksites
+  .filter((company) => {
       const industryMatch =
         !filters.industry || company.Industry === filters.industry;
       const cityMatch = !filters.city || company.City === filters.city;
@@ -248,11 +248,11 @@ const Jobs = ({ parsedData }) => {
         !filters.zipcode ||
         (company.ZipCode &&
           company.ZipCode.toString() === filters.zipcode.toString());
-      const implementationMatch =
+          const implementationMatch =
         !filters.siteImplementation ||
         company.SiteImplementation === filters.siteImplementation;
 
-      return industryMatch && cityMatch && zipcodeMatch && implementationMatch;
+        return industryMatch && cityMatch && zipcodeMatch && implementationMatch;
     })
     // Map over the filtered worksites' jobs
     .map((company) =>
@@ -264,22 +264,23 @@ const Jobs = ({ parsedData }) => {
     )
     // Flatten the jobs array
     .reduce((acc, jobs) => acc.concat(jobs), []);
-
+    
+    
   // console.log(parsedData);
   // console.log(filteredJobs);
 
   // paginate filtered jobs
   const offset = (page - 1) * rowsPerPage;
   const currentPageData = filteredJobs.slice(offset, offset + rowsPerPage);
-
+  
   // NEW COMPONENT
   const worksiteCardComponent = currentPageData.map((job, jIndex) => {
     return (
       // For each job, create a JobCard component
       <Grid item xs={12} sm={12} md={6} key={jIndex}>
         <JobCard
-          key={job.WorksiteID + "_" + jIndex} // Unique key
-          id={job.WorksiteID} // Unique job ID
+          key={job.WorksiteID + "*" + jIndex} // Unique key
+          id={job.jobID} // Unique job ID
           title={job.JobTitle}
           name={job.WorksiteName}
           address={job.Street}
