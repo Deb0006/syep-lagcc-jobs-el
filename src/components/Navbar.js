@@ -42,11 +42,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const { handleOpen } = useContext(DialogContext); //opens saved jobs
   const [count, setCount] = useState(0);
-  const [invisible, setInvisible] = useState(false);
-
-  const handleBadgeVisibility = () => {
-    setInvisible(!invisible);
-  };
+  const { countSavedJobs } = useContext(DialogContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -64,7 +60,6 @@ function ResponsiveAppBar() {
 
   useEffect(() => {
     updateBadgeCount();
-
     window.addEventListener("storage", updateBadgeCount);
 
     return () => {
@@ -205,17 +200,17 @@ function ResponsiveAppBar() {
                   display: "flex",
                   flexDirection: "column",
                   "& > *": {
-                    marginBottom: 2,
+                    marginBottom: 0,
                   },
                   "& .MuiBadge-root": {
-                    marginRight: 4,
+                    marginRight: 1,
                   },
                 }}
               >
                 <div>
-                  <Badge color="secondary" badgeContent={count}>
+                  <Badge color="error" badgeContent={countSavedJobs}>
                     <Button variant="outlined" onClick={handleOpen}>
-                      Open Saved Jobs
+                      My Saved Jobs
                     </Button>
                   </Badge>
                 </div>

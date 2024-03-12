@@ -24,15 +24,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function FullScreenDialog(props) {
   const { open, handleClose } = useContext(DialogContext);
   const [savedJobs, setSavedJobs] = useState([]);
-
   useEffect(() => {
     if (open) {
       if (typeof window !== "undefined") {
         const savedJobsIds =
           JSON.parse(window.localStorage.getItem("savedJobs")) || [];
         const filteredJobs = props.allJobs.filter((job) => {
-          const worksiteIDString = job.WorksiteID && job.WorksiteID.toString();
-          return worksiteIDString && savedJobsIds.includes(worksiteIDString);
+          const jobIDString = job.jobID && job.jobID.toString();
+          return jobIDString && savedJobsIds.includes(jobIDString);
         });
         setSavedJobs(filteredJobs);
       }
