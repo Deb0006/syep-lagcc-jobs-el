@@ -12,10 +12,12 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import Link from "next/link";
+import Grid from "@mui/material/Grid";
 import { useContext } from "react";
 import { DialogContext } from "../pages/_app"; 
 import { Container } from "@mui/material";
 import { useEffect, useState } from "react";
+import SavedJobCard from "./SavedJobCard";
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -38,7 +40,29 @@ export default function FullScreenDialog(props) {
       }
     }
   }, [open, props.allJobs]); // Runs the effect whenever `open` or `props.allJobs` changes
-  
+
+  // NEW COMPONENT
+  const jobCardsComponent = savedJobs.map((job, jIndex) => {
+    return (
+      // For each job, create a JobCard component
+      <Grid item xs={12} sm={12} md={6} key={jIndex}>
+        <SavedJobCard
+          key={job.WorksiteID + "*" + jIndex} // Unique key
+          id={job.jobID} // Unique job ID
+          title={job.JobTitle}
+          name={job.WorksiteName}
+          address={job.Street}
+          city={job.City}
+          state={job.State}
+          zipcode={job.ZipCode}
+          industry={job.Industry}
+          duties={job.Duties}
+          requirements={job.Requirements}
+          siteImplementation={job.SiteImplementation}
+        />
+      </Grid>
+    );
+  });
   return (
     <React.Fragment>
       <Dialog
@@ -81,7 +105,7 @@ export default function FullScreenDialog(props) {
               If you are ready select your 3 job choices, click the Application
               Form Button
             </Typography>
-            <Box sx={{width: { xs: "100%", sm: "50%" } }}>
+            <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
               <Button
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdXLpAQdhGv1UVSkHL98OVDdJM-Z7rad9TE88ouwcCqOMNzFA/viewform?usp=sf_link"
                 target="_blank"
@@ -110,7 +134,9 @@ export default function FullScreenDialog(props) {
           <Typography variant="h6" paddingTop={2}>
             <strong>Your saved jobs:</strong>
           </Typography>
-          <List>
+          {jobCardsComponent}
+
+          {/* <List>
             {savedJobs.map((job, i) => (
               <React.Fragment key={job.WorksiteID + "__" + i}>
                 <ListItemButton>
@@ -163,7 +189,7 @@ export default function FullScreenDialog(props) {
                 {i < savedJobs.length - 1 && <Divider key={`divider_${i}`} />}
               </React.Fragment>
             ))}
-          </List>
+          </List> */}
         </Box>
       </Dialog>
     </React.Fragment>

@@ -81,9 +81,6 @@ export default function JobCard(props) {
     setIsSaved(!isSaved);
   };
 
-  
- 
-
   return (
     <Card
       sx={{ maxWidth: 700, border: "1px solid lightgrey", boxShadow: "none" }}
