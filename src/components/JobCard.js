@@ -141,12 +141,12 @@ export default function JobCard(props) {
             {" " + props.siteImplementation}
           </Typography>
         </CardContent>
-        
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          sx={{ backgroundColor: "#F2F2F2" }}
         >
           <ExpandMoreIcon />
         </ExpandMore>
