@@ -71,7 +71,18 @@ export default function FullScreenDialog(props) {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative" }}>
+        <AppBar
+          sx={{
+            // color: "black",
+            filter:
+              'progid: DXImageTransform.Microsoft.gradient( startColorstr="#AFAFAF", endColorstr="#96c6ea", GradientType=1 )',
+            background: "rgba( 0, 42, 90, 0.7 )",
+            backdropFilter: "blur( 1.0px )",
+            borderRadius: "0 0 10px",
+            border: "1px solid rgba( 0, 42, 90, 0.1 )",
+            boxShadow: "none",
+          }}
+        >
           <Toolbar>
             <IconButton
               edge="start"
@@ -95,17 +106,21 @@ export default function FullScreenDialog(props) {
           </Toolbar>
         </AppBar>
 
-        <Box sx={{ padding: "20px" }}>
-          <Box>
-            <Typography variant="h6">
-              Your job selection is NOT complete until you fill out the SYEP
-              Google Form Application.
-            </Typography>
-            <Typography variant="h6" paddingTop={2}>
-              If you are ready select your 3 job choices, click the Application
-              Form Button
-            </Typography>
-            <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
+        <Box
+          sx={{ padding: "20px", background: "#f0f0f0", paddingTop: "75px" }}
+        >
+          <Grid container spacing={3} alignItems="center">
+            <Grid item xs={12} md={8}>
+              <Typography variant="h6">
+                Your job selection is NOT complete until you fill out the SYEP
+                Google Form Application.
+              </Typography>
+              <Typography variant="h6" paddingTop={2}>
+                If you are ready select your 3 job choices, click the
+                Application Form Button
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
               <Button
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdXLpAQdhGv1UVSkHL98OVDdJM-Z7rad9TE88ouwcCqOMNzFA/viewform?usp=sf_link"
                 target="_blank"
@@ -116,80 +131,17 @@ export default function FullScreenDialog(props) {
                   width: "100%",
                   borderWidth: "3px", // Make the border thicker
                   borderRadius: "10px", // Make the border radius more round
+                  marginLeft: { sm: "auto", md: "auto" },
                 }}
               >
                 Application Form
               </Button>
-            </Box>
-          </Box>
-          {/* <Box
-          component="iframe"
-          src="https://docs.google.com/forms/d/e/1FAIpQLSdXLpAQdhGv1UVSkHL98OVDdJM-Z7rad9TE88ouwcCqOMNzFA/viewform?embedded=true"
-          width="100%"
-          height="1385"
-          title="Google Form"
-        >
-          Loading…
-        </Box> */}
+            </Grid>
+          </Grid>
           <Typography variant="h6" paddingTop={2}>
             <strong>Your saved jobs:</strong>
           </Typography>
           {jobCardsComponent}
-
-          {/* <List>
-            {savedJobs.map((job, i) => (
-              <React.Fragment key={job.WorksiteID + "__" + i}>
-                <ListItemButton>
-                  <Box>
-                    <Typography key={`jobTitle_${i}`} variant="body2">
-                      <strong>{job.JobTitle}</strong>
-                    </Typography>
-                    <Typography key={`worksiteName_${i}`} variant="body2">
-                      {job.WorksiteName}
-                    </Typography>
-                    <Typography
-                      color="text.primary"
-                      variant="body2"
-                      key={`work_${i}`}
-                    >
-                      <strong>Work:</strong> {job.SiteImplementation}
-                    </Typography>
-                    <Typography
-                      key={`address_${i}`}
-                      color="text.primary"
-                      variant="body2"
-                    >
-                      <strong>Address: </strong>
-                      {job.Street +
-                        " " +
-                        job.City +
-                        ", " +
-                        job.ZipCode +
-                        ", " +
-                        job.State}
-                    </Typography>
-                    <Typography
-                      key={`description_${i}`}
-                      color="text.primary"
-                      variant="body2"
-                    >
-                      <strong>Job Description: </strong>
-                      {job.Duties}
-                    </Typography>
-                    <Typography
-                      key={`requirements_${i}`}
-                      color="text.primary"
-                      variant="body2"
-                    >
-                      <strong>Job Requirements: </strong>
-                      {job.Requirements}
-                    </Typography>
-                  </Box>
-                </ListItemButton>
-                {i < savedJobs.length - 1 && <Divider key={`divider_${i}`} />}
-              </React.Fragment>
-            ))}
-          </List> */}
         </Box>
       </Dialog>
     </React.Fragment>

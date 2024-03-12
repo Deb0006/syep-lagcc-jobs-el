@@ -72,6 +72,7 @@ export default function SavedJobCard(props) {
       sx={{ maxWidth: 700, border: "1px solid lightgrey", boxShadow: "none" }}
     >
       <CardHeader
+        sx={{ paddingBottom: "0px" }}
         action={
           <IconButton
             aria-label="add to favorites"
@@ -82,11 +83,15 @@ export default function SavedJobCard(props) {
           </IconButton>
         }
         title={props.title}
-        subheader={"Worksite: "+props.name}
+        subheader={
+          <Typography sx={{ color: "black" }}>
+            {"Worksite Name: " + props.name}
+          </Typography>
+        }
       />
       <CardActions disableSpacing>
-        <CardContent sx={{ padding: "0 15px 15px 15px" }}>
-          <Typography variant="body2" color="text.secondary">
+        <CardContent sx={{ padding: "0 15px 15px 5px" }}>
+          <Typography variant="body2" color="text.primary">
             <LocationOnOutlinedIcon
               color="secondary"
               sx={{
@@ -98,7 +103,7 @@ export default function SavedJobCard(props) {
             {props.zipcode}, {props.address},{props.city}, {props.state}
           </Typography>
 
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.primary">
             <CategoryOutlinedIcon
               color="secondary"
               sx={{
@@ -110,7 +115,7 @@ export default function SavedJobCard(props) {
             {" " + props.industry}
           </Typography>
 
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.primary">
             <BusinessOutlinedIcon
               color="secondary"
               sx={{
@@ -128,6 +133,7 @@ export default function SavedJobCard(props) {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          sx={{ backgroundColor: "#f0f0f0" }}
         >
           <ExpandMoreIcon />
         </ExpandMore>
