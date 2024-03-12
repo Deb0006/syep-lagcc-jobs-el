@@ -16,6 +16,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useContext } from "react";
 import { DialogContext } from "../pages/_app"; 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router"; 
 
 
 const pages = ['Home', 'Jobs', 'SBJobs'];
@@ -43,6 +44,14 @@ function ResponsiveAppBar() {
   const { handleOpen } = useContext(DialogContext); //opens saved jobs
   const [count, setCount] = useState(0);
   const { countSavedJobs } = useContext(DialogContext);
+   const router = useRouter(); // Call the useRouter hook here
+
+   const handleOpenSavedJobs = () => {
+     if (window.location.pathname !== "/jobs") {
+       router.push("/jobs"); // Change location to jobs page if not already there
+     }
+     handleOpen(); // Then open the dialog
+   };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -209,7 +218,7 @@ function ResponsiveAppBar() {
               >
                 <div>
                   <Badge color="error" badgeContent={countSavedJobs}>
-                    <Button variant="outlined" onClick={handleOpen}>
+                    <Button variant="outlined" onClick={handleOpenSavedJobs}>
                       My Saved Jobs
                     </Button>
                   </Badge>
