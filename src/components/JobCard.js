@@ -27,6 +27,8 @@ import {
   isJobSaved,
   getSavedJobs,
 } from "../utils/FavoriteJobs";
+import { useContext } from "react";
+import { DialogContext } from "../pages/_app";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -57,6 +59,8 @@ export default function JobCard(props) {
   const [isSaved, setIsSaved] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
+  const { updateBadgeCount } = useContext(DialogContext);
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       // check if window is defined
@@ -68,12 +72,11 @@ export default function JobCard(props) {
   if (!hasMounted) {
     return null;  
   }
- 
   const handleFavoriteClick = () => {
     if (isSaved) {
-      removeFromFavorite(props.id);
+      removeFromFavorite(props.id, updateBadgeCount);
     } else {
-      addToFavorite(props.id);
+      addToFavorite(props.id, updateBadgeCount);
     }
     setIsSaved(!isSaved);
   };

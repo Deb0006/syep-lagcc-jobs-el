@@ -42,11 +42,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const { handleOpen } = useContext(DialogContext); //opens saved jobs
   const [count, setCount] = useState(0);
-  const [invisible, setInvisible] = useState(false);
-
-  const handleBadgeVisibility = () => {
-    setInvisible(!invisible);
-  };
+  const { countSavedJobs } = useContext(DialogContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -64,7 +60,6 @@ function ResponsiveAppBar() {
 
   useEffect(() => {
     updateBadgeCount();
-
     window.addEventListener("storage", updateBadgeCount);
 
     return () => {
@@ -213,7 +208,7 @@ function ResponsiveAppBar() {
                 }}
               >
                 <div>
-                  <Badge color="secondary" badgeContent={count}>
+                  <Badge color="secondary" badgeContent={countSavedJobs}>
                     <Button variant="outlined" onClick={handleOpen}>
                       Open Saved Jobs
                     </Button>
