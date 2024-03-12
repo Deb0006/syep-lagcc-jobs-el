@@ -16,6 +16,16 @@ function App({ Component, pageProps }) {
       setCountSavedJobs(savedJobs.length);
     }
   };
+   useEffect(() => {
+     let savedJobs = JSON.parse(window.localStorage.getItem("savedJobs"));
+
+     if (savedJobs) {
+       let newSavedJobs = savedJobs.filter(
+         (id) => typeof id === "string" && id.startsWith("JOB_")
+       );
+       window.localStorage.setItem("savedJobs", JSON.stringify(newSavedJobs));
+     }
+   }, []);
 
   useEffect(() => {
     updateBadgeCount();
