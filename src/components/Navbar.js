@@ -200,17 +200,17 @@ function ResponsiveAppBar() {
                   display: "flex",
                   flexDirection: "column",
                   "& > *": {
-                    marginBottom: 2,
+                    marginBottom: 0,
                   },
                   "& .MuiBadge-root": {
-                    marginRight: 4,
+                    marginRight: 1,
                   },
                 }}
               >
                 <div>
                   <Badge color="error" badgeContent={countSavedJobs}>
                     <Button variant="outlined" onClick={handleOpen}>
-                      Open Saved Jobs
+                      My Saved Jobs
                     </Button>
                   </Badge>
                 </div>
