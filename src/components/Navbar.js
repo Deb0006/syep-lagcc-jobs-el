@@ -208,7 +208,7 @@ function ResponsiveAppBar() {
                 }}
               >
                 <div>
-                  <Badge color="secondary" badgeContent={countSavedJobs}>
+                  <Badge color="error" badgeContent={countSavedJobs}>
                     <Button variant="outlined" onClick={handleOpen}>
                       Open Saved Jobs
                     </Button>
