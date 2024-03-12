@@ -78,7 +78,7 @@ export default function FullScreenDialog(props) {
               'progid: DXImageTransform.Microsoft.gradient( startColorstr="#AFAFAF", endColorstr="#96c6ea", GradientType=1 )',
             background: "rgba( 0, 42, 90, 0.7 )",
             backdropFilter: "blur( 1.0px )",
-            borderRadius: "0 0 10px",
+            borderRadius: "0 0 10px 10px",
             border: "1px solid rgba( 0, 42, 90, 0.1 )",
             boxShadow: "none",
           }}
@@ -141,7 +141,17 @@ export default function FullScreenDialog(props) {
           <Typography variant="h6" paddingTop={2}>
             <strong>Your saved jobs:</strong>
           </Typography>
+          <Grid
+            container
+            spacing={{ xs: 0, sm: 0, md: 1 }}
+            rowGap={1}
+            paddingRight={{ xs: 0, sm: 0, md: 1 }}
+            style={{
+              margin: "0 auto",
+            }}
+          >
           {jobCardsComponent}
+          </Grid>
         </Box>
       </Dialog>
     </React.Fragment>
