@@ -129,82 +129,6 @@ export async function getStaticProps() {
 }
 
 const Jobs = ({ parsedData }) => {
-  // const jobTitlesList = [
-  //   "Cleaning Assistant",
-  //   " Clerical Aide/Office Assistant",
-  //   " Dev. & Outreach/Media & Social Media Marketing",
-  //   " Media Aide/Studio Aide",
-  //   " Data Entry Clerk/Technical Aide",
-  //   " Teacher's Aide",
-  //   " Counselor/ Camp Counselor",
-  //   " Retail Store Associate",
-  //   " Clerk Cashier",
-  //   " Kitchen assistant",
-  //   " Maintenance Aide",
-  //   " Senior Center Assistant",
-  //   " Front Desk Assistant",
-  //   " Office Aide",
-  //   " Recreation Aide",
-  //   " Pantry Assistant",
-  //   " Office Tech/Administration Technician",
-  //   " Social Media Marketing Intern",
-  //   " Marketing & Branding Intern",
-  //   " Nail Tech Assistant",
-  //   " Community Leader",
-  //   " In service training Office Aide",
-  //   " Sales",
-  //   " Marketing & Research Intern",
-  //   " Web Design and Development",
-  //   " Markting Coordinator",
-  //   " Business Development Analyst",
-  //   " Administrative Assistant",
-  //   " Marketing Assistant",
-  //   " Grounds Keeper",
-  //   " Janitor Assistant/Custodian",
-  //   " Line Cook",
-  //   " Retail operations and sales",
-  //   " Culinary and Hospitality Interns",
-  //   " Groomer",
-  //   " Child Care Assistant",
-  //   " Server",
-  //   " Customer Service/ Call Center",
-  //   " Visa, Passport, & Legal Department Assistant",
-  //   " Salon Assistant",
-  //   " Filing Clerk",
-  //   " Group Leader",
-  //   " Social Media and Content Creator Intern",
-  //   " Mentor",
-  //   " Member",
-  //   " District Intern",
-  //   " Community Aide",
-  //   " Media Aide/Studio Aide",
-  //   " Community Outreach Aide",
-  //   " Interactive Endearment Assistant",
-  //   " Publishing Aide",
-  //   " Tutor",
-  //   " Group Leader Assistant",
-  //   " Kitchen Assistant",
-  //   " Screen Production Assistant",
-  //   " Movie Exhibition Associate",
-  //   " Warehouse Product Donation Sorter",
-  //   " Food Pantry Assistant",
-  //   " Customer Service Representative",
-  //   " Warehouse Product Donation Sorter",
-  //   " Maintenance Intern",
-  //   " Interactive Endearment Assistant",
-  //   " Publishing Aide",
-  //   " Data Entry Clerk/Technical Aide",
-  //   " Group Leader Assistant",
-  //   " Social Media and Content Creator Intern",
-  //   " Clerk Cashier",
-  //   " Retail Store Associate",
-  //   " Maintenance Intern",
-  //   " Interactive Endearment Assistant",
-  //   " Publishing Aide",
-  //   " Data Entry Clerk/Technical Aide",
-  //   " Clerk Cashier",
-  //   " Retail Store Associate",
-  // ];
   const industries = [
     "Animal Care/Veterinarian Services",
     "Arts and Culture",
@@ -229,16 +153,21 @@ const Jobs = ({ parsedData }) => {
     "Technology",
     "Transportation",
   ];
-
+  
   const [filters, setFilters] = useState({
     industry: "",
     city: "",
     zipcode: "",
     siteImplementation: "",
   });
-
+  
   const [page, setPage] = useState(1);
   const rowsPerPage = 15; // number of job cards per page
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value.toLowerCase()); // Lowercase for case-insensitive comparison
+  };
 
   const handleFilterChange = (field, value) => {
     setFilters((prevFilters) => ({
@@ -246,32 +175,45 @@ const Jobs = ({ parsedData }) => {
       [field]: value,
     }));
   };
-  const filteredJobs = parsedData
-  // Filter worksites
-  .filter((company) => {
-      const industryMatch =
-        !filters.industry || company.Industry === filters.industry;
-      const cityMatch = !filters.city || company.City === filters.city;
-      const zipcodeMatch =
-        !filters.zipcode ||
-        (company.ZipCode &&
-          company.ZipCode.toString() === filters.zipcode.toString());
-          const implementationMatch =
-        !filters.siteImplementation ||
-        company.SiteImplementation === filters.siteImplementation;
+ const filteredJobs = parsedData
+   // Filter worksites
+   .filter((company) => {
+     const industryMatch =
+       !filters.industry || company.Industry === filters.industry;
+     const cityMatch = !filters.city || company.City === filters.city;
+     const zipcodeMatch =
+       !filters.zipcode ||
+       (company.ZipCode &&
+         company.ZipCode.toString() === filters.zipcode.toString());
+     const implementationMatch =
+       !filters.siteImplementation ||
+       company.SiteImplementation === filters.siteImplementation;
+     const companyNameMatch =
+       company.WorksiteName.toLowerCase().includes(searchTerm);
+     const jobTitleMatch = company.jobs.some((job) => {
+       return job.JobTitle
+         ? job.JobTitle.toLowerCase().includes(searchTerm)
+         : false;
+     });
 
-        return industryMatch && cityMatch && zipcodeMatch && implementationMatch;
-    })
-    // Map over the filtered worksites' jobs
-    .map((company) =>
-      company.jobs.map((job) => ({
-        ...job,
-        ...company,
-        jobs: undefined, // we don't want company.jobs property to repeat
-      }))
-    )
-    // Flatten the jobs array
-    .reduce((acc, jobs) => acc.concat(jobs), []);
+     return (
+       industryMatch &&
+       cityMatch &&
+       zipcodeMatch &&
+       implementationMatch &&
+       (companyNameMatch || jobTitleMatch)
+     );
+   })
+   // Map over the filtered worksites' jobs
+   .map((company) =>
+     company.jobs.map((job) => ({
+       ...job,
+       ...company,
+       jobs: undefined, // we don't want company.jobs property to repeat
+     }))
+   )
+   // Flatten the jobs array
+   .reduce((acc, jobs) => acc.concat(jobs), []);
     
     
   // console.log(parsedData);
@@ -323,13 +265,20 @@ const Jobs = ({ parsedData }) => {
           style={{ margin: "0 auto", padding: "20px 0" }}
         >
           <Typography variant="h4" gutterBottom>
-            Jobs and Internships
+            Career-Based Jobs and Internships
           </Typography>
           <Typography variant="p" gutterBottom>
             Start by looking for jobs that match your interests or your
             location:
           </Typography>
           <Grid container style={{ gap: "8px" }}>
+            <TextField
+              label="Worksite Name or Job Title"
+              id="Search-field"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              style={{ width: "200px" }}
+            />
             <TextField
               id="industry-field"
               select
