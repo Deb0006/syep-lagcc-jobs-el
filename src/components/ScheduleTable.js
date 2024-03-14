@@ -16,6 +16,9 @@ const days = [
   "Saturday",
 ];
 const ScheduleTable = ({ schedule }) => {
+    if (!schedule) {
+      return <p>N/A</p>;
+    }
   return (
     <TableContainer component={Paper} sx={{ maxWidth: 650 }}>
       <Table size="small">
