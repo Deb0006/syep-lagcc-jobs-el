@@ -9,7 +9,7 @@ export function addToFavorite(jobID, updateBadgeCount) {
     }
     window.localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
     updateBadgeCount();
-    console.log(savedJobs);
+    
   }
 }
 
