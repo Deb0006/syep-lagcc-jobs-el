@@ -241,7 +241,6 @@ const Jobs = ({ parsedData }) => {
   const rowsPerPage = 15; // number of job cards per page
 
   const handleFilterChange = (field, value) => {
-    // console.log(`Field: ${field}, Value: ${value}`); // Check if this logs correctly
     setFilters((prevFilters) => ({
       ...prevFilters,
       [field]: value,
@@ -301,6 +300,7 @@ const Jobs = ({ parsedData }) => {
           requirements={job.Requirements}
           siteImplementation={job.SiteImplementation}
           schedule={job.Schedule}
+          participantsRequested={job.ParticipantsRequested}
         />
       </Grid>
     );

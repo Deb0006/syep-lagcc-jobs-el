@@ -16,9 +16,9 @@ import CampaignTwoToneIcon from "@mui/icons-material/CampaignTwoTone";
 import StorefrontTwoToneIcon from "@mui/icons-material/StorefrontTwoTone";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import PersonSearchOutlinedIcon from "@mui/icons-material/PersonSearchOutlined";
 import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
+import PeopleIcon from "@mui/icons-material/People";
 import "../styles/globals.css";
 import { useState, useEffect } from "react";
 import {
@@ -104,7 +104,7 @@ export default function JobCard(props) {
         subheader={props.name}
       />
       <CardActions disableSpacing>
-        <CardContent sx={{ padding: "0 15px 15px 15px" }}>
+        <CardContent sx={{ padding: "0 0 2px 15px" }}>
           <Typography variant="body2" color="text.secondary">
             <LocationOnOutlinedIcon
               color="secondary"
@@ -114,7 +114,7 @@ export default function JobCard(props) {
                 marginBottom: -0.3,
               }}
             />
-            {props.zipcode}, {props.address},{props.city}, {props.state}
+            {props.zipcode}, {props.address}, {props.city}, {props.state}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
@@ -140,6 +140,18 @@ export default function JobCard(props) {
             />
             {" " + props.siteImplementation}
           </Typography>
+
+          <Typography variant="body2" color="text.secondary">
+            <PeopleIcon
+              color="secondary"
+              sx={{
+                fontSize: 16,
+                strokeWidth: 2,
+                marginBottom: -0.3,
+              }}
+            />
+            {" " + props.participantsRequested}
+          </Typography>
         </CardContent>
         <ExpandMore
           expand={expanded}
@@ -153,7 +165,7 @@ export default function JobCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph style={{ fontWeight: "bold" }}>
+          <Typography paragraph style={{ fontWeight: "bold"}}>
             Schedule:
           </Typography>
           <ScheduleTable schedule={props.schedule} />
