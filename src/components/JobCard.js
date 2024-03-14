@@ -27,6 +27,7 @@ import {
   isJobSaved,
   getSavedJobs,
 } from "../utils/FavoriteJobs";
+import ScheduleTable from "./ScheduleTable";
 import { useContext } from "react";
 import { DialogContext } from "../pages/_app";
 
@@ -53,9 +54,8 @@ export default function JobCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  
   const Icon = icons[props.iconName] || null;
-  
+
   const [isSaved, setIsSaved] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -153,6 +153,10 @@ export default function JobCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
+          <Typography paragraph style={{ fontWeight: "bold" }}>
+            Schedule:
+          </Typography>
+          <ScheduleTable schedule={props.schedule} />
           <Typography paragraph style={{ fontWeight: "bold" }}>
             Duties:
           </Typography>

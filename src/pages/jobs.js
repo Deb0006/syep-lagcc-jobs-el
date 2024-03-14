@@ -88,6 +88,15 @@ export async function getStaticProps() {
       State: data2[i][7],
       ZipCode: data2[i][8],
       SiteImplementation: data2[i][23],
+      Schedule: [
+        {Start: data2[i][9], End: data2[i][10]},  // Sunday
+        {Start: data2[i][11], End: data2[i][12]}, // Monday
+        {Start: data2[i][13], End: data2[i][14]}, // Tuesday
+        {Start: data2[i][15], End: data2[i][16]}, // Wednesday
+        {Start: data2[i][17], End: data2[i][18]}, // Thursday
+        {Start: data2[i][19], End: data2[i][20]}, // Friday
+        {Start: data2[i][21], End: data2[i][22]}, // Saturday
+      ], 
       jobs: [], // Add an empty jobs array
     };
 
@@ -110,7 +119,7 @@ export async function getStaticProps() {
     }
   }
 
-  // before returning your parsedData
+  // before returning parsedData
   replaceUndefinedOrNull(parsedData);
 
   return {
@@ -291,6 +300,7 @@ const Jobs = ({ parsedData }) => {
           duties={job.Duties}
           requirements={job.Requirements}
           siteImplementation={job.SiteImplementation}
+          schedule={job.Schedule}
         />
       </Grid>
     );
