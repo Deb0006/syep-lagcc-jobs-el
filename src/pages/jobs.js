@@ -124,7 +124,7 @@ export async function getStaticProps() {
 
   return {
     props: { parsedData }, // parsedData will be directly provided as a prop to your component
-    revalidate: 1800,
+    revalidate: 900,
   };
 }
 
