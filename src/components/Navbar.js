@@ -7,15 +7,17 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import Link from 'next/link';
+import Badge from "@mui/material/Badge";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useContext } from "react";
 import { DialogContext } from "../pages/_app"; 
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router"; 
+
 
 const pages = ['Home', 'Jobs', 'SBJobs'];
 const darkTheme = createTheme({
@@ -38,24 +40,41 @@ const darkTheme = createTheme({
 
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const { handleOpen } = useContext(DialogContext);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const { handleOpen } = useContext(DialogContext); //opens saved jobs
+  const [count, setCount] = useState(0);
+  const { countSavedJobs } = useContext(DialogContext);
+   const router = useRouter(); // Call the useRouter hook here
+
+   const handleOpenSavedJobs = () => {
+     if (window.location.pathname !== "/jobs") {
+       router.push("/jobs"); // Change location to jobs page if not already there
+     }
+     handleOpen(); // Then open the dialog
+   };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  //Badge count
+  const updateBadgeCount = () => {
+    const savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
+    setCount(savedJobs.length);
   };
+
+  useEffect(() => {
+    updateBadgeCount();
+    window.addEventListener("storage", updateBadgeCount);
+
+    return () => {
+      window.removeEventListener("storage", updateBadgeCount);
+    };
+  }, []);
 
   return (
     <Stack spacing={2} sx={{ flexGrow: 1 }}>
@@ -75,7 +94,7 @@ function ResponsiveAppBar() {
                 variant="h6"
                 noWrap
                 component="a"
-                href="#app-bar-with-responsive-menu"
+                href="/"
                 sx={{
                   mr: 2,
                   display: { xs: "none", md: "flex" },
@@ -184,10 +203,26 @@ function ResponsiveAppBar() {
                 ))}
               </Box>
 
-              <Box sx={{ flexGrow: 0 }}>
-                <Button variant="outlined" onClick={handleOpen}>
-                  Open Saved Jobs
-                </Button>
+              <Box
+                sx={{
+                  color: "action.active",
+                  display: "flex",
+                  flexDirection: "column",
+                  "& > *": {
+                    marginBottom: 0,
+                  },
+                  "& .MuiBadge-root": {
+                    marginRight: 1,
+                  },
+                }}
+              >
+                <div>
+                  <Badge color="error" badgeContent={countSavedJobs}>
+                    <Button variant="outlined" onClick={handleOpenSavedJobs}>
+                      My Saved Jobs
+                    </Button>
+                  </Badge>
+                </div>
               </Box>
             </Toolbar>
           </Container>

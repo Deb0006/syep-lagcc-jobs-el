@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import "../styles/globals.css";
 import styles from "../styles/index.module.css";
 import FullScreenContent from "../components/FullScreenContent";
+import Link from "next/link";
 import { Container } from "@mui/material";
 
 export default function Home() {
@@ -57,27 +58,31 @@ export default function Home() {
               Summer Youth Employment Program - LaGCC
             </Typography>
             <Box>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h1" gutterBottom>
                 Find jobs in different fields and industries that match your
                 interests and skills.
               </Typography>
-              <Typography variant="h6" gutterBottom>
-                Make money, gain experience, and help your community. Don&apost
-                wait, start your job search now!
+              <Typography variant="h1" gutterBottom>
+                Make money, gain experience, and help your community. Dont wait,
+                start your job search now!
               </Typography>
             </Box>
 
             <Box sx={{ padding: "20px 0", width: { xs: "100%", sm: "50%" } }}>
-              <Button
-                variant="outlined"
-                color="secondary"
-                style={{
-                  padding: "10px 30px",
-                  width: "100%",
-                }}
-              >
-                Search Jobs
-              </Button>
+              <Link href="/jobs">
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  style={{
+                    padding: "10px 30px",
+                    width: "100%",
+                    borderWidth: "2px", // Make the border thicker
+                    borderRadius: "40px", // Make the border radius more round
+                  }}
+                >
+                  Search Jobs
+                </Button>
+              </Link>
             </Box>
           </Grid>
           {/* //section 2 right*/}
@@ -185,6 +190,17 @@ export default function Home() {
           Explore Your Potential: Diverse Job Opportunities Await
         </Typography>
         <FullScreenContent />
+        <Container sx={{ padding: "40px 20px 20px 20px" }}>
+          <Typography variant="p">
+            Recognizing the diverse interests of the young people, SYEP offers
+            an extensive range of jobs across various industries. From the
+            medical, media, tech sectors to public service, arts and fashion,
+            and so much more - there is certainly something for everyone. This
+            wide-ranging selection ensures that young individuals find work that
+            matches their passion and interests, thereby expanding their skills
+            and preparing them for their future careers
+          </Typography>
+        </Container>
       </Box>
 
       {/* Main container 2 */}
@@ -201,7 +217,7 @@ export default function Home() {
           }}
         >
           <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
-            Here&aposs what you need to do to start
+            Heres what you need to do to start
           </Typography>
           <Box
             sx={{
@@ -270,8 +286,8 @@ export default function Home() {
                   Step 1
                 </Typography>
                 <Typography variant="p">
-                  Click on the &quotSearch Job&quot button and browse the
-                  available jobs. Pick 3 that you like and save them
+                  Click on the Search Job button and browse the available jobs.
+                  Pick 3 that you like and save them
                 </Typography>
               </Box>
             </Paper>

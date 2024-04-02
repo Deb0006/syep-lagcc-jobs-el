@@ -5,29 +5,21 @@ import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyTwoTone";
-import CampaignTwoToneIcon from "@mui/icons-material/CampaignTwoTone";
-import StorefrontTwoToneIcon from "@mui/icons-material/StorefrontTwoTone";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
-import PeopleIcon from "@mui/icons-material/People";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import "../styles/globals.css";
 import { useState, useEffect } from "react";
 import {
   addToFavorite,
   removeFromFavorite,
   isJobSaved,
-  getSavedJobs,
 } from "../utils/FavoriteJobs";
-import ScheduleTable from "./ScheduleTable";
 import { useContext } from "react";
 import { DialogContext } from "../pages/_app";
 
@@ -42,25 +34,19 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const icons = {
-  HealthAndSafetyOutlinedIcon: HealthAndSafetyOutlinedIcon,
-  CampaignTwoToneIcon: CampaignTwoToneIcon,
-  StorefrontTwoToneIcon: StorefrontTwoToneIcon,
-  //...other icons
-};
-export default function JobCard(props) {
+
+export default function SavedJobCard(props) {
   const [expanded, setExpanded] = React.useState(false);
-  
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const Icon = icons[props.iconName] || null;
 
   const [isSaved, setIsSaved] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
   const { updateBadgeCount } = useContext(DialogContext);
-  
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       // check if window is defined
@@ -70,7 +56,7 @@ export default function JobCard(props) {
   }, [props.id]);
 
   if (!hasMounted) {
-    return null;  
+    return null;
   }
   const handleFavoriteClick = () => {
     if (isSaved) {
@@ -86,11 +72,7 @@ export default function JobCard(props) {
       sx={{ maxWidth: 700, border: "1px solid lightgrey", boxShadow: "none" }}
     >
       <CardHeader
-        avatar={
-          <Avatar className="primary" aria-label="avatar">
-            {Icon ? <Icon /> : <BusinessCenterOutlinedIcon />}
-          </Avatar>
-        }
+        sx={{ paddingBottom: "0px" }}
         action={
           <IconButton
             aria-label="add to favorites"
@@ -101,11 +83,15 @@ export default function JobCard(props) {
           </IconButton>
         }
         title={props.title}
-        subheader={props.name}
+        subheader={
+          <Typography sx={{ color: "black" }}>
+            {"Worksite Name: " + props.name}
+          </Typography>
+        }
       />
       <CardActions disableSpacing>
-        <CardContent sx={{ padding: "0 0 2px 15px" }}>
-          <Typography variant="body2" color="text.secondary">
+        <CardContent sx={{ padding: "0 15px 15px 5px" }}>
+          <Typography variant="body2" color="text.primary">
             <LocationOnOutlinedIcon
               color="secondary"
               sx={{
@@ -114,10 +100,10 @@ export default function JobCard(props) {
                 marginBottom: -0.3,
               }}
             />
-            {props.zipcode}, {props.address}, {props.city}, {props.state}
+            {props.zipcode}, {props.address},{props.city}, {props.state}
           </Typography>
 
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.primary">
             <CategoryOutlinedIcon
               color="secondary"
               sx={{
@@ -129,7 +115,7 @@ export default function JobCard(props) {
             {" " + props.industry}
           </Typography>
 
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.primary">
             <BusinessOutlinedIcon
               color="secondary"
               sx={{
@@ -140,35 +126,20 @@ export default function JobCard(props) {
             />
             {" " + props.siteImplementation}
           </Typography>
-
-          <Typography variant="body2" color="text.secondary">
-            <PeopleIcon
-              color="secondary"
-              sx={{
-                fontSize: 16,
-                strokeWidth: 2,
-                marginBottom: -0.3,
-              }}
-            />
-            {" " + props.participantsRequested}
-          </Typography>
         </CardContent>
+
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-          sx={{ backgroundColor: "#F2F2F2" }}
+          sx={{ backgroundColor: "#f0f0f0" }}
         >
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph style={{ fontWeight: "bold"}}>
-            Schedule:
-          </Typography>
-          <ScheduleTable schedule={props.schedule} />
           <Typography paragraph style={{ fontWeight: "bold" }}>
             Duties:
           </Typography>

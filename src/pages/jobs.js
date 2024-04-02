@@ -56,6 +56,7 @@ export async function getStaticProps() {
   // Loop through Sheet 1
   for (let i = 1; i < data1.length; i++) {
     let job = {
+      jobID: "JOB_"+i,
       JobTitle: data1[i][1],
       Duties: data1[i][2],
       Restrictions: data1[i][3],
@@ -87,6 +88,15 @@ export async function getStaticProps() {
       State: data2[i][7],
       ZipCode: data2[i][8],
       SiteImplementation: data2[i][23],
+      Schedule: [
+        {Start: data2[i][9], End: data2[i][10]},  // Sunday
+        {Start: data2[i][11], End: data2[i][12]}, // Monday
+        {Start: data2[i][13], End: data2[i][14]}, // Tuesday
+        {Start: data2[i][15], End: data2[i][16]}, // Wednesday
+        {Start: data2[i][17], End: data2[i][18]}, // Thursday
+        {Start: data2[i][19], End: data2[i][20]}, // Friday
+        {Start: data2[i][21], End: data2[i][22]}, // Saturday
+      ], 
       jobs: [], // Add an empty jobs array
     };
 
@@ -109,139 +119,16 @@ export async function getStaticProps() {
     }
   }
 
-  // before returning your parsedData
+  // before returning parsedData
   replaceUndefinedOrNull(parsedData);
 
   return {
     props: { parsedData }, // parsedData will be directly provided as a prop to your component
-    revalidate: 1800,
+    revalidate: 400,
   };
 }
 
 const Jobs = ({ parsedData }) => {
-  // const jobData = [
-  //   {
-  //     id: 1,
-  //     contract: { CB: 0, QB: 0, MB: 0 },
-  //     title: "Software Engineer",
-  //     company: "Company D",
-  //     address: "2581 Atlantic Avenue",
-  //     location: "Manhattan",
-  //     state: "NY",
-  //     zipcode: 10001,
-  //     jobCategory: "Technology",
-  //     visible: true,
-  //     backgroundCheck: false,
-  //     iconName: "CodeOutlinedIcon",
-  //     description:
-  //       "Seeking a talented Software Engineer to join our team in developing cutting-edge software solutions.",
-  //   },..]
-
-  //api call
-  // const [jobData, setJobData] = useState([]);
-  // useEffect(() => {
-  //   async function getJobData() {
-  //     const response = await fetch("/api/firebase-config");
-  //     const data = await response.json();
-  //     setJobData(data);
-  //   }
-  //   getJobData();
-  // }, []);
-
-  // fetch from Data from Sheet1 and Sheet2 already parsed (not necessary anymore)
-  // const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // async function fetchData() {
-  //   const res = await fetch("/api/worksites");
-  //   const json = await res.json();
-
-  //   if (res.status !== 200) {
-  //     console.error(json);
-  //     throw new Error("Failed to fetch API");
-  //   }
-  //   setData(json);
-  // }
-
-  const jobTitlesList = [
-    "Cleaning Assistant",
-    " Clerical Aide/Office Assistant",
-    " Dev. & Outreach/Media & Social Media Marketing",
-    " Media Aide/Studio Aide",
-    " Data Entry Clerk/Technical Aide",
-    " Teacher's Aide",
-    " Counselor/ Camp Counselor",
-    " Retail Store Associate",
-    " Clerk Cashier",
-    " Kitchen assistant",
-    " Maintenance Aide",
-    " Senior Center Assistant",
-    " Front Desk Assistant",
-    " Office Aide",
-    " Recreation Aide",
-    " Pantry Assistant",
-    " Office Tech/Administration Technician",
-    " Social Media Marketing Intern",
-    " Marketing & Branding Intern",
-    " Nail Tech Assistant",
-    " Community Leader",
-    " In service training Office Aide",
-    " Sales",
-    " Marketing & Research Intern",
-    " Web Design and Development",
-    " Markting Coordinator",
-    " Business Development Analyst",
-    " Administrative Assistant",
-    " Marketing Assistant",
-    " Grounds Keeper",
-    " Janitor Assistant/Custodian",
-    " Line Cook",
-    " Retail operations and sales",
-    " Culinary and Hospitality Interns",
-    " Groomer",
-    " Child Care Assistant",
-    " Server",
-    " Customer Service/ Call Center",
-    " Visa, Passport, & Legal Department Assistant",
-    " Salon Assistant",
-    " Filing Clerk",
-    " Group Leader",
-    " Social Media and Content Creator Intern",
-    " Mentor",
-    " Member",
-    " District Intern",
-    " Community Aide",
-    " Media Aide/Studio Aide",
-    " Community Outreach Aide",
-    " Interactive Endearment Assistant",
-    " Publishing Aide",
-    " Tutor",
-    " Group Leader Assistant",
-    " Kitchen Assistant",
-    " Screen Production Assistant",
-    " Movie Exhibition Associate",
-    " Warehouse Product Donation Sorter",
-    " Food Pantry Assistant",
-    " Customer Service Representative",
-    " Warehouse Product Donation Sorter",
-    " Maintenance Intern",
-    " Interactive Endearment Assistant",
-    " Publishing Aide",
-    " Data Entry Clerk/Technical Aide",
-    " Group Leader Assistant",
-    " Social Media and Content Creator Intern",
-    " Clerk Cashier",
-    " Retail Store Associate",
-    " Maintenance Intern",
-    " Interactive Endearment Assistant",
-    " Publishing Aide",
-    " Data Entry Clerk/Technical Aide",
-    " Clerk Cashier",
-    " Retail Store Associate",
-  ];
   const industries = [
     "Animal Care/Veterinarian Services",
     "Arts and Culture",
@@ -266,67 +153,84 @@ const Jobs = ({ parsedData }) => {
     "Technology",
     "Transportation",
   ];
-
+  
   const [filters, setFilters] = useState({
     industry: "",
     city: "",
     zipcode: "",
     siteImplementation: "",
   });
-
+  
   const [page, setPage] = useState(1);
   const rowsPerPage = 15; // number of job cards per page
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value.toLowerCase()); // Lowercase for case-insensitive comparison
+  };
 
   const handleFilterChange = (field, value) => {
-    // console.log(`Field: ${field}, Value: ${value}`); // Check if this logs correctly
     setFilters((prevFilters) => ({
       ...prevFilters,
       [field]: value,
     }));
   };
+ const filteredJobs = parsedData
+   // Filter worksites
+   .filter((company) => {
+     const industryMatch =
+       !filters.industry || company.Industry === filters.industry;
+     const cityMatch = !filters.city || company.City === filters.city;
+     const zipcodeMatch =
+       !filters.zipcode ||
+       (company.ZipCode &&
+         company.ZipCode.toString() === filters.zipcode.toString());
+     const implementationMatch =
+       !filters.siteImplementation ||
+       company.SiteImplementation === filters.siteImplementation;
+     const companyNameMatch =
+       company.WorksiteName.toLowerCase().includes(searchTerm);
+     const jobTitleMatch = company.jobs.some((job) => {
+       return job.JobTitle
+         ? job.JobTitle.toLowerCase().includes(searchTerm)
+         : false;
+     });
 
-  const filteredJobs = parsedData
-    // Filter worksites
-    .filter((company) => {
-      const industryMatch =
-        !filters.industry || company.Industry === filters.industry;
-      const cityMatch = !filters.city || company.City === filters.city;
-      const zipcodeMatch =
-        !filters.zipcode ||
-        (company.ZipCode &&
-          company.ZipCode.toString() === filters.zipcode.toString());
-      const implementationMatch =
-        !filters.siteImplementation ||
-        company.SiteImplementation === filters.siteImplementation;
-
-      return industryMatch && cityMatch && zipcodeMatch && implementationMatch;
-    })
-    // Map over the filtered worksites' jobs
-    .map((company) =>
-      company.jobs.map((job) => ({
-        ...job,
-        ...company,
-        jobs: undefined, // we don't want company.jobs property to repeat
-      }))
-    )
-    // Flatten the jobs array
-    .reduce((acc, jobs) => acc.concat(jobs), []);
-
+     return (
+       industryMatch &&
+       cityMatch &&
+       zipcodeMatch &&
+       implementationMatch &&
+       (companyNameMatch || jobTitleMatch)
+     );
+   })
+   // Map over the filtered worksites' jobs
+   .map((company) =>
+     company.jobs.map((job) => ({
+       ...job,
+       ...company,
+       jobs: undefined, // we don't want company.jobs property to repeat
+     }))
+   )
+   // Flatten the jobs array
+   .reduce((acc, jobs) => acc.concat(jobs), []);
+    
+    
   // console.log(parsedData);
   // console.log(filteredJobs);
 
   // paginate filtered jobs
   const offset = (page - 1) * rowsPerPage;
   const currentPageData = filteredJobs.slice(offset, offset + rowsPerPage);
-
+  
   // NEW COMPONENT
   const worksiteCardComponent = currentPageData.map((job, jIndex) => {
     return (
       // For each job, create a JobCard component
       <Grid item xs={12} sm={12} md={6} key={jIndex}>
         <JobCard
-          key={job.WorksiteID + "_" + jIndex} // Unique key
-          id={job.WorksiteID} // Unique job ID
+          key={job.WorksiteID + "*" + jIndex} // Unique key
+          id={job.jobID} // Unique job ID
           title={job.JobTitle}
           name={job.WorksiteName}
           address={job.Street}
@@ -337,6 +241,8 @@ const Jobs = ({ parsedData }) => {
           duties={job.Duties}
           requirements={job.Requirements}
           siteImplementation={job.SiteImplementation}
+          schedule={job.Schedule}
+          participantsRequested={job.ParticipantsRequested}
         />
       </Grid>
     );
@@ -359,13 +265,20 @@ const Jobs = ({ parsedData }) => {
           style={{ margin: "0 auto", padding: "20px 0" }}
         >
           <Typography variant="h4" gutterBottom>
-            Jobs and Internships
+            Career-Based Jobs and Internships
           </Typography>
           <Typography variant="p" gutterBottom>
             Start by looking for jobs that match your interests or your
             location:
           </Typography>
           <Grid container style={{ gap: "8px" }}>
+            <TextField
+              label="Worksite Name or Job Title"
+              id="Search-field"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              style={{ width: "200px" }}
+            />
             <TextField
               id="industry-field"
               select
@@ -419,22 +332,6 @@ const Jobs = ({ parsedData }) => {
               <MenuItem value="Hybrid">Hybrid</MenuItem>
               <MenuItem value="Virtually">Virtually</MenuItem>
             </TextField>
-
-            {/* <FormControlLabel
-              control={
-                <Switch
-                  color="secondary"
-                  checked={filters.backgroundCheck === false}
-                  onChange={(e) =>
-                    handleFilterChange(
-                      "backgroundCheck",
-                      e.target.checked ? false : null
-                    )
-                  }
-                />
-              }
-              label="No Background Check Required"
-            /> */}
           </Grid>
 
           <Grid
