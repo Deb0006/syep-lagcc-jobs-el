@@ -1,11 +1,10 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
 export default function Layout({ children }) {
   return (
-     <div>
+    <div>
       <Navbar />
-        {children}
+      <div style={{ minHeight: "300px" }}>{children}</div>
       <Footer />
     </div>
   );

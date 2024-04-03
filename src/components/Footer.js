@@ -38,10 +38,10 @@ export default function Footer() {
             <ul style={{ listStyle: "none" }}>
               <li>
                 <Typography sx={{ color: "#38556A" }}>
-                <PhoneIcon
-                  fontSize="medium"
-                  style={{ verticalAlign: "middle", marginRight: "4px" }}
-                />
+                  <PhoneIcon
+                    fontSize="medium"
+                    style={{ verticalAlign: "middle", marginRight: "4px" }}
+                  />
                   (718) 482-5340 | (718) 609-2132
                 </Typography>
               </li>
