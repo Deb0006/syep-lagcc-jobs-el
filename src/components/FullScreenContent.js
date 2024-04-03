@@ -14,9 +14,6 @@ function FullScreenContent() {
         textAlign: "center",
       }}
     >
-      {/* <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-        Explore Your Potential: Diverse Job Opportunities Await
-      </Typography> */}
 
       <Slideshow />
     </Box>
