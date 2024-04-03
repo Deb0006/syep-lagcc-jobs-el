@@ -111,13 +111,15 @@ export async function getStaticProps() {
       parsedData.push(worksiteData);
     }
   }
-  function replaceUndefinedOrNull(obj) {
-    for (let propName in obj) {
-      if (obj[propName] === null || obj[propName] === undefined) {
-        obj[propName] = null;
-      }
-    }
-  }
+ function replaceUndefinedOrNull(obj) {
+   for (let propName in obj) {
+     if (obj[propName] === null || obj[propName] === undefined) {
+       obj[propName] = null;
+     } else if (typeof obj[propName] === "object") {
+       replaceUndefinedOrNull(obj[propName]);
+     }
+   }
+ }
 
   // before returning parsedData
   replaceUndefinedOrNull(parsedData);
