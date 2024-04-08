@@ -88,27 +88,9 @@ function ResponsiveAppBar() {
             color: "black",
           }}
         >
-          <Container maxWidth="xl">
+          <Container maxWidth="xl" sx={{padding: "2px 6px"}}>
             <Toolbar disableGutters>
-              <Typography
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  mr: 2,
-                  display: { xs: "none", md: "flex" },
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                SYEP
-              </Typography>
-
-              <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, width:"48px" }}>
                 <IconButton
                   size="large"
                   aria-label="account of current user"
@@ -156,24 +138,22 @@ function ResponsiveAppBar() {
                   ))}
                 </Menu>
               </Box>
-              <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                href="#app-bar-with-responsive-menu"
+
+              <Box
                 sx={{
-                  mr: 2,
-                  display: { xs: "flex", md: "none" },
-                  flexGrow: 1,
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "inherit",
-                  textDecoration: "none",
+                  width: { xs: "45%", md: "18%", lg: "11%" },
+                  margin: "0 auto"
                 }}
               >
-                SYEP
-              </Typography>
+                <img
+                  src="LOGO.png"
+                  alt="Logo"
+                  style={{
+                    height: "2em", // Adjust the height to match Typography
+                    verticalAlign: "middle", // Align the image vertically with text
+                  }}
+                />
+              </Box>
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                 {pages.map((page) => (
                   <Link
@@ -216,13 +196,12 @@ function ResponsiveAppBar() {
                   },
                 }}
               >
-                <div>
                   <Badge color="error" badgeContent={countSavedJobs}>
                     <Button variant="outlined" onClick={handleOpenSavedJobs}>
-                      My Saved Jobs
+                      Saved Jobs
                     </Button>
                   </Badge>
-                </div>
+                
               </Box>
             </Toolbar>
           </Container>
