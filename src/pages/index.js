@@ -63,8 +63,8 @@ export default function Home() {
                 interests and skills.
               </Typography>
               <Typography variant="h1" gutterBottom>
-                Make money, gain experience, and help your community. Dont wait,
-                start your job search now!
+                Make money, gain experience, and help your community. Don&apos;t
+                wait, start your job search now!
               </Typography>
             </Box>
 
