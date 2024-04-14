@@ -19,7 +19,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router"; 
 
 
-const pages = ['Home', 'Jobs', 'SBJobs'];
+const pages = ['Home', 'Jobs'];
 const darkTheme = createTheme({
     palette: {
       mode: 'dark',

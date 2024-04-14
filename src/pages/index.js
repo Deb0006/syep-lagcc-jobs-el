@@ -1,17 +1,17 @@
 "use client";
-import Layout from "../components/Layout";
+import Link from "next/link";
+import { Container } from "@mui/material";
 import Head from "next/head";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Image from "next/image";
-import Paper from "@mui/material/Paper";
 import "../styles/globals.css";
 import styles from "../styles/index.module.css";
 import FullScreenContent from "../components/FullScreenContent";
-import Link from "next/link";
-import { Container } from "@mui/material";
+import Layout from "../components/Layout";
+import StepSection from "../components/StepSection";
 
 export default function Home() {
   return (
@@ -204,7 +204,7 @@ export default function Home() {
         {/* Section 3 */}
         <Box
           sx={{
-            padding: "30px 0",
+            padding: "70px 0",
             textAlign: "center",
             display: "flex",
             flexDirection: "column",
@@ -222,149 +222,44 @@ export default function Home() {
               display: "flex",
               flexDirection: { xs: "column", sm: "row" },
               alignItems: "center",
-              justifyContent: "center",
-              gap: { xs: 2, sm: 4 }, // spacing between items
+              justifyContent: "center",              
             }}
           ></Box>
           <Grid
             container
             style={{
               marginTop: "10px",
-              gap: "20px",
+              gap: "80px",
               padding: "40px 0",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Paper
-              elevation={0}
-              className="secondary"
-              style={{
-                minWidth: "250px",
-                width: "370px",
-                height: "330px",
-                padding: "20px",
-                display: "flex",
-                justifyContent: "center",
-                color: "white",
-                borderRadius: "10px",
+            <StepSection
+              step="Step 1"
+              imageSrc="/Zoom2.png"
+              title="Investigate image"
+              description="Click on the Search Job button and browse the available jobs. Pick 3 jobs you like and save them"
+            />
+            <StepSection
+              step="Step 2"
+              imageSrc="/Map.png"
+              title="Parents image"
+              description="Discuss your 3 potential jobs with your parent or guardian. Use Google Maps to map travel to your selections. Your travel time should not be over 45 minutes!"
+            />
+            <StepSection
+              step="Step 3"
+              imageSrc="/List2.png"
+              title="Task List image"
+              description="Fill out the form with your information and your top 3 job preferences. Make sure you submit it before the deadline"
+            />
 
-                background:
-                  "linear-gradient(197.37deg, #7450DB -0.38%, rgba(138, 234, 240, 0) 101.89%), linear-gradient(115.93deg, #3E88F6 4.86%, rgba(62, 180, 246, 0.33) 38.05%, rgba(62, 235, 246, 0) 74.14%), radial-gradient(56.47% 76.87% at 6.92% 7.55%, rgba(62, 136, 246, 0.7) 0%, rgba(62, 158, 246, 0.182) 52.16%, rgba(62, 246, 246, 0) 100%), linear-gradient(306.53deg, #2EE4E3 19.83%, rgba(46, 228, 227, 0) 97.33%)",
-                backgroundBlendMode:
-                  "normal,normal,normal,normal,normal,normal",
-              }}
-            >
-              <Box
-                width={"80%"}
-                marginTop={-12}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  src="/Zoom2.png"
-                  alt="Law image"
-                  width={150}
-                  height={200}
-                />
-                <Typography variant="h4" paddingTop={2}>
-                  Step 1
-                </Typography>
-                <Typography variant="p">
-                  Click on the Search Job button and browse the available jobs.
-                  Pick 3 that you like and save them
-                </Typography>
-              </Box>
-            </Paper>
-            <Paper
-              elevation={0}
-              className="secondary"
-              style={{
-                minWidth: "250px",
-                width: "370px",
-                height: "330px",
-                padding: "20px",
-                display: "flex",
-                justifyContent: "center",
-                color: "white",
-                borderRadius: "10px",
-
-                background:
-                  "linear-gradient(197.37deg, #7450DB -0.38%, rgba(138, 234, 240, 0) 101.89%), linear-gradient(115.93deg, #3E88F6 4.86%, rgba(62, 180, 246, 0.33) 38.05%, rgba(62, 235, 246, 0) 74.14%), radial-gradient(56.47% 76.87% at 6.92% 7.55%, rgba(62, 136, 246, 0.7) 0%, rgba(62, 158, 246, 0.182) 52.16%, rgba(62, 246, 246, 0) 100%), linear-gradient(306.53deg, #2EE4E3 19.83%, rgba(46, 228, 227, 0) 97.33%)",
-                backgroundBlendMode:
-                  "normal,normal,normal,normal,normal,normal",
-              }}
-            >
-              <Box
-                width={"80%"}
-                marginTop={-12}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  src="/List2.png"
-                  alt="Law image"
-                  width={150}
-                  height={200}
-                />
-                <Typography variant="h4" paddingTop={2}>
-                  Step 2
-                </Typography>
-                <Typography variant="p">
-                  Fill out the form with your information and your top 3 job
-                  preferences. Make sure you submit it before the deadline
-                </Typography>
-              </Box>
-            </Paper>
-            <Paper
-              elevation={0}
-              className="secondary"
-              style={{
-                minWidth: "250px",
-                width: "370px",
-                height: "330px",
-                padding: "20px",
-                display: "flex",
-                justifyContent: "center",
-                color: "white",
-                borderRadius: "10px",
-
-                background:
-                  "linear-gradient(197.37deg, #7450DB -0.38%, rgba(138, 234, 240, 0) 101.89%), linear-gradient(115.93deg, #3E88F6 4.86%, rgba(62, 180, 246, 0.33) 38.05%, rgba(62, 235, 246, 0) 74.14%), radial-gradient(56.47% 76.87% at 6.92% 7.55%, rgba(62, 136, 246, 0.7) 0%, rgba(62, 158, 246, 0.182) 52.16%, rgba(62, 246, 246, 0) 100%), linear-gradient(306.53deg, #2EE4E3 19.83%, rgba(46, 228, 227, 0) 97.33%)",
-                backgroundBlendMode:
-                  "normal,normal,normal,normal,normal,normal",
-              }}
-            >
-              <Box
-                width={"80%"}
-                marginTop={-12}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  src="/Laptop2.png"
-                  alt="Law image"
-                  width={150}
-                  height={200}
-                />
-                <Typography variant="h4" paddingTop={2}>
-                  Step 3
-                </Typography>
-                <Typography variant="p">
-                  Wait for a confirmation email from the DYCD and check the
-                  participant website regularly to see where you were assaigned
-                </Typography>
-              </Box>
-            </Paper>
+            <StepSection
+              step="Step 4"
+              imageSrc="/Laptop2.png"
+              title="Laptop image"
+              description="Wait for a confirmation email from the DYCD and check the participant website regularly to see where you were assigned"
+            />
           </Grid>
         </Box>
       </Container>
