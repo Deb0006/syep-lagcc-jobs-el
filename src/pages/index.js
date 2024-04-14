@@ -258,7 +258,7 @@ export default function Home() {
               step="Step 4"
               imageSrc="/Laptop2.png"
               title="Laptop image"
-              description="Wait for a confirmation email from the DYCD and check the participant website regularly to see where you were assigned"
+              description="Wait for a confirmation email from the LAGCC's SYEP Team or check the participant site regularly to see where you were assigned"
             />
           </Grid>
         </Box>
