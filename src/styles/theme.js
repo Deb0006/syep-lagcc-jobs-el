@@ -11,6 +11,18 @@ const theme = createTheme({
       main: "#9182C4", // your secondary color
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none", // Set textTransform to 'none' for lowercase text
+        },
+      },
+    },
+    defaultProps: {
+      variant: "outlined", // Set the default variant to 'outlined'
+    },
+  },
 });
 
 theme.typography.h2 = {

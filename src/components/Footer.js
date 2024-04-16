@@ -1,21 +1,19 @@
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid"; // Import Grid component
+import Grid from "@mui/material/Grid"; 
+import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
 import Link from "@mui/material/Link";
 export default function Footer() {
   return (
     <Box bgcolor="#D1D9DC">
       <Divider />
-      <Container height={100} sx={{ padding: "20px" }}>
+      <Container height={100} sx={{ padding: "40px 10px 50px" }}>
         <Grid container spacing={2}>
-          {/* Use Grid container */}
           {/* Left column: Information about SYEP */}
           <Grid item xs={12} sm={6}>
             {/* Adjust column width for different screen sizes */}
@@ -35,74 +33,74 @@ export default function Footer() {
             <Typography variant="subtitle1" style={{ fontWeight: "bold" }}>
               Contact Information
             </Typography>
-            <ul style={{ listStyle: "none" }}>
-              <li>
-                <Typography sx={{ color: "#38556A" }}>
-                <PhoneIcon
-                  fontSize="medium"
-                  style={{ verticalAlign: "middle", marginRight: "4px" }}
-                />
-                  (718) 482-5340 | (718) 609-2132
-                </Typography>
-              </li>
-              <li>
-                <Link href="mailto:syep@lagcc.cuny.edu">
-                  <EmailIcon
-                    fontSize="medium"
-                    style={{ verticalAlign: "middle", marginRight: "4px" }}
-                  />
-                  syep@lagcc.cuny.edu
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://www.instagram.com/syep_laguardia/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <Typography variant="body1">LaGuardia Community College</Typography>
+            <Typography variant="body1">
+              Summer Youth Employment Program (SYEP)
+            </Typography>
+            <Typography variant="body1">
+              29-10 Thomson Ave, Long Island City, NY 11101
+            </Typography>
+            <Typography variant="body1">Room C-314</Typography>
+            <Typography variant="body1">
+              Phone: (718) 482-5340 | (718) 609-2132
+            </Typography>
+            <Typography variant="body1">Email: syep@lagcc.cuny.edu</Typography>
+            <Typography variant="subtitle1" style={{ fontWeight: "bold", marginTop:"10px" }}>
+              Follow us
+            </Typography>
+            <Box marginTop={1} display="flex" flexWrap="wrap" gap={2}>
+              <Link
+                href="https://www.instagram.com/syep_laguardia/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  startIcon={<InstagramIcon />}
+                  style={{ marginRight: "8px" }}
                 >
-                  <InstagramIcon
-                    fontSize="medium"
-                    style={{ verticalAlign: "middle", marginRight: "4px" }}
-                  />
-                  Follow us on Instagram
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://www.linkedin.com/company/laguardia-community-college-workforce-educationcenter/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  Instagram
+                </Button>
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/laguardia-community-college-workforce-educationcenter/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  startIcon={<LinkedInIcon />}
+                  style={{ marginRight: "8px" }}
                 >
-                  <LinkedInIcon
-                    fontSize="medium"
-                    style={{ verticalAlign: "middle", marginRight: "4px" }}
-                  />
-                  Follow us on LinkedIn
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://www.facebook.com/syeplaguardia/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  LinkedIn
+                </Button>
+              </Link>
+              <Link
+                href="https://www.facebook.com/syeplaguardia/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  startIcon={<FacebookIcon />}
+                  style={{ marginRight: "8px" }}
                 >
-                  <FacebookIcon
-                    fontSize="medium"
-                    style={{ verticalAlign: "middle", marginRight: "4px" }}
-                  />
-                  Follow us on Facebook
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  SYEP - NYC.gov
-                </Link>
-              </li>
-            </ul>
+                  Facebook
+                </Button>
+              </Link>
+              <Link
+                href="https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outlined" color="primary">
+                  SYEP NYC.gov
+                </Button>
+              </Link>
+            </Box>
           </Grid>
         </Grid>
       </Container>

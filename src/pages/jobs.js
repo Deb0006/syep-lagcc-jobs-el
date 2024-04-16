@@ -1,6 +1,6 @@
 import JobCard from "../components/JobCard";
 import FullScreenDialog from "../components/FullScreenDialog";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Layout from "../components/Layout";
 import Head from "next/head";
 import Grid from "@mui/material/Grid";
@@ -8,8 +8,6 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
 import { Container } from "@mui/material";
 import { google } from "googleapis";
 import Pagination from "@mui/material/Pagination";
