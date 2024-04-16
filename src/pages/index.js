@@ -12,8 +12,11 @@ import styles from "../styles/index.module.css";
 import FullScreenContent from "../components/FullScreenContent";
 import Layout from "../components/Layout";
 import StepSection from "../components/StepSection";
+import { useTheme, useMediaQuery} from "@mui/material";
 
 export default function Home() {
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <Layout>
       <Head>
@@ -55,7 +58,9 @@ export default function Home() {
               }}
               gutterBottom
             >
-              Summer Youth Employment Program - LaGCC
+              {isLargeScreen
+                ? "Summer Youth Employment Program - LaGuardia Community College"
+                : "Summer Youth Employment Program - LaGCC"}
             </Typography>
             <Box>
               <Typography variant="h1" gutterBottom>
@@ -74,6 +79,7 @@ export default function Home() {
                   variant="outlined"
                   color="secondary"
                   style={{
+                    fontSize: "1rem",
                     padding: "10px 30px",
                     width: "100%",
                     borderWidth: "2px", // Make the border thicker
@@ -222,7 +228,7 @@ export default function Home() {
               display: "flex",
               flexDirection: { xs: "column", sm: "row" },
               alignItems: "center",
-              justifyContent: "center",              
+              justifyContent: "center",
             }}
           ></Box>
           <Grid
