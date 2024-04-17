@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <Box bgcolor="#D1D9DC">
       <Divider />
-      <Container height={100} sx={{ padding: "40px 10px 50px" }}>
+      <Container height={100} sx={{ padding: "40px" }}>
         <Grid container spacing={2}>
           {/* Left column: Information about SYEP */}
           <Grid item xs={12} sm={6}>
