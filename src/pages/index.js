@@ -219,8 +219,9 @@ export default function Home() {
           }}
         >
           <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
-            Heres what you need to do to start
+            This is what you need to do to pick your job:
           </Typography>
+
           <Box
             sx={{
               padding: "30px 0",
@@ -267,6 +268,18 @@ export default function Home() {
               description="Wait for a confirmation email from the LAGCC's SYEP Team or check the participant site regularly to see where you were assigned"
             />
           </Grid>
+          <Box
+            sx={{
+              width: "100%",
+              padding: "20px",
+              backgroundColor: "#F2F2F2",
+            }}
+          >
+            <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
+              Make sure you completed Orientation and your 10 tasks on Hats and
+              Ladders
+            </Typography>
+          </Box>
         </Box>
       </Container>
     </Layout>

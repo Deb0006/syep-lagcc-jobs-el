@@ -11,16 +11,36 @@ const StepSection = ({ step, imageSrc, title, description }) => {
       style={{
         minWidth: "250px",
         width: "380px",
-        height: "300px",
+        height: "330px",
         padding: "20px",
         display: "flex",
         justifyContent: "center",
         color: "white",
         borderRadius: "10px",
 
-        background:
-          "linear-gradient(197.37deg, #7450DB -0.38%, rgba(138, 234, 240, 0) 101.89%), linear-gradient(115.93deg, #3E88F6 4.86%, rgba(62, 180, 246,0.33) 38.05%, rgba(62, 235, 246, 0) 74.14%), radial-gradient(56.47% 76.87% at 6.92% 7.55%, rgba(62, 136, 246, 0.7) 0%, rgba(62, 158, 246, 0.182) 52.16%, rgba(62, 246, 246, 0) 100%), linear-gradient(306.53deg, #2EE4E3 19.83%, rgba(46, 228, 227, 0) 97.33%)",
-        backgroundBlendMode: "normal,normal,normal,normal,normal,normal",
+  //       background: `
+  //       /* External Noise Image */
+  //        url('/noise2.jpg'),
+  //       /* Gradient Background */
+  //       linear-gradient(to bottom right, #38556A, #9182C4)
+    
+  // `,
+  //       backgroundBlendMode: "screen",
+  //       backgroundSize: "cover",
+  //       color: "white",
+  //       padding: "20px",
+
+        background: `
+        /* External Noise Image */
+         url('/noise3.jpg'),
+        /* Gradient Background */
+        linear-gradient(to bottom right, #38556A, #9182C4)
+    
+  `,
+        backgroundBlendMode: "multiply",
+        backgroundSize: "cover",
+        color: "white",
+        padding: "20px",
       }}
     >
       <Box
@@ -33,7 +53,7 @@ const StepSection = ({ step, imageSrc, title, description }) => {
         }}
       >
         <Image src={imageSrc} alt={title} width={150} height={200} />
-        <Typography variant="h4" paddingTop={2} fontWeight="bold">
+        <Typography variant="h4" paddingTop={2} paddingBottom={2} fontWeight="bold">
           {step}
         </Typography>
         <Typography variant="p">{description}</Typography>
