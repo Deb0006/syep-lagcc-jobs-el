@@ -73,23 +73,50 @@ export default function Home() {
               </Typography>
             </Box>
 
-            <Box sx={{ padding: "20px 0", width: { xs: "100%", sm: "50%" } }}>
-              <Link href="/jobs">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  style={{
-                    fontSize: "1rem",
-                    padding: "10px 30px",
-                    width: "100%",
-                    borderWidth: "2px", // Make the border thicker
-                    borderRadius: "40px", // Make the border radius more round
-                  }}
+            <Grid container spacing={2}>
+              <Grid item xs={12} lg={6}>
+                <Link href="/jobs">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                      fontSize: "1rem",
+                      padding: "10px 30px",
+                      width: "100%",
+                      borderWidth: "2px",
+                      borderRadius: "20px",
+                      boxShadow: "none",
+                      "&:hover": {
+                        backgroundColor: "#386383", // Slightly lighter shade of the primary color
+                        boxShadow: "none",
+                      },
+                    }}
+                  >
+                    Search Jobs
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item xs={12} lg={6}>
+                <Link
+                  href="https://form.jotform.com/240854686459169"
+                  target="_blank"
                 >
-                  Search Jobs
-                </Button>
-              </Link>
-            </Box>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    sx={{
+                      fontSize: "1rem",
+                      padding: "10px 30px",
+                      width: "100%",
+                      borderWidth: "1px",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    Application Form
+                  </Button>
+                </Link>
+              </Grid>
+            </Grid>
           </Grid>
           {/* //section 2 right*/}
           <Grid
