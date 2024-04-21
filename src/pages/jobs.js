@@ -255,7 +255,7 @@ const Jobs = ({ parsedData }) => {
   return (
     <Layout>
       <Head>
-        <title>Jobs Page</title>
+        <title>SYEP Jobs Page</title>
       </Head>
       <Container sx={{ maxWidth: "lg", margin: "0 auto" }}>
         <Box

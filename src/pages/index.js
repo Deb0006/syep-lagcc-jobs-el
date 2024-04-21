@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Home Page</title>
+        <title>SYEP Home Page</title>
       </Head>
       {/* Main container 1 */}
       <Container
@@ -87,7 +87,7 @@ export default function Home() {
                       borderRadius: "20px",
                       boxShadow: "none",
                       "&:hover": {
-                        backgroundColor: "#386383", // Slightly lighter shade of the primary color
+                        backgroundColor: "#386383", 
                         boxShadow: "none",
                       },
                     }}
