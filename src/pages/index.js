@@ -219,7 +219,7 @@ export default function Home() {
           }}
         >
           <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
-            This is what you need to do to pick your job:
+            This is what you need to do to select your summer job:
           </Typography>
 
           <Box
