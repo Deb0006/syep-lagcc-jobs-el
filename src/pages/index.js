@@ -118,7 +118,7 @@ export default function Home() {
               height={150}
             />
             <Image
-              src="/Education-blocks.png"
+              src="/Globe.png"
               className={styles.responsiveImage}
               alt="Education image"
               width={150}
@@ -160,7 +160,7 @@ export default function Home() {
               height={150}
             />
             <Image
-              src="/Globe.png"
+              src="/Education-blocks.png"
               className={styles.responsiveImage}
               alt="Globe image"
               width={150}
