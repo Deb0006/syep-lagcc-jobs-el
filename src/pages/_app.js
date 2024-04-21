@@ -53,8 +53,17 @@ function App({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link rel="icon" href="/LOGOwec.SVG" />
       </Head>
-      <DialogContext.Provider value={{ open, handleOpen, handleClose, countSavedJobs, updateBadgeCount }}>
+      <DialogContext.Provider
+        value={{
+          open,
+          handleOpen,
+          handleClose,
+          countSavedJobs,
+          updateBadgeCount,
+        }}
+      >
         <Component {...pageProps} />
       </DialogContext.Provider>
     </ThemeProvider>
