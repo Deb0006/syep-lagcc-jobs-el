@@ -18,18 +18,6 @@ const StepSection = ({ step, imageSrc, title, description }) => {
         color: "white",
         borderRadius: "10px",
 
-  //       background: `
-  //       /* External Noise Image */
-  //        url('/noise2.jpg'),
-  //       /* Gradient Background */
-  //       linear-gradient(to bottom right, #38556A, #9182C4)
-    
-  // `,
-  //       backgroundBlendMode: "screen",
-  //       backgroundSize: "cover",
-  //       color: "white",
-  //       padding: "20px",
-
         background: `
         /* External Noise Image */
          url('/noise3.jpg'),
