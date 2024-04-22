@@ -7,7 +7,7 @@ function FullScreenContent() {
       sx={{
         margin: "0 auto",
         width: "100%",
-        height: "250px",
+        height: "260px",
         overflowX: "auto",
         minWidth: "240px",
         maxWidth:"1500px",
