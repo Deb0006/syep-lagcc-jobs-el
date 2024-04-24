@@ -49,6 +49,12 @@ function App({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Head>
+        <title>SYEP - LaGuardia Community College</title>
+        <meta
+          name="description"
+          content="Summer Youth Employment Program (SYEP) job listings at LaGuardia Community College for Enrolled Participants."
+        />
+        <link rel="canonical" href="https://syeplaguardia.vercel.app/" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
