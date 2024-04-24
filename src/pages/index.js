@@ -112,7 +112,7 @@ export default function Home() {
                       borderRadius: "10px",
                     }}
                   >
-                    Application Form
+                    Placement Form
                   </Button>
                 </Link>
               </Grid>
@@ -126,7 +126,6 @@ export default function Home() {
             container
             justifyContent={{ xs: "flex-start", sm: "flex-end" }}
             sx={{
-              // border: "2px solid blue",
               padding: "20px 0",
               display: { xs: "grid", sm: "flex" },
               flexWrap: "wrap",

@@ -97,7 +97,7 @@ export default function FullScreenDialog(props) {
             </Typography>
             <Button
               autoFocus
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdXLpAQdhGv1UVSkHL98OVDdJM-Z7rad9TE88ouwcCqOMNzFA/viewform?usp=sf_link"
+              href="https://form.jotform.com/240854686459169"
               target="_blank"
               sx={{ color: "white" }}
             >
@@ -112,17 +112,19 @@ export default function FullScreenDialog(props) {
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={12} md={8}>
               <Typography variant="h6">
-                Your job selection is NOT complete until you fill out the SYEP
-                Google Form Application.
+                Your job selection is NOT complete until you{" "}
+                <strong>fill out the Placement Form</strong> with your
+                information.
               </Typography>
+
               <Typography variant="h6" paddingTop={2}>
-                If you are ready select your 3 job choices, click the
-                Application Form Button
+                If you are ready select your 3 job choices, click the Placement
+                Form Button
               </Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Button
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdXLpAQdhGv1UVSkHL98OVDdJM-Z7rad9TE88ouwcCqOMNzFA/viewform?usp=sf_link"
+                href="https://form.jotform.com/240854686459169"
                 target="_blank"
                 variant="outlined"
                 color="warning"
@@ -134,7 +136,7 @@ export default function FullScreenDialog(props) {
                   marginLeft: { sm: "auto", md: "auto" },
                 }}
               >
-                Application Form
+                Placement Form
               </Button>
             </Grid>
           </Grid>
