@@ -11,7 +11,6 @@ import Link from "@mui/material/Link";
 export default function Footer() {
   return (
     <Box bgcolor="#D1D9DC">
-      <Divider />
       <Container height={100} sx={{ padding: "40px" }}>
         <Grid container spacing={2}>
           {/* Left column: Information about SYEP */}
@@ -26,6 +25,21 @@ export default function Footer() {
               14 and 24 with career exploration opportunities and paid work
               experience each summer.
             </Typography>
+            <Box
+              sx={{
+                width: { xs: "55%", md: "20%", lg: "15%" },
+                paddingTop: "2rem"
+              }}
+            >
+              <img
+                src="LOGO.png"
+                alt="SYEP, WEC and LaGuardia Logos"
+                style={{
+                  height: "3em",
+                  
+                }}
+              />
+            </Box>
           </Grid>
           {/* Right column: Links */}
           <Grid item xs={12} sm={6}>
@@ -45,7 +59,10 @@ export default function Footer() {
               Phone: (718) 482-5340 | (718) 609-2132
             </Typography>
             <Typography variant="body1">Email: syep@lagcc.cuny.edu</Typography>
-            <Typography variant="subtitle1" style={{ fontWeight: "bold", marginTop:"10px" }}>
+            <Typography
+              variant="subtitle1"
+              style={{ fontWeight: "bold", marginTop: "10px" }}
+            >
               Follow us
             </Typography>
             <Box marginTop={1} display="flex" flexWrap="wrap" gap={2}>
