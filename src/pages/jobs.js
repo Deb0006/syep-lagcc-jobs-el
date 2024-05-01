@@ -8,9 +8,11 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
+import Chip from "@mui/material/Chip";
 import { Container } from "@mui/material";
 import { google } from "googleapis";
 import Pagination from "@mui/material/Pagination";
+import CloseIcon from "@mui/icons-material/Close";
 
 export async function getStaticProps() {
   const credentials = {
@@ -252,17 +254,52 @@ const Jobs = ({ parsedData }) => {
     setPage(value);
   };
 
+  const popularCompanies = [
+    "Best Buy",
+    "MTA",
+    "LaGCC",
+    "Lyft HQ",
+    "Walgreens", "NYPD",
+    "NYC Pet Services",
+    "NYC Mayor's Office",
+    "Weil Cornell Medicine",
+    "Dept. of Design and Contruction",
+  ];
+  const handleItemClick = (item) => {
+    setSearchTerm(item.toLowerCase()); // Convert item to lower case before setting the search term
+  };
+  const handleClearFilters = () => {
+    setFilters({
+      industry: "",
+      city: "",
+      zipcode: "",
+      siteImplementation: "",
+    });
+    setSearchTerm("");
+  };
+
   return (
     <Layout>
       <Head>
         <title>SYEP Jobs Page</title>
       </Head>
-      <Container sx={{ maxWidth: "lg", margin: "0 auto" }}>
-        <Box
-          display="flex"
-          flexDirection="column"
-          rowGap={2}
-          style={{ margin: "0 auto", padding: "20px 0" }}
+      <Box
+        sx={{
+          backgroundColor: "#f8f8f8",
+          // backgroundImage:
+          //   "linear-gradient(to right, #e6e6e6 1px, transparent 1px), linear-gradient(to bottom, #e6e6e6 1px, transparent 1px)",
+          // backgroundSize: "20px",
+        }}
+      >
+        <Container
+          sx={{
+            maxWidth: "lg",
+            margin: "0 auto",
+            padding: "2.5rem 1rem",
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "1rem",
+          }}
         >
           <Typography variant="h4" gutterBottom>
             Career-Based Jobs and Internships
@@ -271,6 +308,7 @@ const Jobs = ({ parsedData }) => {
             Start by looking for jobs that match your interests or your
             location:
           </Typography>
+
           <Grid container style={{ gap: "8px" }}>
             <TextField
               label="Worksite Name or Job Title"
@@ -280,12 +318,19 @@ const Jobs = ({ parsedData }) => {
               style={{ width: "200px" }}
             />
             <TextField
+              label="ZipCode"
+              id="ZipCode-field"
+              value={filters.zipcode}
+              onChange={(e) => handleFilterChange("zipcode", e.target.value)}
+              style={{ width: "100px" }}
+            />
+            <TextField
               id="industry-field"
               select
               label="Industry"
               value={filters.industry}
               onChange={(e) => handleFilterChange("industry", e.target.value)}
-              style={{ width: "200px" }}
+              style={{ width: "130px" }}
             >
               <MenuItem value="">All</MenuItem>
               {industries.map((industry) => (
@@ -301,7 +346,7 @@ const Jobs = ({ parsedData }) => {
               label="City"
               value={filters.city}
               onChange={(e) => handleFilterChange("city", e.target.value)}
-              style={{ width: "200px" }}
+              style={{ width: "130px" }}
             >
               <MenuItem value="">All</MenuItem>
               <MenuItem value="Queens">Queens</MenuItem>
@@ -311,13 +356,6 @@ const Jobs = ({ parsedData }) => {
             </TextField>
 
             <TextField
-              label="ZipCode"
-              id="ZipCode-field"
-              value={filters.zipcode}
-              onChange={(e) => handleFilterChange("zipcode", e.target.value)}
-              style={{ width: "100px" }}
-            />
-            <TextField
               id="site-field"
               select
               label="Site Implementation"
@@ -325,34 +363,72 @@ const Jobs = ({ parsedData }) => {
               onChange={(e) =>
                 handleFilterChange("siteImplementation", e.target.value)
               }
-              style={{ width: "200px" }}
+              style={{ width: "190px" }}
             >
               <MenuItem value="">All</MenuItem>
               <MenuItem value="In-Person">In-Person</MenuItem>
               <MenuItem value="Hybrid">Hybrid</MenuItem>
               <MenuItem value="Virtually">Virtually</MenuItem>
             </TextField>
+            <Chip
+              label="Reset Filters"
+              color="primary"
+              variant="outlined"
+              icon={<CloseIcon />}
+              onClick={handleClearFilters}
+              clickable
+              style={{ width: "8rem", height: "3.5rem" }}
+            />
           </Grid>
 
-          <Grid
-            container
-            spacing={{ xs: 0, sm: 0, md: 1 }}
-            rowGap={1}
-            paddingRight={{ xs: 0, sm: 0, md: 1 }}
-            style={{
-              margin: "0 auto",
+          <Typography variant="h6" gutterBottom>
+            Popular Companies
+          </Typography>
+          <Box
+            display="flex"
+            flexWrap="nowrap" // Disable wrapping to keep everything in one line
+            gap={1}
+            overflow="auto" // Allows scrolling
+            sx={{
+              width: "100%", // Ensure the box takes full container width
+              "&::-webkit-scrollbar": {
+                display: "none", // Optionally hide the scrollbar for cleaner design
+              },
             }}
           >
-            {worksiteCardComponent}
-          </Grid>
+            {popularCompanies.map((company) => (
+              <Chip
+                key={company}
+                label={company}
+                onClick={() => setSearchTerm(company.toLowerCase())}
+                clickable
+              />
+            ))}
+          </Box>
+        </Container>
+      </Box>
+      <Container sx={{ maxWidth: "lg", margin: "0 auto" }}>
+        <Grid
+          container
+          spacing={{ xs: 0, sm: 0, md: 1 }}
+          rowGap={1}
+          paddingRight={{ xs: 0, sm: 0, md: 1 }}
+          style={{
+            margin: "0 auto",
+          }}
+        >
+          {worksiteCardComponent}
+        </Grid>
+        <Box display="flex" alignItems="center" padding={"1rem 0"} gap={1}>
+          <Typography style={{ fontWeight: "bold" }}>Page:{page}</Typography>
           <Pagination
             variant="outlined"
-            color="primary"
+            color="info"
             count={Math.ceil(filteredJobs.length / rowsPerPage)}
             page={page}
             onChange={handlePageChange}
-          />
-        </Box>
+            />
+          </Box>
         <FullScreenDialog allJobs={filteredJobs} />
       </Container>
     </Layout>
