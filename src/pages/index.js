@@ -272,7 +272,7 @@ export default function Home() {
               step="Step 1"
               imageSrc="/Zoom2.png"
               title="Investigate image"
-              description='Click on the "Search Job" button and browse the available jobs. Pick 3 jobs you like and save them'
+              description='Click on the "Search Job" button and browse the available jobs. Pick 2 jobs you like and save them'
             />
             <StepSection
               step="Step 2"
