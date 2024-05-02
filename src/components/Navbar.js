@@ -149,7 +149,7 @@ function ResponsiveAppBar() {
                   src="LOGO.png"
                   alt="Logo"
                   style={{
-                    height: "2em", // Adjust the height to match Typography
+                    height: "1.5em", // Adjust the height to match Typography
                     verticalAlign: "middle", // Align the image vertically with text
                   }}
                 />
