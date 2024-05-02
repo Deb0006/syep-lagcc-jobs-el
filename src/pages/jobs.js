@@ -13,6 +13,7 @@ import { Container } from "@mui/material";
 import { google } from "googleapis";
 import Pagination from "@mui/material/Pagination";
 import CloseIcon from "@mui/icons-material/Close";
+import Button from "@mui/material/Button";
 
 export async function getStaticProps() {
   const credentials = {
@@ -256,14 +257,11 @@ const Jobs = ({ parsedData }) => {
 
   const popularCompanies = [
     "Best Buy",
-    "MTA",
-    "LaGCC",
-    "Lyft HQ",
+    // "Lyft HQ",
     "Walgreens", "NYPD",
     "NYC Pet Services",
-    "NYC Mayor's Office",
+    "LaGuardia Workforce Education Center",
     "Weil Cornell Medicine",
-    "Dept. of Design and Contruction",
   ];
   const handleItemClick = (item) => {
     setSearchTerm(item.toLowerCase()); // Convert item to lower case before setting the search term
@@ -286,9 +284,6 @@ const Jobs = ({ parsedData }) => {
       <Box
         sx={{
           backgroundColor: "#f8f8f8",
-          // backgroundImage:
-          //   "linear-gradient(to right, #e6e6e6 1px, transparent 1px), linear-gradient(to bottom, #e6e6e6 1px, transparent 1px)",
-          // backgroundSize: "20px",
         }}
       >
         <Container
@@ -305,7 +300,7 @@ const Jobs = ({ parsedData }) => {
             Career-Based Jobs and Internships
           </Typography>
           <Typography variant="p" gutterBottom>
-            Start by looking for jobs that match your interests or your
+            Start by looking for jobs that match your interests and your
             location:
           </Typography>
 
@@ -380,10 +375,25 @@ const Jobs = ({ parsedData }) => {
               style={{ width: "8rem", height: "3.5rem" }}
             />
           </Grid>
-
-          <Typography variant="h6" gutterBottom>
-            Popular Companies
-          </Typography>
+          <Button
+            href="https://form.jotform.com/240854686459169"
+            target="_blank"
+            variant="contained"
+            color="secondary"
+            style={{
+              width: "10rem",
+              boxShadow: "none",
+              borderRadius: "10px", // Make the border radius more round
+              marginLeft: { sm: "auto", md: "auto" },
+            }}
+          >
+            Placement Form
+          </Button>
+          <Box marginBottom={-1}>
+            <Typography variant="h6" gutterBottom>
+              Popular Companies
+            </Typography>
+          </Box>
           <Box
             display="flex"
             flexWrap="nowrap" // Disable wrapping to keep everything in one line
@@ -427,8 +437,8 @@ const Jobs = ({ parsedData }) => {
             count={Math.ceil(filteredJobs.length / rowsPerPage)}
             page={page}
             onChange={handlePageChange}
-            />
-          </Box>
+          />
+        </Box>
         <FullScreenDialog allJobs={filteredJobs} />
       </Container>
     </Layout>
