@@ -227,29 +227,38 @@ const Jobs = ({ parsedData }) => {
   const currentPageData = filteredJobs.slice(offset, offset + rowsPerPage);
   
   // NEW COMPONENT
-  const worksiteCardComponent = currentPageData.map((job, jIndex) => {
-    return (
-      // For each job, create a JobCard component
-      <Grid item xs={12} sm={12} md={6} key={jIndex}>
-        <JobCard
-          key={job.WorksiteID + "*" + jIndex} // Unique key
-          id={job.jobID} // Unique job ID
-          title={job.JobTitle}
-          name={job.WorksiteName}
-          address={job.Street}
-          city={job.City}
-          state={job.State}
-          zipcode={job.ZipCode}
-          industry={job.Industry}
-          duties={job.Duties}
-          requirements={job.Requirements}
-          siteImplementation={job.SiteImplementation}
-          schedule={job.Schedule}
-          participantsRequested={job.ParticipantsRequested}
-        />
-      </Grid>
-    );
-  });
+ const worksiteCardComponent =
+   currentPageData.length > 0 ? (
+     currentPageData.map((job, jIndex) => (
+       <Grid item xs={12} sm={12} md={6} key={jIndex}>
+         <JobCard
+           key={job.WorksiteID + "*" + jIndex} // Unique key
+           id={job.jobID} // Unique job ID
+           title={job.JobTitle}
+           name={job.WorksiteName}
+           address={job.Street}
+           city={job.City}
+           state={job.State}
+           zipcode={job.ZipCode}
+           industry={job.Industry}
+           duties={job.Duties}
+           requirements={job.Requirements}
+           siteImplementation={job.SiteImplementation}
+           schedule={job.Schedule}
+           participantsRequested={job.ParticipantsRequested}
+         />
+       </Grid>
+     ))
+   ) : (
+     <Grid item xs={12}>
+       <Typography
+         variant="h6"
+         style={{ textAlign: "center", marginTop: "20px" }}
+       >
+         No jobs found. Try a different search, or click Reset Filters.
+       </Typography>
+     </Grid>
+   );
 
   const handlePageChange = (event, value) => {
     setPage(value);
