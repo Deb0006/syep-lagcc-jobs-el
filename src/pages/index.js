@@ -278,7 +278,7 @@ export default function Home() {
               step="Step 2"
               imageSrc="/Map.png"
               title="Parents image"
-              description="Discuss your 3 potential jobs with your parent or guardian. Use Google Maps to map travel to your selections. Your travel time should not be over 45 minutes!"
+              description="Discuss your 2 potential jobs with your parent or guardian. Use Google Maps to map travel to your selections. Your travel time should not be over 45 minutes!"
             />
             <StepSection
               step="Step 3"
