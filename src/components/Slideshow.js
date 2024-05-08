@@ -29,24 +29,7 @@ export default function Slideshow() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  // background: "F1FBFF",
-                  // backgroundImage: "radial-gradient( circle farthest-corner at 0.2% 0.5%,  rgba(68,36,164,1) 3.7%, rgba(84,212,228,1) 92.7% )",
-                  // background-image: radial-gradient( circle farthest-corner at 0.2% 0.5%,  rgba(68,36,164,1) 3.7%, rgba(84,212,228,1) 92.7% ),
-                  // background: "linear-gradient(131deg, #95B4F5 0%, #E5A2D2 96.8%)",
-
-                  // background: "#D5C7E8",
-
-                  // backgroundImage: 'linear-gradient(to right top, #051937, #34265b, #702872, #b01d77, #eb1267)',
-                  // background: "rgba(255, 255, 255, 0.2)",
-                  // borderRadius: "10px",
-                  // backdropFilter: "blur(1.3px)",
-                  // border: "2px solid rgba(255, 255, 255, 0.07)",
-                  // boxShadow:" 0 4px 30px rgba(0, 0, 0, 0.1)",
                   
-                  // background: 'hsla(0, 0%, 69%, 1)',
-
-                  // background: 'linear-gradient(90deg, hsla(0, 0%, 69%, 1) 0%, hsla(206, 67%, 75%, 1) 100%)',
-
                   filter: 'progid: DXImageTransform.Microsoft.gradient( startColorstr="#AFAFAF", endColorstr="#96c6ea", GradientType=1 )',
                   background: 'rgba( 255, 255, 255, 0.05 )',
                   backdropFilter: 'blur( 1.0px )',

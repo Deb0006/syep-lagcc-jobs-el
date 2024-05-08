@@ -182,7 +182,6 @@ function ResponsiveAppBar() {
                   </Link>
                 ))}
               </Box>
-
               <Box
                 sx={{
                   color: "action.active",
@@ -201,7 +200,7 @@ function ResponsiveAppBar() {
                       Saved Jobs
                     </Button>
                   </Badge>
-                
+
               </Box>
             </Toolbar>
           </Container>

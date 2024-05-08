@@ -2,20 +2,15 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import ListItemButton from "@mui/material/ListItemButton";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import Link from "next/link";
 import Grid from "@mui/material/Grid";
 import { useContext } from "react";
 import { DialogContext } from "../pages/_app"; 
-import { Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import SavedJobCard from "./SavedJobCard";
 
@@ -131,8 +126,8 @@ export default function FullScreenDialog(props) {
                 style={{
                   padding: "10px 30px",
                   width: "100%",
-                  borderWidth: "3px", // Make the border thicker
-                  borderRadius: "10px", // Make the border radius more round
+                  borderWidth: "3px", 
+                  borderRadius: "10px",
                   marginLeft: { sm: "auto", md: "auto" },
                 }}
               >

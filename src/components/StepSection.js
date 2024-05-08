@@ -1,4 +1,4 @@
-import { Grid, Typography, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import Image from "next/image";
 
 import Paper from "@mui/material/Paper";

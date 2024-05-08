@@ -1,6 +1,5 @@
 import JobCard from "../components/JobCard";
 import FullScreenDialog from "../components/FullScreenDialog";
-import { useState } from "react";
 import Layout from "../components/Layout";
 import Head from "next/head";
 import Grid from "@mui/material/Grid";
@@ -9,11 +8,12 @@ import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
-import { Container } from "@mui/material";
-import { google } from "googleapis";
 import Pagination from "@mui/material/Pagination";
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "@mui/material/Button";
+import { Container } from "@mui/material";
+import { google } from "googleapis";
+import { useState } from "react";
 
 export async function getStaticProps() {
   const credentials = {
