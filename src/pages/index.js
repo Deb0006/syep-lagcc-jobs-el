@@ -1,4 +1,5 @@
 "use client";
+import "../styles/globals.css";
 import Link from "next/link";
 import { Container } from "@mui/material";
 import Head from "next/head";
@@ -7,12 +8,12 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Image from "next/image";
-import "../styles/globals.css";
 import styles from "../styles/index.module.css";
 import FullScreenContent from "../components/FullScreenContent";
 import Layout from "../components/Layout";
 import StepSection from "../components/StepSection";
 import { useTheme, useMediaQuery} from "@mui/material";
+import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 
 export default function Home() {
   const theme = useTheme();
@@ -87,7 +88,7 @@ export default function Home() {
                       borderRadius: "20px",
                       boxShadow: "none",
                       "&:hover": {
-                        backgroundColor: "#386383", 
+                        backgroundColor: "#386383",
                         boxShadow: "none",
                       },
                     }}
@@ -272,19 +273,29 @@ export default function Home() {
               step="Step 1"
               imageSrc="/Zoom2.png"
               title="Investigate image"
-              description='Click on the "Search Job" button and browse the available jobs. Pick 2 jobs you like and save them'
+              description='Click on the "Search Job" button and browse the available jobs based on your preferred category. Pick 2 jobs you like and save them'
             />
             <StepSection
               step="Step 2"
               imageSrc="/Map.png"
               title="Parents image"
-              description="Discuss your 2 potential jobs with your parent or guardian. Use Google Maps to map travel to your selections. Your travel time should not be over 45 minutes!"
+              description={
+                <ul style={{ marginTop:"0", paddingLeft: '18px', width: "320px" }}>
+                  <li>Read job descriptions and requirements</li>
+                  <li>Discuss your two job options with your guardian</li>
+                  <li>
+                    Use Google Maps to ensure commuting doesn't exceed 45
+                    minutes.
+                  </li>
+                  <li>Ensure the work schedule and Cohort matches your availability</li>
+                </ul>
+              }
             />
             <StepSection
               step="Step 3"
               imageSrc="/List2.png"
               title="Task List image"
-              description="Fill out the form with your information and your top 3 job preferences. Make sure you submit it before the deadline"
+              description="Fill out the form with your information and your top 2 job preferences. Make sure you submit it before the deadline"
             />
 
             <StepSection
@@ -297,13 +308,17 @@ export default function Home() {
           <Box
             sx={{
               width: "100%",
-              padding: "20px",
+              padding: "35px",
               backgroundColor: "#F2F2F2",
             }}
           >
-            <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
-              Make sure you completed Orientation and your 10 tasks on Hats and
-              Ladders
+            <InfoRoundedIcon color="error" sx={{ fontSize: "3rem" }} />
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
+              Important
+            </Typography>
+            <Typography variant="h5" gutterBottom>
+              Make sure you completed the Virtual Orientation, Sexual Harassment
+              Prevention Training, and your 10 tasks on Hats and Ladders
             </Typography>
           </Box>
         </Box>

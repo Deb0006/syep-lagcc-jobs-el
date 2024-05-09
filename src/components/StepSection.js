@@ -11,7 +11,7 @@ const StepSection = ({ step, imageSrc, title, description }) => {
       style={{
         minWidth: "250px",
         width: "380px",
-        height: "330px",
+        height: "380px",
         padding: "20px",
         display: "flex",
         justifyContent: "center",
@@ -40,8 +40,13 @@ const StepSection = ({ step, imageSrc, title, description }) => {
           alignItems: "center",
         }}
       >
-        <Image src={imageSrc} alt={title} width={150} height={200} />
-        <Typography variant="h4" paddingTop={2} paddingBottom={2} fontWeight="bold">
+        <Image src={imageSrc} alt={title} width={140} height={190} />
+        <Typography
+          variant="h4"
+          paddingTop={1}
+          paddingBottom={2}
+          fontWeight="bold"
+        >
           {step}
         </Typography>
         <Typography variant="p">{description}</Typography>
