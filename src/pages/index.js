@@ -36,7 +36,7 @@ export default function Home() {
         <Grid
           container
           sx={{
-            height: { xs: "auto", sm: "75vh", md: "80vh" },
+            height: { xs: "auto", sm: "75vh", md: "80vh", lg: "85vh" },
             padding: "30px 0",
           }}
         >
@@ -133,7 +133,7 @@ export default function Home() {
               gridTemplateColumns: { xs: "repeat(3, 1fr)", sm: "auto" },
               gridTemplateRows: { xs: "auto", sm: "auto" },
               gridRowGap: 0,
-              height: { xs: "45%", sm: "45" },
+              height: { xs: "45%", sm: "45%" },
               width: { xs: "auto", sm: "45%" },
             }}
           >
@@ -280,14 +280,23 @@ export default function Home() {
               imageSrc="/Map.png"
               title="Parents image"
               description={
-                <ul style={{ marginTop:"0", paddingLeft: '18px', width: "320px" }}>
+                <ul
+                  style={{
+                    marginTop: "0",
+                    paddingLeft: "18px",
+                    width: "320px",
+                  }}
+                >
                   <li>Read job descriptions and requirements</li>
                   <li>Discuss your 2 job options with your parent/guardian</li>
                   <li>
                     Use Google Maps to ensure commuting does not exceed 45
                     minutes
                   </li>
-                  <li>Ensure the work schedule and Cohort matches your availability</li>
+                  <li>
+                    Ensure the work schedule and Cohort matches your
+                    availability
+                  </li>
                 </ul>
               }
             />
