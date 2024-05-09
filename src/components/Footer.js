@@ -9,7 +9,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import Link from "@mui/material/Link";
 export default function Footer() {
   return (
-    <Box bgcolor="#D1D9DC">
+    <Box sx={{ backgroundColor: "#D1D9DC" }}>
       <Container height={100} sx={{ padding: "40px" }}>
         <Grid container spacing={2}>
           {/* Left column: Information about SYEP */}
