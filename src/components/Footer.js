@@ -28,7 +28,7 @@ export default function Footer() {
             <Box
               sx={{
                 width: { xs: "55%", md: "20%", lg: "15%" },
-                paddingTop: "2rem"
+                paddingTop: "2rem",
               }}
             >
               <img
@@ -36,7 +36,6 @@ export default function Footer() {
                 alt="SYEP, WEC and LaGuardia Logos"
                 style={{
                   height: "3em",
-                  
                 }}
               />
             </Box>
@@ -52,7 +51,7 @@ export default function Footer() {
               Summer Youth Employment Program (SYEP)
             </Typography>
             <Typography variant="body1">
-              29-10 Thomson Ave, Long Island City, NY 11101
+              31-10 Thomson Ave, Long Island City, NY 11101
             </Typography>
             <Typography variant="body1">Room C-314</Typography>
             <Typography variant="body1">
