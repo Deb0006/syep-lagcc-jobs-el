@@ -73,51 +73,28 @@ export default function Home() {
                 wait, start your job search now!
               </Typography>
             </Box>
-
-            <Grid container spacing={2}>
-              <Grid item xs={12} lg={6}>
-                <Link href="/jobs">
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                      fontSize: "1rem",
-                      padding: "10px 30px",
-                      width: "100%",
-                      borderWidth: "2px",
-                      borderRadius: "20px",
+            <Box paddingTop={2}>
+              <Link href="#section-id">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: "1rem",
+                    padding: "10px 30px",
+                    width: "50%",
+                    borderWidth: "2px",
+                    borderRadius: "20px",
+                    boxShadow: "none",
+                    "&:hover": {
+                      backgroundColor: "#386383",
                       boxShadow: "none",
-                      "&:hover": {
-                        backgroundColor: "#386383",
-                        boxShadow: "none",
-                      },
-                    }}
-                  >
-                    Search Jobs
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <Link
-                  href="https://form.jotform.com/240854686459169"
-                  target="_blank"
+                    },
+                  }}
                 >
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    sx={{
-                      fontSize: "1rem",
-                      padding: "10px 30px",
-                      width: "100%",
-                      borderWidth: "1px",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    Placement Form
-                  </Button>
-                </Link>
-              </Grid>
-            </Grid>
+                  Instructions
+                </Button>
+              </Link>
+            </Box>
           </Grid>
           {/* //section 2 right*/}
           <Grid
@@ -245,7 +222,15 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
+          <Typography
+            id="section-id"
+            variant="h4"
+            gutterBottom
+            sx={{ fontWeight: "bold" }}
+          >
+            Instructions
+          </Typography>
+          <Typography variant="h5">
             This is what you need to do to select your summer job:
           </Typography>
 
@@ -330,6 +315,50 @@ export default function Home() {
               Prevention Training, and your 10 tasks on Hats and Ladders
             </Typography>
           </Box>
+          <Grid container padding={3} spacing={2}>
+            <Grid item xs={12} lg={6}>
+              <Link href="/jobs">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    fontSize: "1rem",
+                    padding: "10px 30px",
+                    width: "100%",
+                    borderWidth: "2px",
+                    borderRadius: "20px",
+                    boxShadow: "none",
+                    "&:hover": {
+                      backgroundColor: "#386383",
+                      boxShadow: "none",
+                    },
+                  }}
+                >
+                  Search Jobs
+                </Button>
+              </Link>
+            </Grid>
+            <Grid item xs={12} lg={6}>
+              <Link
+                href="https://form.jotform.com/240854686459169"
+                target="_blank"
+              >
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  sx={{
+                    fontSize: "1rem",
+                    padding: "10px 30px",
+                    width: "100%",
+                    borderWidth: "1px",
+                    borderRadius: "10px",
+                  }}
+                >
+                  Placement Form
+                </Button>
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </Layout>
