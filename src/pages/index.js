@@ -282,10 +282,10 @@ export default function Home() {
               description={
                 <ul style={{ marginTop:"0", paddingLeft: '18px', width: "320px" }}>
                   <li>Read job descriptions and requirements</li>
-                  <li>Discuss your two job options with your guardian</li>
+                  <li>Discuss your 2 job options with your parent/guardian</li>
                   <li>
                     Use Google Maps to ensure commuting does not exceed 45
-                    minutes.
+                    minutes
                   </li>
                   <li>Ensure the work schedule and Cohort matches your availability</li>
                 </ul>
@@ -295,7 +295,7 @@ export default function Home() {
               step="Step 3"
               imageSrc="/List2.png"
               title="Task List image"
-              description="Fill out the form with your information and your top 2 job preferences. Make sure you submit it before the deadline"
+              description="Fill out the Placement Form with your information and your top 2 job preferences. Make sure you submit it before the deadline"
             />
 
             <StepSection
