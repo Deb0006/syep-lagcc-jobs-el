@@ -64,26 +64,19 @@ export default function Footer() {
               Follow us
             </Typography>
             <Box marginTop={1} display="flex" flexWrap="wrap" gap={2}>
-              <Link
+              <Button
                 href="https://www.instagram.com/syep_laguardia/"
                 target="_blank"
-                rel="noopener noreferrer"
+                variant="outlined"
+                color="primary"
+                startIcon={<InstagramIcon />}
+                style={{ marginRight: "8px" }}
               >
+                Instagram
+              </Button>
                 <Button
-                  variant="outlined"
-                  color="primary"
-                  startIcon={<InstagramIcon />}
-                  style={{ marginRight: "8px" }}
-                >
-                  Instagram
-                </Button>
-              </Link>
-              <Link
-                href="https://www.linkedin.com/company/laguardia-community-college-workforce-educationcenter/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
+                  href="https://www.linkedin.com/company/laguardia-community-college-workforce-educationcenter/"
+                  target="_blank"
                   variant="outlined"
                   color="primary"
                   startIcon={<LinkedInIcon />}
@@ -91,13 +84,9 @@ export default function Footer() {
                 >
                   LinkedIn
                 </Button>
-              </Link>
-              <Link
-                href="https://www.facebook.com/syeplaguardia/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
                 <Button
+                  href="https://www.facebook.com/syeplaguardia/"
+                  target="_blank"
                   variant="outlined"
                   color="primary"
                   startIcon={<FacebookIcon />}
@@ -105,16 +94,14 @@ export default function Footer() {
                 >
                   Facebook
                 </Button>
-              </Link>
-              <Link
-                href="https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="outlined" color="primary">
+                <Button
+                  href="https://www.nyc.gov/site/dycd/services/jobs-internships/summer-youth-employment-program-syep.page"
+                  target="_blank"
+                  variant="outlined"
+                  color="primary"
+                >
                   SYEP NYC.gov
                 </Button>
-              </Link>
             </Box>
           </Grid>
         </Grid>
