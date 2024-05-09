@@ -74,7 +74,7 @@ export default function Home() {
               </Typography>
             </Box>
             <Box paddingTop={2}>
-              <Link href="#section-id">
+              <Link href="#instructions">
                 <Button
                   variant="contained"
                   color="primary"
@@ -223,7 +223,7 @@ export default function Home() {
           }}
         >
           <Typography
-            id="section-id"
+            id="instructions"
             variant="h4"
             gutterBottom
             sx={{ fontWeight: "bold" }}
