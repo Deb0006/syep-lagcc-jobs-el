@@ -284,7 +284,7 @@ export default function Home() {
                   <li>Read job descriptions and requirements</li>
                   <li>Discuss your two job options with your guardian</li>
                   <li>
-                    Use Google Maps to ensure commuting doesn't exceed 45
+                    Use Google Maps to ensure commuting does not exceed 45
                     minutes.
                   </li>
                   <li>Ensure the work schedule and Cohort matches your availability</li>
