@@ -92,7 +92,7 @@ export default function FullScreenDialog(props) {
             </Typography>
             <Button
               autoFocus
-              href="https://form.jotform.com/240854686459169"
+              href="https://www.jotform.com/build/241264737105150"
               target="_blank"
               sx={{ color: "white" }}
             >
@@ -113,20 +113,20 @@ export default function FullScreenDialog(props) {
               </Typography>
 
               <Typography variant="h6" paddingTop={2}>
-                If you are ready select your 3 job choices, click the Placement
+                If you are ready select your 2 job choices, click the Placement
                 Form Button
               </Typography>
             </Grid>
             <Grid item xs={12} md={4}>
               <Button
-                href="https://form.jotform.com/240854686459169"
+                href="https://www.jotform.com/build/241264737105150"
                 target="_blank"
                 variant="outlined"
                 color="warning"
                 style={{
                   padding: "10px 30px",
                   width: "100%",
-                  borderWidth: "3px", 
+                  borderWidth: "3px",
                   borderRadius: "10px",
                   marginLeft: { sm: "auto", md: "auto" },
                 }}
@@ -147,7 +147,7 @@ export default function FullScreenDialog(props) {
               margin: "0 auto",
             }}
           >
-          {jobCardsComponent}
+            {jobCardsComponent}
           </Grid>
         </Box>
       </Dialog>
