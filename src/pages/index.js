@@ -302,7 +302,7 @@ export default function Home() {
           <Box
             sx={{
               width: "100%",
-              padding: "35px",
+              padding: "36px",
               backgroundColor: "#F2F2F2",
             }}
           >
