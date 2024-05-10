@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import Link from "@mui/material/Link";
 export default function Footer() {
   return (
     <Box sx={{ backgroundColor: "#D1D9DC" }}>
