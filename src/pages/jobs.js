@@ -271,7 +271,7 @@ const Jobs = ({ parsedData }) => {
     "Walgreens", "NYPD",
     "NYC Pet Services",
     "LaGuardia",
-    "Weil Cornell Medicine",
+    "Salvation Army",
   ];
   const handleItemClick = (item) => {
     setSearchTerm(item.toLowerCase()); // Convert item to lower case before setting the search term
