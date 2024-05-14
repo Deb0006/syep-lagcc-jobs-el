@@ -92,7 +92,7 @@ export default function FullScreenDialog(props) {
             </Typography>
             <Button
               autoFocus
-              href="https://form.jotform.com/241304050831139"
+              href="https://form.jotform.com/241344670994161"
               target="_blank"
               sx={{ color: "white" }}
             >
@@ -119,7 +119,7 @@ export default function FullScreenDialog(props) {
             </Grid>
             <Grid item xs={12} md={4}>
               <Button
-                href="https://form.jotform.com/241304050831139"
+                href="https://form.jotform.com/241344670994161"
                 target="_blank"
                 variant="outlined"
                 color="warning"
