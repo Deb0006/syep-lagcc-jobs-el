@@ -266,10 +266,11 @@ const Jobs = ({ parsedData }) => {
 
   const popularCompanies = [
     "Best Buy",
-    // "Lyft HQ",
+    "MTA",
+    "Lyft HQ",
     "Walgreens", "NYPD",
     "NYC Pet Services",
-    "LaGuardia Workforce Education Center",
+    "LaGuardia",
     "Weil Cornell Medicine",
   ];
   const handleItemClick = (item) => {
