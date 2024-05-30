@@ -307,7 +307,7 @@ const Jobs = ({ parsedData }) => {
           }}
         >
           <Typography variant="h4" gutterBottom>
-            Career-Based Jobs and Internships
+            Community-Based Jobs and Internships
           </Typography>
           <Typography variant="p" gutterBottom>
             Start by looking for jobs that match your interests and your
