@@ -13,15 +13,15 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import "../styles/globals.css";
+import { useContext } from "react";
+import { DialogContext } from "../pages/_app";
 import { useState, useEffect } from "react";
 import {
   addToFavorite,
   removeFromFavorite,
   isJobSaved,
 } from "../utils/FavoriteJobs";
-import { useContext } from "react";
-import { DialogContext } from "../pages/_app";
+import "../styles/globals.css";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;

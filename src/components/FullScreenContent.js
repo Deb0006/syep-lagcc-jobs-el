@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import {Box } from "@mui/material";
 import Slideshow from "./Slideshow"
 
 function FullScreenContent() {
@@ -20,6 +20,5 @@ function FullScreenContent() {
   );
 }
 
-// FullScreenContent.displayName = "FullScreenContent";
 
 export default FullScreenContent;

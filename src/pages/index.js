@@ -302,7 +302,7 @@ export default function Home() {
           <Box
             sx={{
               width: "100%",
-              padding: "36px",
+              padding: "40px 0",
               backgroundColor: "#F2F2F2",
             }}
           >
@@ -310,7 +310,11 @@ export default function Home() {
             <Typography variant="h4" gutterBottom sx={{ fontWeight: "bold" }}>
               Important
             </Typography>
-            <Typography variant="h5" gutterBottom>
+            <Typography
+              variant="h5"
+              gutterBottom
+              sx={{ padding: { xs: "0", md: "0 200px" } }}
+            >
               Make sure you completed the Virtual Orientation, Sexual Harassment
               Prevention Training, and your 10 tasks on Hats and Ladders
             </Typography>
