@@ -27,7 +27,7 @@ export async function GET(){
   const getRows1 = await googleSheets.spreadsheets.values.get({
     auth,
     spreadsheetId: process.env.SHEET_ID,
-    range: "Sheet1",
+    range: "Sheet4",
   });
   const getRows2 = await googleSheets.spreadsheets.values.get({
     auth,
@@ -38,7 +38,7 @@ export async function GET(){
   const data2 = getRows2.data.values;
   const parsedData = {};
 
-  // Loop through Sheet 1
+  // Loop through Sheet 4
   for (let i = 1; i < data1.length; i++) {
     let companyName = data1[i][0];
     let job = {

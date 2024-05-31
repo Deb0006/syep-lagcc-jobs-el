@@ -42,7 +42,7 @@ export async function getStaticProps() {
   const getRows1 = await googleSheets.spreadsheets.values.get({
     auth,
     spreadsheetId: process.env.SHEET_ID,
-    range: "Sheet1",
+    range: "Sheet4",
   });
   const getRows2 = await googleSheets.spreadsheets.values.get({
     auth,
@@ -54,7 +54,7 @@ export async function getStaticProps() {
 
   let parsedData = [];
 
-  // Loop through Sheet 1
+  // Loop through Sheet 4
   for (let i = 1; i < data1.length; i++) {
     let job = {
       jobID: "JOB_"+i,
