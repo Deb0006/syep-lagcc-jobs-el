@@ -270,6 +270,7 @@ const Jobs = ({ parsedData }) => {
     "Mamie Fay School",
     "LaGuardia",
     "BMCC",
+    "911 Memorial & Museum",
     "Salvation Army",
   ];
   const handleItemClick = (item) => {
