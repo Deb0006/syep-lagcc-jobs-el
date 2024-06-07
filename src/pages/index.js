@@ -344,7 +344,7 @@ export default function Home() {
             </Grid>
             <Grid item xs={12} lg={6}>
               <Link
-                href="https://form.jotform.com/241565921622153"
+                href="https://form.jotform.com/241586358098167"
                 target="_blank"
               >
                 <Button
