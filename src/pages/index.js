@@ -258,7 +258,7 @@ export default function Home() {
               step="Step 1"
               imageSrc="/Zoom2.png"
               title="Investigate image"
-              description='Click on the "Search Job" button and browse the available jobs based on your preferred category. Pick 2 jobs you like and save them'
+              description='Click on the "Search Job" button and browse the available jobs based on your preferred category. Pick 3 jobs you like and save them'
             />
             <StepSection
               step="Step 2"
@@ -273,7 +273,7 @@ export default function Home() {
                   }}
                 >
                   <li>Read job descriptions and requirements</li>
-                  <li>Discuss your 2 job options with your parent/guardian</li>
+                  <li>Discuss your 3 job options with your parent/guardian</li>
                   <li>
                     Use Google Maps to ensure commuting does not exceed 45
                     minutes
@@ -289,7 +289,7 @@ export default function Home() {
               step="Step 3"
               imageSrc="/List2.png"
               title="Task List image"
-              description="Fill out the Placement Form with your information and your top 2 job preferences. Make sure you submit it before the deadline"
+              description="Fill out the Placement Form with your information and your top 3 job preferences. Make sure you submit it before the deadline"
             />
 
             <StepSection
